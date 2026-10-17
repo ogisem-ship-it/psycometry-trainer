@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071008">
+<title>Psychometric Trainer V3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<div class="top">
+  <div class="brand">
+    <div class="brandx"><div class="logo">🚜</div><div><h1>Psychometric Trainer</h1><small>V3 · Field Edition · מאגר כמותי דינמי</small></div></div>
+    <span class="pill">🔥 <span id="streak">0</span> ימים</span>
+  </div>
+  <nav>
+    <button class="nav active" data-v="home">בית</button>
+    <button class="nav" data-v="eng">אנגלית</button>
+    <button class="nav" data-v="quant">כמותי</button>
+    <button class="nav" data-v="tricks">טריקים</button>
+    <button class="nav" data-v="mistakes">טעויות</button>
+    <button class="nav" data-v="coach">סיכום לצ׳אט</button>
+  </nav>
+</div>
+<main>
+<section id="home" class="view">
+  <div class="panel hero"><div>
+    <span class="ey">🚜 FIELD EDITION · V3</span>
+    <h2>פחות חזרה על אותה שאלה.<br>יותר הבנה, וריאציות ומהירות.</h2>
+    <p class="muted">הכמותי נבנה עכשיו ממחולל תרגילים עם רמות קושי שונות. כשאתה טועה, תקבל הסבר עמוק: איך לזהות את השיטה, פתרון שלב־אחר־שלב, הדרך המהירה, מלכודת נפוצה ובדיקת שפיות.</p>
+    <div class="actions"><button class="btn primary" id="homeEng">אימון אנגלית</button><button class="btn secondary" id="homeQuant">אימון כמותי</button></div>
+  </div></div>
+  <div class="panel"><div class="section"><div><small>המשימה להיום</small><h2>מה כדאי לעשות עכשיו?</h2></div></div><div id="advice" class="note"></div></div>
+  <div class="panel"><div class="three">
+    <div class="card"><div><div class="ico">🇬🇧</div><h3>אנגלית / אמירנט</h3><p class="muted">שליפה אקטיבית וחזרות במרווחים.</p></div><button class="btn primary" data-go="eng">לפינת האנגלית</button></div>
+    <div class="card"><div><div class="ico">⚡</div><h3>כמותי דינמי</h3><p class="muted">עשרות תבניות ומאות וריאציות מספריות — לא אותה שאלה שוב ושוב.</p></div><button class="btn primary" data-go="quant">לפינת הכמותי</button></div>
+    <div class="card"><div><div class="ico">🤝</div><h3>מאמן אישי</h3><p class="muted">העתק את הסיכום לצ׳אט כדי שאמשיך לעדכן את האתר לפי הביצועים.</p></div><button class="btn secondary" data-go="coach">פתח סיכום</button></div>
+  </div></div>
+  <div class="panel"><div class="grid">
+    <div class="stat"><span>מילים שנחשפו</span><b id="hs">0</b></div>
+    <div class="stat"><span>מילים בשליטה</span><b id="hm">0</b></div>
+    <div class="stat"><span>דיוק כמותי</span><b id="ha">—</b></div>
+    <div class="stat"><span>זמן ממוצע</span><b id="ht">—</b></div>
+  </div></div>
+</section>
+
+<section id="eng" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>VOCAB WORKSHOP</small><h2>🇬🇧 פינת אנגלית</h2><span class="muted">שליפה לפני זיהוי. 3 מילים חדשות ביום.</span></div><span class="pill">Spaced repetition</span></div>
+    <div class="two">
+      <div class="card"><div><div class="ico">🧠</div><h3>אימון יומי</h3><p class="muted">חזרות שהגיע זמנן + מעט מילים חדשות.</p></div><button class="btn primary" id="engDaily">התחל</button></div>
+      <div class="card"><div><div class="ico">⚡</div><h3>5 כרטיסים מהירים</h3><p class="muted">אימון קצר לשמירה על רצף.</p></div><button class="btn secondary" id="engQuick">התחל מהיר</button></div>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <div class="stat"><span>מאגר</span><b id="eTotal">0</b></div><div class="stat"><span>לחזרה היום</span><b id="eDue">0</b></div><div class="stat"><span>בשליטה</span><b id="eMaster">0</b></div><div class="stat"><span>חזרות</span><b id="eRev">0</b></div>
+    </div>
+  </div>
+  <div class="panel hidden" id="engSession">
+    <div class="section"><h3>אימון אנגלית</h3><span class="pill" id="ecount"></span></div><div class="progress"><div class="fill" id="ebar"></div></div>
+    <div id="ecard"><div class="flash" style="margin-top:12px">
+      <div class="muted" id="eprompt"></div><div id="efront" class="word"></div>
+      <div id="erecall" class="hidden" style="width:100%;max-width:450px;margin-top:14px"><input id="erecallInput" placeholder="הקלד באנגלית..." style="direction:ltr"><div class="actions"><button class="btn secondary" id="erecallCheck">בדוק שליפה</button></div></div>
+      <div id="eanswer" class="answer hidden"><h3 id="emeaning"></h3><div id="eexample" class="note" style="direction:ltr;text-align:left"></div><p id="etrans" class="muted"></p></div>
+    </div><div class="actions" id="erevealWrap"><button class="btn primary" id="ereveal" style="width:100%">הצג תשובה</button></div>
+    <div class="rating hidden" id="erating"><button class="rate again" data-rate="again">😕 לא ידעתי</button><button class="rate hard" data-rate="hard">🤔 כמעט</button><button class="rate good" data-rate="good">✅ ידעתי</button></div></div>
+    <div id="edone" class="hidden"><h3>סיימת 🎯</h3><p id="esummary" class="muted"></p></div>
+  </div>
+</section>
+
+<section id="quant" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>QUANT GARAGE · DYNAMIC BANK</small><h2>🔢 פינת כמותי</h2><span class="muted">כל אימון מייצר וריאציות חדשות. הרמה עולה בהדרגה לפי הביצועים שלך.</span></div><span class="timer" id="timer">00:00</span></div>
+    <div class="chips" id="chips"></div>
+    <div class="modes">
+      <button class="mode" id="qTopic">🎯<strong>נושא ממוקד</strong><small>רק הנושא שבחרת, ברמות שונות.</small></button>
+      <button class="mode" id="qMix">🔀<strong>אימון מעורב</strong><small>שאלות חדשות מכל הנושאים.</small></button>
+      <button class="mode" id="qWeak">🛠️<strong>האזור החלש</strong><small>מתמקד אוטומטית בנושא שדורש עבודה.</small></button>
+      <button class="mode" id="qSprint">⚡<strong>ספרינט 10</strong><small>קצב, גיוון ולחץ זמן.</small></button>
+    </div>
+  </div>
+  <div class="panel hidden" id="qSession">
+    <div class="section"><div><h3 id="qtitle">אימון כמותי</h3><span class="muted" id="qcount"></span></div><span class="pill" id="qbadge"></span></div>
+    <div class="progress"><div class="fill" id="qbar"></div></div>
+    <div id="qwrap"><div class="q">
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="level" id="qlevel"></span><span class="why-badge" id="qmethod"></span></div>
+      <div class="stem" id="qstem"></div><div id="qopts"></div>
+      <div id="qex" class="ex hidden"></div><div id="qdeep" class="ex deep hidden"></div><div id="qfast" class="ex fast hidden"></div><div id="qtrap" class="ex trap hidden"></div><div id="qsanity" class="ex check hidden"></div>
+    </div><div class="actions"><button class="btn primary" id="qcheck">בדוק תשובה</button><button class="btn secondary hidden" id="qnext">לשאלה הבאה</button></div></div>
+    <div id="qdone" class="hidden"><h3>סיימת 🎯</h3><p id="qsummary" class="muted"></p><div class="actions"><button class="btn secondary" data-go="mistakes">מחברת טעויות</button><button class="btn primary" data-go="coach">סיכום לצ׳אט</button></div></div>
+  </div>
+</section>
+
+<section id="tricks" class="view hidden"><div class="panel"><div class="section"><div><small>TOOLBOX</small><h2>🧠 דף הטריקים</h2></div><button class="btn secondary" id="trickQuiz">בחן אותי</button></div><div class="tricks" id="tricksGrid"></div></div></section>
+<section id="mistakes" class="view hidden"><div class="panel"><h2>📓 מחברת טעויות</h2><p class="muted">כל טעות חדשה שומרת גם צילום של השאלה, כדי שתוכל לחזור אליה גם כשהשאלות נוצרות דינמית.</p><div id="mistakesList"></div></div></section>
+<section id="coach" class="view hidden"><div class="panel"><h2>🤝 סיכום לצ׳אט</h2><p class="muted">כתוב הערה אישית, עדכן והעתק. הסיכום כולל עכשיו גם ביצועים לפי רמות קושי.</p><label>הערות שלך</label><textarea id="notes" placeholder="לדוגמה: ביחסים אני מבין את השיטה אבל איטי..."></textarea><label>סיכום אוטומטי</label><textarea id="summary" readonly style="min-height:350px"></textarea><div class="actions"><button class="btn primary" id="refreshSummary">עדכן סיכום</button><button class="btn secondary" id="copySummary">העתק</button></div></div></section>
+</main></div><div class="toast" id="toast"></div>
+
+<script src="base.js"></script>
+<script src="q_percent_ratio.js"></script>
+<script src="q_average_arithmetic.js"></script>
+<script src="q_speed_work.js"></script>
+<script src="q_fraction_algebra.js"></script>
+<script src="app.js"></script>
+</body></html>
