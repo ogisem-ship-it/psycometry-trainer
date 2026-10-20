@@ -1,0 +1,14 @@
+/* V4 teaching-first design additions */
+.v4-difficulty{margin-top:13px;padding:13px;border:1px solid rgba(241,200,75,.27);border-radius:16px;background:rgba(241,200,75,.045);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:11px}
+.v4-difficulty small{display:block;line-height:1.6;color:var(--m);margin-top:5px}.v4-switch{display:flex;flex-wrap:wrap;gap:7px}
+.v4-link{display:inline-block;text-decoration:none;text-align:center;max-width:max-content}
+.v4-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.v4-form label{font-size:13px;color:var(--m)}.v4-form select,.v4-form input{margin-top:5px}
+.v4-log{margin-top:15px}.v4-log-row{padding:12px 0;border-bottom:1px solid var(--line);line-height:1.7}.v4-log-row small{color:var(--m)}
+.v4-error-card{margin-bottom:12px}.v4-error-card details{border:1px solid #385b3f;border-radius:12px;background:#102116;padding:11px;margin:12px 0}.v4-error-card details summary{cursor:pointer;font-weight:800;color:#ffe88e}.v4-error-card details[open] summary{margin-bottom:12px}.v4-stem{margin:14px 0 8px;font-size:17px;line-height:1.6}.v4-correct{padding:7px 10px;border-radius:10px;background:rgba(116,201,74,.09);border:1px solid #2e6233}.v4-own-note{display:block;margin:10px 0}.v4-own-note textarea{display:block;margin-top:6px;min-height:68px}
+.v4-rule{margin:8px 0;padding:10px;border-radius:9px;background:rgba(116,201,74,.09);line-height:1.7}.why-badge.revealed{background:rgba(116,201,74,.14);border-color:#4f8e4e}.ex h4{margin:0 0 9px;font-size:16px;color:#ffe88d}.ex p{margin:5px 0 12px;line-height:1.8}.ex.deep{border-right-color:#88a8ff}.ex.trap{border-right-color:#ff8c91}.ex.check{border-right-color:#8bddb3}.steps{padding-right:25px;margin:10px 0;line-height:1.85}.steps li{padding-right:3px;margin-bottom:11px}.v4-fade{animation:v4pop .27s ease both}@keyframes v4pop{from{opacity:.25;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:750px){.v4-form{grid-template-columns:repeat(2,minmax(0,1fr))}.v4-difficulty{align-items:stretch}}
+@media(max-width:450px){.v4-form{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.v4-fade{animation:none}}
+/* Prevent decorative tractor from intercepting button taps (V3 regression). */
+.hero::after,.panel::before{pointer-events:none!important}
+.hero>.actions,.hero button,.hero a{position:relative;z-index:2}
