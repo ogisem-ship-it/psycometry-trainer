@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071008">
-<title>Psychometric Trainer V3</title>
+<title>Psychometric Trainer V4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../v3/style.css">
+<link rel="stylesheet" href="v4.css">
 </head>
 <body>
 <div class="app">
 <div class="top">
   <div class="brand">
-    <div class="brandx"><div class="logo">🚜</div><div><h1>Psychometric Trainer</h1><small>V3 · Field Edition · מאגר כמותי דינמי</small></div></div>
+    <div class="brandx"><div class="logo">🚜</div><div><h1>Psychometric Trainer</h1><small>V4 · Field Edition · מאגר כמותי דינמי</small></div></div>
     <span class="pill">🔥 <span id="streak">0</span> ימים</span>
   </div>
   <nav>
@@ -29,7 +30,7 @@
 <main>
 <section id="home" class="view">
   <div class="panel hero"><div>
-    <span class="ey">🚜 FIELD EDITION · V3</span>
+    <span class="ey">🚜 FIELD EDITION · V4</span>
     <h2>פחות חזרה על אותה שאלה.<br>יותר הבנה, וריאציות ומהירות.</h2>
     <p class="muted">הכמותי נבנה עכשיו ממחולל תרגילים עם רמות קושי שונות. כשאתה טועה, תקבל הסבר עמוק: איך לזהות את השיטה, פתרון שלב־אחר־שלב, הדרך המהירה, מלכודת נפוצה ובדיקת שפיות.</p>
     <div class="actions"><button class="btn primary" id="homeEng">אימון אנגלית</button><button class="btn secondary" id="homeQuant">אימון כמותי</button></div>
@@ -99,10 +100,12 @@
 <section id="coach" class="view hidden"><div class="panel"><h2>🤝 סיכום לצ׳אט</h2><p class="muted">כתוב הערה אישית, עדכן והעתק. הסיכום כולל עכשיו גם ביצועים לפי רמות קושי.</p><label>הערות שלך</label><textarea id="notes" placeholder="לדוגמה: ביחסים אני מבין את השיטה אבל איטי..."></textarea><label>סיכום אוטומטי</label><textarea id="summary" readonly style="min-height:350px"></textarea><div class="actions"><button class="btn primary" id="refreshSummary">עדכן סיכום</button><button class="btn secondary" id="copySummary">העתק</button></div></div></section>
 </main></div><div class="toast" id="toast"></div>
 
-<script src="base.js"></script>
-<script src="q_percent_ratio.js"></script>
-<script src="q_average_arithmetic.js"></script>
-<script src="q_speed_work.js"></script>
-<script src="q_fraction_algebra.js"></script>
-<script src="app.js"></script>
+<script src="../v3/base.js"></script>
+<script src="../v3/q_percent_ratio.js"></script>
+<script src="../v3/q_average_arithmetic.js"></script>
+<script src="../v3/q_speed_work.js"></script>
+<script src="../v3/q_fraction_algebra.js"></script>
+<script src="v4_questions.js"></script>
+<script src="../v3/app.js"></script>
+<script src="v4_app.js"></script>
 </body></html>
