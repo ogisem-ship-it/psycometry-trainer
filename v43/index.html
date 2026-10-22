@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f8fc">
+<title>Psychometric Trainer V4.3 | Learning Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#071008;--p:#112015;--p2:#172a1b;--t:#f8fbf5;--m:#b5c5b1;--line:#29482d;--g:#4f9f35;--gb:#74c94a;--y:#f1c84b;--yb:#ffe177;--r:#ff858f;--rad:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--t);font-family:Rubik,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 8% 3%,rgba(116,201,74,.13),transparent 26%),radial-gradient(circle at 92% 2%,rgba(241,200,75,.1),transparent 24%),linear-gradient(180deg,#061008,#0a160d 55%,#08120a)}
+button,input,textarea,select{font:inherit}.app{max-width:1080px;margin:auto;padding:14px 14px 90px}.top{position:sticky;top:0;z-index:20;padding:8px 0 10px;background:linear-gradient(180deg,rgba(6,16,8,.97),rgba(6,16,8,.88),transparent);backdrop-filter:blur(18px)}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px}.brandx{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--gb),#2f6f26);font-size:22px;box-shadow:0 10px 28px rgba(79,159,53,.2)}.brand h1{font-size:20px;margin:0}.muted,small{color:var(--m)}
+nav{display:flex;gap:7px;overflow:auto;padding-top:10px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}.nav{white-space:nowrap;border:1px solid var(--line);background:#0f1e13;color:var(--m);padding:9px 13px;border-radius:999px;cursor:pointer}.nav.active{background:linear-gradient(var(--yb),var(--y));color:#18240c;border-color:transparent;font-weight:900}
+.panel,.card,.stat,.q,.trick{border:1px solid var(--line);background:linear-gradient(180deg,rgba(17,32,21,.97),rgba(11,23,14,.98));border-radius:var(--rad)}.panel{padding:18px;margin-top:14px;box-shadow:0 16px 48px rgba(0,0,0,.17)}
+.hero{min-height:270px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 12% 15%,rgba(116,201,74,.18),transparent 30%),radial-gradient(circle at 88% 7%,rgba(241,200,75,.16),transparent 25%),linear-gradient(145deg,#17331d,#102419 58%,#0d1b11)}.hero:after{content:'🚜';position:absolute;left:-20px;bottom:-48px;font-size:180px;opacity:.08;transform:rotate(4deg)}.hero h2{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0 0 12px}.hero p{max-width:680px;line-height:1.65}.ey{display:inline-flex;padding:6px 10px;border:1px solid rgba(241,200,75,.28);background:rgba(241,200,75,.08);border-radius:999px;color:#ffe588;font-size:12px;font-weight:800;margin-bottom:11px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.two{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:16px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.card h3{font-size:21px;margin:8px 0}.ico{font-size:28px}.stat{padding:14px}.stat span{font-size:12px;color:var(--m)}.stat b{display:block;font-size:26px;color:var(--yb);margin-top:5px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn{border-radius:14px;padding:11px 14px;font-weight:800;cursor:pointer;transition:.15s}.btn:hover{transform:translateY(-1px)}.primary{background:linear-gradient(var(--gb),var(--g));color:#081407;border:0}.secondary{background:#18301d;color:var(--t);border:1px solid #365d3a}.danger{background:#3b1a25;color:#ffdce1;border:1px solid #733545}
+.hidden{display:none!important}.pill{display:inline-flex;border:1px solid var(--line);padding:6px 9px;border-radius:999px;font-size:12px;color:#d9e8d6}.section{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:12px}.section h2{margin:0}.progress{height:10px;border:1px solid var(--line);background:#071108;border-radius:999px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--y),var(--gb));width:0;transition:.35s}
+.flash{min-height:330px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:1px solid #355b39;border-radius:26px;background:radial-gradient(circle at 50% 0%,rgba(241,200,75,.12),transparent 30%),linear-gradient(#17331f,#0e1e13)}.flash .word{direction:ltr;font-size:40px;font-weight:900;color:#fff1a9}.flash .he{font-size:29px;font-weight:800}.answer{width:100%;margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}.rating{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.rate{padding:11px;border-radius:14px;border:1px solid var(--line);color:var(--t);font-weight:800;cursor:pointer}.again{background:#2a1720}.hard{background:#302914}.good{background:#153126}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#112116;color:#dcebd8;font-weight:700;cursor:pointer}.chip.active{background:linear-gradient(var(--yb),var(--y));color:#25320e}.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.mode{padding:13px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(160deg,#132619,#0d1a10);color:var(--t);text-align:right;cursor:pointer}.mode strong{display:block;margin:7px 0 3px}.mode small{line-height:1.4}
+.q{padding:16px;margin-top:12px}.stem{font-size:19px;font-weight:800;line-height:1.6;margin-bottom:10px}.opt{display:flex;gap:8px;padding:10px;border:1px solid #2b4b30;border-radius:13px;background:#0d1b10;margin:7px 0;cursor:pointer}.opt.ok{border-color:#74d17a;background:#17351f}.opt.bad{border-color:#a64d58;background:#301a21}.ex{margin-top:10px;border-right:4px solid var(--y);background:#0b170e;padding:12px;border-radius:12px;line-height:1.7}.fast{border-right-color:var(--gb)}.deep{border-right-color:#78a8ff;background:#0c1722}.trap{border-right-color:var(--r);background:#201117}.check{border-right-color:#bda2ff;background:#171323}.ex h4{margin:0 0 7px}.steps{margin:7px 0;padding-right:20px}.steps li{margin:6px 0}.timer{font-size:27px;font-weight:900;color:var(--yb);direction:ltr}
+.tricks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.trick{padding:15px}.trick h3{margin:0 0 8px}.formula{direction:ltr;text-align:center;background:#0e1d12;border:1px dashed #4e7f52;padding:9px;border-radius:11px;margin:7px 0;color:#fff5c2;font-weight:800}
+textarea,input,select{width:100%;background:#0a170d;color:var(--t);border:1px solid var(--line);border-radius:13px;padding:11px}textarea{min-height:150px}.note{border-right:4px solid var(--gb);background:#0e1a11;border-radius:12px;padding:11px;line-height:1.6}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);display:none;background:#f5ffd7;color:#1d2d0d;border-radius:999px;padding:10px 15px;font-weight:800;z-index:50}.level{font-size:12px;color:#ffe588;font-weight:800}.why-badge{font-size:12px;padding:5px 8px;border-radius:999px;background:#182b1c;color:#d7ebd2;border:1px solid #2f5134}.new-badge{font-size:11px;padding:4px 7px;border-radius:999px;background:rgba(241,200,75,.12);color:#ffe588;border:1px solid rgba(241,200,75,.25)}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.three,.two,.tricks{grid-template-columns:1fr}.modes{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.modes{grid-template-columns:1fr}.rating{grid-template-columns:1fr}.hero{min-height:300px}.hero h2{font-size:35px}}
+
+/* V4 teaching-first design additions */
+.v4-difficulty{margin-top:13px;padding:13px;border:1px solid rgba(241,200,75,.27);border-radius:16px;background:rgba(241,200,75,.045);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:11px}
+.v4-difficulty small{display:block;line-height:1.6;color:var(--m);margin-top:5px}.v4-switch{display:flex;flex-wrap:wrap;gap:7px}
+.v4-link{display:inline-block;text-decoration:none;text-align:center;max-width:max-content}
+.v4-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.v4-form label{font-size:13px;color:var(--m)}.v4-form select,.v4-form input{margin-top:5px}
+.v4-log{margin-top:15px}.v4-log-row{padding:12px 0;border-bottom:1px solid var(--line);line-height:1.7}.v4-log-row small{color:var(--m)}
+.v4-error-card{margin-bottom:12px}.v4-error-card details{border:1px solid #385b3f;border-radius:12px;background:#102116;padding:11px;margin:12px 0}.v4-error-card details summary{cursor:pointer;font-weight:800;color:#ffe88e}.v4-error-card details[open] summary{margin-bottom:12px}.v4-stem{margin:14px 0 8px;font-size:17px;line-height:1.6}.v4-correct{padding:7px 10px;border-radius:10px;background:rgba(116,201,74,.09);border:1px solid #2e6233}.v4-own-note{display:block;margin:10px 0}.v4-own-note textarea{display:block;margin-top:6px;min-height:68px}
+.v4-rule{margin:8px 0;padding:10px;border-radius:9px;background:rgba(116,201,74,.09);line-height:1.7}.why-badge.revealed{background:rgba(116,201,74,.14);border-color:#4f8e4e}.ex h4{margin:0 0 9px;font-size:16px;color:#ffe88d}.ex p{margin:5px 0 12px;line-height:1.8}.ex.deep{border-right-color:#88a8ff}.ex.trap{border-right-color:#ff8c91}.ex.check{border-right-color:#8bddb3}.steps{padding-right:25px;margin:10px 0;line-height:1.85}.steps li{padding-right:3px;margin-bottom:11px}.v4-fade{animation:v4pop .27s ease both}@keyframes v4pop{from{opacity:.25;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:750px){.v4-form{grid-template-columns:repeat(2,minmax(0,1fr))}.v4-difficulty{align-items:stretch}}
+@media(max-width:450px){.v4-form{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.v4-fade{animation:none}}
+/* Prevent decorative tractor from intercepting button taps (V3 regression). */
+.hero::after,.panel::before{pointer-events:none!important}
+.hero>.actions,.hero button,.hero a{position:relative;z-index:2}
+
+/* V4.1 light learning theme */
+:root{--bg:#f6f8fc;--p:#ffffff;--p2:#eef4ff;--t:#172033;--m:#61708a;--line:#dce5f2;--g:#5b8def;--gb:#7ab2ff;--y:#ffd76a;--yb:#fff1b8;--r:#ff9aa7;--rad:22px}
+body{background:radial-gradient(circle at 10% 0%,rgba(122,178,255,.32),transparent 28%),radial-gradient(circle at 100% 5%,rgba(255,215,106,.25),transparent 24%),linear-gradient(180deg,#f8fbff,#f4f7fb 60%,#eef3fb);color:var(--t)}
+.top{background:linear-gradient(180deg,rgba(248,251,255,.95),rgba(248,251,255,.9),rgba(248,251,255,.55));border-bottom:1px solid rgba(220,229,242,.75)}
+.logo{background:linear-gradient(145deg,#8dc2ff,#6f8dff);box-shadow:0 10px 24px rgba(91,141,239,.18)}
+.muted,small{color:var(--m)}
+.nav{background:#ffffff;color:#50617f;border-color:#dbe6f5;box-shadow:0 4px 12px rgba(27,39,94,.04)}
+.nav.active{background:linear-gradient(180deg,#e8f1ff,#dce9ff);color:#264677;border-color:#b8cdf6}
+.panel,.card,.stat,.q,.trick{background:linear-gradient(180deg,#ffffff,#fbfdff);border-color:#dce5f2;box-shadow:0 14px 32px rgba(42,65,116,.07)}
+.hero{background:radial-gradient(circle at 12% 15%,rgba(122,178,255,.30),transparent 32%),radial-gradient(circle at 88% 7%,rgba(255,215,106,.26),transparent 25%),linear-gradient(145deg,#ffffff,#eef5ff 65%,#fefcff)}
+.hero:after{content:'📚';opacity:.12}
+.hero h2{color:#1c2b48}.ey{background:rgba(91,141,239,.09);color:#355da2;border-color:rgba(91,141,239,.16)}
+.btn{box-shadow:0 8px 18px rgba(43,79,160,.08)}
+.primary{background:linear-gradient(180deg,#7bb3ff,#5b8def);color:#fff}
+.secondary{background:#fff;color:#35538a;border:1px solid #cfdcf4}
+.soft{background:linear-gradient(180deg,#fff8df,#ffefb4);color:#7e6111;border:1px solid #f2df9a}
+.pill{background:#f6f9ff;color:#50617f;border-color:#dbe5f3}
+.progress{background:#edf2fb;border-color:#d9e4f4}.fill{background:linear-gradient(90deg,#7ab2ff,#89d2c7)}
+.flash{background:radial-gradient(circle at 50% 0%,rgba(122,178,255,.16),transparent 30%),linear-gradient(180deg,#ffffff,#f3f8ff);border-color:#dce6f5}.flash .word{color:#35538a}.flash .he{color:#1d2b46}
+.rate{color:#24334f;border-color:#dde6f4}.again{background:#fff3f5}.hard{background:#fff9ec}.good{background:#eefaf3}
+.chip,.mode{background:#fff;color:#24334f;border-color:#dae4f2}.chip.active{background:linear-gradient(180deg,#e9f1ff,#dceaff);color:#294a7b;border-color:#bad0f6}
+.opt{background:#f9fbff;border-color:#dce5f2;color:#24334f}.opt.ok{background:#eefaf3;border-color:#9dd7b2}.opt.bad{background:#fff1f3;border-color:#f2b0ba}
+.ex{background:#fffaf0;border-right-color:#ffd76a;color:#24334f}.deep{background:#f1f6ff;border-right-color:#8cb5ff}.trap{background:#fff2f4;border-right-color:#ff9aa7}.check{background:#eefaf3;border-right-color:#89d2c7}
+textarea,input,select{background:#fff;color:#1d2b46;border-color:#dbe5f3}.note{background:#f5f9ff;border-right-color:#7ab2ff}
+.timer,.level{color:#355da2}.why-badge{background:#eef4ff;color:#34558d;border-color:#ccdaf6}.new-badge{background:#fff7d8;color:#8d6b00;border-color:#f0de99}
+.play-panel{background:linear-gradient(180deg,#fefeff,#f6f9ff)}
+.lite-card{background:linear-gradient(180deg,#ffffff,#f8fbff)}
+@media(max-width:800px){.top{backdrop-filter:blur(12px)}}
+
+/* Psychometric Trainer 4.2 — bright flashcards and tappable controls */
+:root{--bg:#f7fafc;--p:#fff;--p2:#f1f7f5;--t:#223449;--m:#627386;--line:#e1e9ed;--g:#168a6d;--gb:#25aa85;--y:#ffd873;--yb:#fff3c9;--r:#ee8b90;--rad:24px}
+html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 8% 0%,#def6e9 0,transparent 33%),radial-gradient(ellipse at 92% 10%,#ffeed0 0,transparent 28%),linear-gradient(160deg,#f9fcff,#f5faf8 52%,#eff6f8);color:var(--t)}
+.app{max-width:1100px}.top{background:rgba(250,252,253,.94);border-bottom:1px solid #dfe9e8;box-shadow:0 5px 25px rgba(38,74,85,.045);border-radius:0 0 20px 20px}.logo{background:#d9f4e6;box-shadow:none;filter:none}
+.brand h1{color:#1e3c3e}.nav{border-radius:15px;background:transparent;border:1px solid transparent;color:#5e7083;min-height:45px;padding:11px 16px;transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}.nav:hover{background:#eef8f4;border-color:#c3e9da;transform:translateY(-2px)}.nav.active{background:#dcf5e9;color:#137257;border:1px solid #a7dfca;box-shadow:0 4px 12px rgba(21,141,104,.09)}
+.panel,.card,.stat,.q,.trick{background:#fff;border-color:#e0eaed;box-shadow:0 9px 32px rgba(25,58,79,.055)}.panel{padding:clamp(16px,2.5vw,26px);border-radius:25px}.hero{background:linear-gradient(115deg,#e6f9ee,#edf9fb 60%,#fff9e7);border-color:#cfebdf;min-height:265px}.hero:after{content:'📘';opacity:.17;pointer-events:none}.hero h2{color:#1b5748}.ey{background:#fff;color:#147a5d;border:1px solid #c6e9dc}.muted,small{color:var(--m)}
+.btn,.mode,.chip,.nav,.rate,.answer-choice{font-weight:750;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border-radius:15px;border:1px solid transparent;box-shadow:0 4px 0 rgba(17,54,62,.06);transition:transform .15s ease,background .15s ease,box-shadow .15s ease,color .15s ease}.btn.primary{background:#168b70;color:#fff;border-color:#168b70}.btn.secondary{background:#f4f8fb;color:#285167;border-color:#dce7ef}.btn.soft{background:#fff5d9;color:#815d0b;border-color:#f2dfa8}.btn.danger{background:#ffeef0;color:#943a4d;border-color:#f2bdc5}.btn:hover,.mode:hover,.chip:hover{transform:translateY(-2px);box-shadow:0 9px 21px rgba(34,83,85,.13)}.btn:active,.mode:active,.chip:active,.answer-choice:active{transform:scale(.98);box-shadow:none}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #63b9ff;outline-offset:3px}
+.mode{min-height:126px;background:#f8fcfa;border:1px solid #dbece6;border-radius:20px;color:#274458;padding:17px;text-align:right;transition:transform .18s ease,box-shadow .18s ease}.mode strong{font-size:16px}.mode small{color:#668092}.chip{min-height:40px;background:#f4f9fa;color:#395b65;border:1px solid #d7e8e7;border-radius:13px}.chip.active{background:#dcf4e9;color:#156c55;border-color:#bce5d3}.pill{background:#f4faf7;color:#3c7160;border-color:#d6eee2}.stat{background:#f9fcfb}.stat b{color:#167c63}.progress{background:#e9f2ef;border-color:#d1e7df}.fill{background:linear-gradient(90deg,#24a883,#86d6a9)}
+.flash{background:linear-gradient(145deg,#ffffff,#f1faf6);border:1px solid #d9ede6;box-shadow:0 18px 36px rgba(24,93,77,.055)}.flash .word{color:#206b59}.flash .he{color:#294959}.rate{color:#244353;border-radius:16px;min-height:48px}.again{background:#fff0f2}.hard{background:#fff7dc}.good{background:#e8f8ef}
+.q{background:#fff;box-shadow:0 14px 30px rgba(30,71,88,.055);border:1px solid #d7e8e5;border-radius:22px}.stem{color:#264557}.opt{background:#f9fcfc;color:#294557;border:1px solid #e1ecee;border-radius:15px;min-height:54px;align-items:center;gap:13px;transition:background .15s,border .15s}.opt:hover{background:#edf8f4;border-color:#a5dac6}.opt.ok{background:#e5f9ec;border-color:#74c29e}.opt.bad{background:#fff0f1;border-color:#edafb6}
+input[type="radio"],input[type="checkbox"]{width:19px!important;min-width:19px!important;max-width:19px!important;flex:0 0 19px;margin:0;accent-color:#198c70;padding:0!important;box-shadow:none!important}input[type="number"]{width:100%}.ex{background:#fffaf0;color:#354e5d;border-right:4px solid #e5b851;border-radius:15px}.ex h4{color:#48625f}.ex.deep{background:#f1f7ff}.ex.trap{background:#fff3f3}.ex.check{background:#eef9f2}.formula{background:#eaf8f2;color:#1b604c;border-color:#b8e1cc}textarea,input,select{background:#fff;color:#233e4b;border-color:#d8e6e8;border-radius:14px}.note{background:#f0faf6;border-right:4px solid #49ba91;color:#2c5d53}.timer,.level{color:#23735c}.why-badge{background:#f0f8ff;color:#3b6883;border-color:#d5e5f0}.v4-difficulty{background:#fbf8ef;border-color:#f0e7cd}.v4-rule{background:#edfaf3}.v4-error-card details{background:#f2f9f5;border-color:#d1e9db}.v4-error-card details summary{color:#285b48}.v4-correct{background:#eaf8ef}
+/* Home study path */
+.study-extras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.study-extras .card{min-height:185px;background:linear-gradient(145deg,#fff,#f5fbff)}.study-extras .card:nth-child(2){background:linear-gradient(145deg,#fff,#fff9ee)}
+/* Flashcards for analogies & logic */
+.deck-intro{color:#627586;margin:10px 0 14px;line-height:1.7}.deck-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.deck-stats{display:flex;gap:10px;flex-wrap:wrap}.deck-stat{background:#f2faf7;padding:9px 13px;border:1px solid #d9ece5;border-radius:14px;color:#476a61;font-size:13px}.deck-stat strong{color:#176c56;margin-right:5px}.deck-session{scroll-margin-top:155px}.deck-session .progress{margin:13px 0 20px}.deck-session-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.flashcard{position:relative;border:1px solid #cfe8db;border-radius:27px;background:radial-gradient(circle at 95% 0%,rgba(230,248,237,.85),transparent 38%),linear-gradient(145deg,#fff,#f9fffc);box-shadow:0 15px 36px rgba(25,70,74,.085);min-height:360px;overflow:hidden;margin:0 auto;max-width:850px;isolation:isolate}.flashcard:before{content:'✦';position:absolute;left:22px;top:14px;font-size:58px;opacity:.07;pointer-events:none}.flashcard.question-flashcard{border-color:#b9dce8;background:radial-gradient(circle at 95% 0%,rgba(221,244,252,.85),transparent 39%),linear-gradient(145deg,#fff,#fcfefe)}.flashcard .card-face{padding:clamp(18px,4vw,33px);position:relative;z-index:1}.flashcard .card-face.hidden{display:none!important}.flashcard .face-eyebrow{display:inline-flex;align-items:center;gap:7px;background:#ecf7f2;border:1px solid #d1e9dd;color:#23745d;font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px}.flashcard h3{margin:18px 0 12px;font-size:clamp(21px,3.2vw,28px);line-height:1.6;color:#234455}.flashcard .hint{color:#7c8d99;margin:4px 0 18px;font-size:13px}.answer-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.answer-choice{font-size:16px;display:flex;align-items:center;gap:12px;text-align:right;min-height:66px;border-radius:18px;background:#fff;color:#294654;border:1.5px solid #dce9ea;padding:12px 14px;box-shadow:0 3px 0 rgba(39,93,93,.04);transition:.18s ease}.answer-choice:hover{background:#f2fbf7;border-color:#8dd4b7;transform:translateY(-2px)}.answer-choice .choice-letter{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:11px;background:#edf6f3;color:#267660;font-size:14px;font-weight:800}.answer-choice.selected{background:#e8f7ef;border-color:#3baf88}.answer-choice:focus-visible{outline:3px solid #78bdf5;outline-offset:3px}.answer-choice[disabled]{opacity:.65;cursor:default}.card-flip-anim{animation:flashReveal .32s cubic-bezier(.2,.75,.15,1) both}@keyframes flashReveal{from{opacity:0;transform:perspective(800px) rotateY(-12deg) translateY(9px)}to{opacity:1;transform:perspective(800px) rotateY(0deg) translateY(0)}}
+.card-face .result{display:inline-flex;align-items:center;gap:7px;border-radius:14px;padding:11px 15px;font-weight:850;font-size:17px}.card-face .result.success{background:#e2f8e9;color:#167146}.card-face .result.fail{background:#fff0f1;color:#a84752}.solution-box{padding:16px;border-radius:17px;background:#f1f9ff;border:1px solid #dbeafb;margin-top:14px;color:#32556a;line-height:1.8}.solution-box b{color:#1e4b69}.relation-box{margin:16px 0;background:#fff9e7;border:1px solid #f1e4bb;padding:14px;border-radius:16px;line-height:1.7}.flashcard .solution-steps{margin:7px 0;padding-right:22px}.flashcard .solution-steps li{margin:7px 0;line-height:1.65}.flashcard .face-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:19px}.deck-empty{padding:14px;color:#4e6e60;background:#f0faf3;border-radius:15px}.deck-complete{padding:18px;text-align:center}.deck-complete h3{font-size:24px;color:#2d775e}.deck-complete .bigscore{font-size:54px;color:#168a6d;font-weight:900}.deck-complete .actions{justify-content:center}.deck-note{font-size:13px;color:#647c81;margin-top:12px}.deck-shortcut{background:#e9f8f0;border:1px solid #d4eee0;border-radius:17px;padding:15px 17px;margin-top:15px;line-height:1.7;color:#3d6b5d}
+.toast{color:#204638;background:#e9f8e9}
+@media(max-width:780px){.study-extras{grid-template-columns:1fr}.answer-choices{grid-template-columns:1fr}.deck-toolbar .btn{flex:1 1 140px}.deck-session{scroll-margin-top:135px}.flashcard{min-height:340px}}
+@media(max-width:500px){.app{padding-left:11px;padding-right:11px}.top{margin:-14px -11px 0;padding:11px}.brand h1{font-size:18px}.brand .pill{font-size:11px}.panel{padding:16px}.hero h2{font-size:30px}.deck-session-head{align-items:start}.flashcard .card-face{padding:19px}.answer-choice{font-size:15px}.nav{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.btn,.mode,.nav,.chip,.answer-choice{transition:none!important}.card-flip-anim{animation:none!important}}
+
+
+/* V4.3 learning-coach explanations */
+.v43-tutor{background:#f7fbff;border:1px solid #d4e7f7;border-radius:18px;padding:17px;margin:12px 0 18px;color:#345368;line-height:1.95}
+.v43-tutor-label{font-size:16px;font-weight:850;color:#215a77}.v43-visual{font-size:25px;letter-spacing:3px;direction:ltr;text-align:center;background:white;border:1px dashed #c8dae8;border-radius:14px;padding:16px 10px;margin:12px 0}
+.v43-tutor p{margin:11px 0}.v43-source{display:inline-block;color:#1462a0;font-weight:800;text-decoration:underline;text-underline-offset:3px;margin-top:9px}.v43-source-note{font-size:12px;color:#718496;margin-top:5px}
+.v43-answer{padding:13px 15px;background:#eaf9f0;color:#245d48;border-radius:13px;border:1px solid #c9e6d7;margin-top:13px}
+.v43-step-list{counter-reset:step;list-style:none!important;padding:0!important}.v43-step-list li{background:#fff;border:1px solid #e0eaf0;border-radius:12px;padding:10px 13px!important;margin:9px 0!important}.v43-step-list strong{color:#226d59}
+#qPersonal{background:#eaf8f0;border:2px solid #a6ddbf}#qPersonal strong{color:#187253}
+@media(max-width:600px){.v43-tutor{padding:13px}.v43-visual{font-size:22px;letter-spacing:1px}}
+
+</style>
+</head>
+<body>
+<noscript><div style="padding:16px;background:#fff4dd;color:#8a5600;text-align:center">יש לפתוח את האתר ב־Safari או Chrome. תצוגה מקדימה שאינה מפעילה JavaScript לא תאפשר שימוש בכפתורים.</div></noscript>
+<div class="app">
+<div class="top">
+  <div class="brand">
+    <div class="brandx"><div class="logo">🚜</div><div><h1>Psychometric Trainer</h1><small>V4.3 · Learning Coach</small></div></div>
+    <span class="pill" title="רצף ימי לימוד">🔥 <span id="streak">0</span> ימים</span>
+  </div>
+  <nav aria-label="מעבר בין אזורי לימוד">
+    <button class="nav active" data-v="home">בית</button>
+    <button class="nav" data-v="eng">אנגלית</button>
+    <button class="nav" data-v="analogies">אנלוגיות</button>
+    <button class="nav" data-v="logic">היגיון</button>
+    <button class="nav" data-v="quant">כמותי</button>
+    <button class="nav" data-v="tricks">טריקים</button>
+    <button class="nav" data-v="mistakes">טעויות</button>
+    <button class="nav" data-v="coach">סיכום לצ׳אט</button>
+  </nav>
+</div>
+<main>
+<section id="home" class="view">
+  <div class="panel hero"><div>
+    <span class="ey">🌱 LEARNING STUDIO · V4.3</span>
+    <h2>ללמוד יותר בנוחות.<br>יותר כרטיסיות, יותר הבנה, יותר הצלחות.</h2>
+    <p class="muted">התרגול עבר לעיצוב בהיר של כרטיסיות לימוד: בוחרים תשובה בלחיצה אחת, הופכים לכרטיס ההסבר וממשיכים בקצב שלך. אנגלית, אנלוגיות, היגיון וכמותי — באותה אפליקציה.</p>
+    <div class="actions"><button class="btn primary" id="homeEng">אימון אנגלית</button><button class="btn secondary" id="homeQuant">אימון כמותי</button><button class="btn soft" id="homeAna">אנלוגיות</button><button class="btn soft" id="homeLogic">היגיון</button></div>
+  </div></div>
+  <div class="panel"><div class="section"><div><small>המשימה להיום</small><h2>מה כדאי לעשות עכשיו?</h2></div></div><div id="advice" class="note"></div></div>
+  <div class="panel"><div class="three">
+    <div class="card"><div><div class="ico">🇬🇧</div><h3>אנגלית / אמירנט</h3><p class="muted">שליפה אקטיבית וחזרות במרווחים.</p></div><button class="btn primary" data-go="eng">לפינת האנגלית</button></div>
+    <div class="card"><div><div class="ico">⚡</div><h3>כמותי דינמי</h3><p class="muted">עשרות תבניות ומאות וריאציות מספריות — לא אותה שאלה שוב ושוב.</p></div><button class="btn primary" data-go="quant">לפינת הכמותי</button></div>
+    <div class="card"><div><div class="ico">🤝</div><h3>מאמן אישי</h3><p class="muted">העתק את הסיכום לצ׳אט כדי שאמשיך לעדכן את האתר לפי הביצועים.</p></div><button class="btn secondary" data-go="coach">פתח סיכום</button></div>
+  </div></div>
+  <div class="panel play-panel"><div class="section"><div><small>תרגול נוסף</small><h2>עוד דברים שכדאי לתרגל</h2></div><span class="pill">חדש</span></div><div class="two">
+    <div class="card lite-card"><div><div class="ico">🔗</div><h3>אנלוגיות</h3><p class="muted">קשרים בין מילים, זיהוי יחס נכון ותרגול שפה מהיר.</p></div><button class="btn soft" data-go="analogies">לתרגול אנלוגיות</button></div>
+    <div class="card lite-card"><div><div class="ico">🧩</div><h3>היגיון</h3><p class="muted">הסקת מסקנות, תנאים, טבלאות היגיון ושאלות קצרות בסגנון פסיכומטרי.</p></div><button class="btn soft" data-go="logic">לתרגול היגיון</button></div>
+  </div></div>
+  <div class="panel"><div class="grid">
+    <div class="stat"><span>מילים שנחשפו</span><b id="hs">0</b></div>
+    <div class="stat"><span>מילים בשליטה</span><b id="hm">0</b></div>
+    <div class="stat"><span>דיוק כמותי</span><b id="ha">—</b></div>
+    <div class="stat"><span>זמן ממוצע</span><b id="ht">—</b></div>
+  </div></div>
+</section>
+
+<section id="eng" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>VOCAB WORKSHOP</small><h2>🇬🇧 פינת אנגלית</h2><span class="muted">5 כרטיסיות בכל אימון, עם עדיפות לחזרות על מילים שהתקשית בהן.</span></div><span class="pill">Spaced repetition</span></div>
+    <div class="two">
+      <div class="card"><div><div class="ico">🧠</div><h3>אימון יומי · 5</h3><p class="muted">מילים חלשות תחילה, אחר כך מעט מילים חדשות.</p></div><button class="btn primary" id="engDaily">התחל</button></div>
+      <div class="card"><div><div class="ico">⚡</div><h3>5 כרטיסים מהירים</h3><p class="muted">אימון קצר לשמירה על רצף.</p></div><button class="btn secondary" id="engQuick">התחל מהיר</button></div>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <div class="stat"><span>מאגר</span><b id="eTotal">0</b></div><div class="stat"><span>לחזרה היום</span><b id="eDue">0</b></div><div class="stat"><span>בשליטה</span><b id="eMaster">0</b></div><div class="stat"><span>חזרות</span><b id="eRev">0</b></div>
+    </div>
+  </div>
+  <div class="panel hidden" id="engSession">
+    <div class="section"><h3>אימון אנגלית</h3><span class="pill" id="ecount"></span></div><div class="progress"><div class="fill" id="ebar"></div></div>
+    <div id="ecard"><div class="flash" style="margin-top:12px">
+      <div class="muted" id="eprompt"></div><div id="efront" class="word"></div>
+      <div id="erecall" class="hidden" style="width:100%;max-width:450px;margin-top:14px"><input id="erecallInput" placeholder="הקלד באנגלית..." style="direction:ltr"><div class="actions"><button class="btn secondary" id="erecallCheck">בדוק שליפה</button></div></div>
+      <div id="eanswer" class="answer hidden"><h3 id="emeaning"></h3><div id="eexample" class="note" style="direction:ltr;text-align:left"></div><p id="etrans" class="muted"></p></div>
+    </div><div class="actions" id="erevealWrap"><button class="btn primary" id="ereveal" style="width:100%">הצג תשובה</button></div>
+    <div class="rating hidden" id="erating"><button class="rate again" data-rate="again">😕 לא ידעתי</button><button class="rate hard" data-rate="hard">🤔 כמעט</button><button class="rate good" data-rate="good">✅ ידעתי</button></div></div>
+    <div id="edone" class="hidden"><h3>סיימת 🎯</h3><p id="esummary" class="muted"></p></div>
+  </div>
+</section>
+
+<section id="quant" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>QUANT GARAGE · DYNAMIC BANK</small><h2>🔢 פינת כמותי</h2><span class="muted">5 שאלות בכל אימון. אחרי כל תשובה: המחשה, שלבים קטנים, טריק והסבר למה זה עובד.</span></div><span class="timer" id="timer">00:00</span></div>
+    <div class="chips" id="chips"></div>
+    <div class="modes">
+      <button class="mode" id="qPersonal">🎯<strong>האימון האישי שלי · 5</strong><small>יחסים ×2, ממוצעים, מהירות ושברים — ברמה מתקדמת.</small></button>
+      <button class="mode" id="qTopic">🎯<strong>נושא ממוקד</strong><small>רק הנושא שבחרת, ברמות שונות.</small></button>
+      <button class="mode" id="qMix">🔀<strong>אימון מעורב</strong><small>שאלות חדשות מכל הנושאים.</small></button>
+      <button class="mode" id="qWeak">🛠️<strong>האזור החלש</strong><small>מתמקד אוטומטית בנושא שדורש עבודה.</small></button>
+      <button class="mode" id="qSprint">⚡<strong>ספרינט 5</strong><small>קצב, גיוון ולחץ זמן.</small></button>
+    </div>
+  </div>
+  <div class="panel hidden" id="qSession">
+    <div class="section"><div><h3 id="qtitle">אימון כמותי</h3><span class="muted" id="qcount"></span></div><span class="pill" id="qbadge"></span></div>
+    <div class="progress"><div class="fill" id="qbar"></div></div>
+    <div id="qwrap"><div class="q">
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="level" id="qlevel"></span><span class="why-badge" id="qmethod"></span></div>
+      <div class="stem" id="qstem"></div><div id="qopts"></div>
+      <div id="qex" class="ex hidden"></div><div id="qdeep" class="ex deep hidden"></div><div id="qfast" class="ex fast hidden"></div><div id="qtrap" class="ex trap hidden"></div><div id="qsanity" class="ex check hidden"></div>
+    </div><div class="actions"><button class="btn primary" id="qcheck">בדוק תשובה</button><button class="btn secondary hidden" id="qnext">לשאלה הבאה</button></div></div>
+    <div id="qdone" class="hidden"><h3>סיימת 🎯</h3><p id="qsummary" class="muted"></p><div class="actions"><button class="btn secondary" data-go="mistakes">מחברת טעויות</button><button class="btn primary" data-go="coach">סיכום לצ׳אט</button></div></div>
+  </div>
+</section>
+
+
+<section id="analogies" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>LEARNING COACH</small><h2>🔗 אנלוגיות</h2></div><span class="pill">כרטיסיות לימוד</span></div>
+    <p class="deck-intro">מוצאים את הקשר בין זוג מילים, ואז מחפשים זוג עם אותו קשר בדיוק. מתחילים בהבנה, ממשיכים במהירות.</p>
+    <div class="deck-stats"><span class="deck-stat">שאלות שנפתרו <strong id="anaTotal">0</strong></span><span class="deck-stat">דיוק <strong id="anaAcc">—</strong></span></div>
+    <div class="deck-toolbar"><button type="button" class="btn primary" id="anaStart">▶ אימון · 5 שאלות</button><button type="button" class="btn secondary" id="anaStartLong">📚 עוד סט של 5</button><button type="button" class="btn soft" id="anaChallenge">⚡ אתגר</button></div>
+    <p class="deck-note">לוחצים על תשובה ומקבלים כרטיס הסבר מפורט. אפשר לחזור לשאלה לפני שעוברים הלאה.</p>
+  </div>
+  <div class="panel deck-session hidden" id="anaSession">
+    <div class="deck-session-head"><div><small id="anaMode">אימון</small><h3>🔗 אנלוגיות</h3></div><div class="pill" id="anaCounter">1 / 5</div></div>
+    <div class="progress"><div class="fill" id="anaProgress"></div></div>
+    <div id="anaPlay" class="flashcard question-flashcard">
+      <div id="anaQuestion" class="card-face">
+        <span class="face-eyebrow">🔗 כרטיס שאלה · <span id="anaLevel">רמה 1</span></span>
+        <h3 id="anaPrompt"></h3>
+        <p class="hint">בחר תשובה מתוך ארבע האפשרויות כדי להפוך את הכרטיס.</p>
+        <div id="anaChoices" class="answer-choices" role="group" aria-label="אפשרויות תשובה"></div>
+        <div class="face-actions"><button type="button" id="anaShowAnswer" class="btn secondary hidden">↪ חזרה להסבר</button></div>
+      </div>
+      <div id="anaExplanation" class="card-face hidden" aria-live="polite">
+        <div id="anaResult" class="result"></div>
+        <h3>כך חושבים על זה</h3>
+        <div class="relation-box"><b>🧠 הכלל:</b> <span id="anaRelation"></span></div>
+        <div class="solution-box"><b>✅ התשובה הנכונה:</b> <span id="anaCorrect"></span><p id="anaWhy"></p></div>
+        <div class="relation-box"><b>⚠️ שים לב:</b> <span id="anaTrap"></span></div>
+        <small id="anaTime"></small>
+        <div class="face-actions"><button type="button" class="btn secondary" id="anaAgain">↶ ראה שוב את השאלה</button><button type="button" class="btn primary" id="anaNext">לכרטיס הבא ←</button></div>
+      </div>
+    </div>
+    <div class="deck-complete hidden" id="anaDone"><div class="ico">🎉</div><h3>אימון הושלם!</h3><div class="bigscore" id="anaScore">0%</div><p id="anaDoneText"></p><div class="actions"><button type="button" class="btn primary" id="anaReplay">עוד סבב כרטיסיות</button><button type="button" class="btn secondary" data-go="coach">סיכום לצ׳אט</button></div></div>
+  </div>
+</section>
+<section id="logic" class="view hidden">
+  <div class="panel">
+    <div class="section"><div><small>LEARNING COACH</small><h2>🧩 היגיון</h2></div><span class="pill">כרטיסיות לימוד</span></div>
+    <p class="deck-intro">מתרגלים תנאים, הסקת מסקנות, טענות וחשיבה מסודרת. בכל תשובה יש כלל קצר והסבר פשוט.</p>
+    <div class="deck-stats"><span class="deck-stat">שאלות שנפתרו <strong id="logicTotal">0</strong></span><span class="deck-stat">דיוק <strong id="logicAcc">—</strong></span></div>
+    <div class="deck-toolbar"><button type="button" class="btn primary" id="logicStart">▶ אימון · 5 שאלות</button><button type="button" class="btn secondary" id="logicStartLong">📚 עוד סט של 5</button><button type="button" class="btn soft" id="logicChallenge">⚡ אתגר</button></div>
+    <p class="deck-note">לוחצים על תשובה ומקבלים כרטיס הסבר מפורט. אפשר לחזור לשאלה לפני שעוברים הלאה.</p>
+  </div>
+  <div class="panel deck-session hidden" id="logicSession">
+    <div class="deck-session-head"><div><small id="logicMode">אימון</small><h3>🧩 היגיון</h3></div><div class="pill" id="logicCounter">1 / 5</div></div>
+    <div class="progress"><div class="fill" id="logicProgress"></div></div>
+    <div id="logicPlay" class="flashcard question-flashcard">
+      <div id="logicQuestion" class="card-face">
+        <span class="face-eyebrow">🧩 כרטיס שאלה · <span id="logicLevel">רמה 1</span></span>
+        <h3 id="logicPrompt"></h3>
+        <p class="hint">בחר תשובה מתוך ארבע האפשרויות כדי להפוך את הכרטיס.</p>
+        <div id="logicChoices" class="answer-choices" role="group" aria-label="אפשרויות תשובה"></div>
+        <div class="face-actions"><button type="button" id="logicShowAnswer" class="btn secondary hidden">↪ חזרה להסבר</button></div>
+      </div>
+      <div id="logicExplanation" class="card-face hidden" aria-live="polite">
+        <div id="logicResult" class="result"></div>
+        <h3>כך חושבים על זה</h3>
+        <div class="relation-box"><b>🧠 הכלל:</b> <span id="logicRelation"></span></div>
+        <div class="solution-box"><b>✅ התשובה הנכונה:</b> <span id="logicCorrect"></span><p id="logicWhy"></p></div>
+        <div class="relation-box"><b>⚠️ שים לב:</b> <span id="logicTrap"></span></div>
+        <small id="logicTime"></small>
+        <div class="face-actions"><button type="button" class="btn secondary" id="logicAgain">↶ ראה שוב את השאלה</button><button type="button" class="btn primary" id="logicNext">לכרטיס הבא ←</button></div>
+      </div>
+    </div>
+    <div class="deck-complete hidden" id="logicDone"><div class="ico">🎉</div><h3>אימון הושלם!</h3><div class="bigscore" id="logicScore">0%</div><p id="logicDoneText"></p><div class="actions"><button type="button" class="btn primary" id="logicReplay">עוד סבב כרטיסיות</button><button type="button" class="btn secondary" data-go="coach">סיכום לצ׳אט</button></div></div>
+  </div>
+</section>
+<section id="tricks" class="view hidden"><div class="panel"><div class="section"><div><small>TOOLBOX</small><h2>🧠 דף הטריקים</h2></div><button class="btn secondary" id="trickQuiz">בחן אותי</button></div><div class="tricks" id="tricksGrid"></div></div></section>
+<section id="mistakes" class="view hidden"><div class="panel"><h2>📓 מחברת טעויות</h2><p class="muted">כל טעות חדשה שומרת גם צילום של השאלה, כדי שתוכל לחזור אליה גם כשהשאלות נוצרות דינמית.</p><div id="mistakesList"></div></div></section>
+<section id="coach" class="view hidden"><div class="panel"><h2>🤝 סיכום לצ׳אט</h2><p class="muted">כתוב הערה אישית, עדכן והעתק. הסיכום כולל עכשיו גם ביצועים לפי רמות קושי.</p><label>הערות שלך</label><textarea id="notes" placeholder="לדוגמה: ביחסים אני מבין את השיטה אבל איטי..."></textarea><label>סיכום אוטומטי</label><textarea id="summary" readonly style="min-height:350px"></textarea><div class="actions"><button class="btn primary" id="refreshSummary">עדכן סיכום</button><button class="btn secondary" id="copySummary">העתק</button></div></div></section>
+</main></div><div class="toast" id="toast"></div>
+
+<script>
+
+const WORDS=[
+['mitigate','למתן, לצמצם נזק','New regulations were introduced to mitigate environmental damage.'],
+['replicate','לשחזר, לחזור על ניסוי','Other researchers could not replicate the experiment.'],
+['reluctant','מסויג, לא שש','The committee was reluctant to approve the proposal.'],
+['consistent','עקבי; תואם ל־','The findings were consistent with previous research.'],
+['incompatible','בלתי תואם','The evidence is incompatible with the earlier explanation.'],
+['substantial','ניכר, משמעותי','The project required a substantial investment.'],
+['enhance','לשפר, להגביר','The new design could enhance efficiency.'],
+['acknowledge','להכיר ב־, להודות','The researchers acknowledged the limitations.'],
+['reliability','אמינות','Engineers tested the reliability of the sensors.'],
+['compelling','משכנע מאוד','The study provided compelling evidence.'],
+['anticipate','לצפות מראש','The planners failed to anticipate the increase in demand.'],
+['whereas','בעוד ש־, לעומת זאת','The first method is cheap, whereas the second is accurate.'],
+['undermine','לערער, להחליש','Failures may undermine public confidence.'],
+['exacerbate','להחמיר מצב','A shortage could exacerbate the problem.'],
+['inconclusive','לא חד־משמעי','The initial results were inconclusive.'],
+['comprehensive','מקיף','The report provides a comprehensive review.'],
+['significant','משמעותי, ניכר','The change led to a significant reduction.'],
+['emerge','להופיע, להתגלות','Unexpected problems emerged during the test.'],
+['maintain','לשמור על, לתחזק','The system must maintain a stable temperature.'],
+['decline','ירידה; לרדת; לסרב','The company reported a gradual decline in costs.'],
+['obtain','להשיג, לקבל','Researchers obtained similar results.'],
+['require','לדרוש, להצריך','The procedure requires careful preparation.'],
+['contribute','לתרום; להיות גורם ל־','Several factors contribute to the failure.'],
+['indicate','להצביע על, להעיד','The data indicate that demand may increase.'],
+['evident','ברור, ניכר','It became evident that the plan would fail.'],
+['despite','למרות','Despite the high cost, the technology was adopted.'],
+['consequently','כתוצאה מכך, לכן','Supply fell; consequently, prices increased.'],
+['nevertheless','אף על פי כן','The task was difficult; nevertheless, the team succeeded.'],
+['sufficient','מספיק, מספק','There was insufficient evidence.'],
+['undergo','לעבור תהליך','The material must undergo several tests.']
+].map(x=>({id:x[0],en:x[0],he:x[1],ex:x[2]}));
+
+const TRICKS=[
+{t:'אחוזים',a:['10% = חלקי 10','5% = חצי מ־10%','25% = רבע','12.5% = שמינית','אחוז שינוי = הפרש / ערך מקורי × 100','באחוזים עוקבים, האחוז השני פועל על בסיס חדש'],f:['8% of 25 = 25% of 8 = 2']},
+{t:'יחסים',a:['חשוב בחלקים','בדוק מה נשאר קבוע','סך הכול = גודל חלק × סכום החלקים','בשינוי יחס: תרגם את השינוי במספר לחלקים ביחס'],f:['5:3 → 8 parts']},
+{t:'ממוצעים',a:['סכום = ממוצע × מספר איברים','הוספה/הסרה = השוואת סכומים','ממוצע קבוצות תלוי בגודל כל קבוצה'],f:['6×80=480 → 7×82=574 → new=94']},
+{t:'כפל וחילוק מהיר',a:['×25 = ÷4 ×100','÷25 = ×4 ÷100','×125 = ÷8 ×1000','×99 = ×100 − המספר','×15 = ×10 + חצי מ־×10'],f:['48×25=12×100=1200']},
+{t:'מהירות',a:['מהירות ממוצעת = דרך כוללת / זמן כולל','מרחקים שווים: לא ממוצע רגיל','זמנים שווים: ממוצע רגיל','תנועה זה לקראת זה: מחברים מהירויות'],f:['60 & 120 equal distance → 80']},
+{t:'עבודה והספק',a:['A ב־t שעות → הספק 1/t','יחד מחברים הספקים','יותר עובדים באותו קצב → הזמן קטן ביחס הפוך'],f:['1/6+1/3=1/2 → 2h']},
+{t:'שברים',a:['אותו מונה: מכנה קטן → שבר גדול','השוואה מהירה: כפל בהצלבה','קרוב ל־1: בדוק כמה חסר','שבר מכמות = כפל'],f:['7/8 > 8/10 because 70>64']},
+{t:'אלגברה',a:['פשט לפני הצבה','חפש גורם משותף','אל תפתור יותר ממה שנשאל','יחס + סכום = עבודה בחלקים'],f:['3x+6=3(x+2)']}
+];
+
+const LEGACY=[
+['p1','אחוזים',1,'כמה הם 15% מתוך 240?',['24','30','36','40'],'36'],
+['p2','אחוזים',2,'מחיר עלה מ־120 ל־150. בכמה אחוזים?',['20%','25%','30%','33⅓%'],'25%'],
+['p3','אחוזים',2,'מחיר עלה ב־20% ואז ירד ב־20%. מה קרה?',['לא השתנה','ירד ב־4%','עלה ב־4%','ירד ב־8%'],'ירד ב־4%'],
+['r1','יחסים',1,'היחס בנים:בנות הוא 4:3 ויש 28 תלמידים. כמה בנות?',['10','12','14','16'],'12'],
+['r2','יחסים',2,'מכוניות:אופנועים = 5:3. נוספו 6 אופנועים והיחס נהיה 5:4. כמה כלי רכב היו בהתחלה?',['40','42','48','54'],'48'],
+['a1','ממוצעים',1,'ממוצע 5 מספרים הוא 18. לאחר הסרת מספר ממוצע 4 הנותרים הוא 15. מה הוסר?',['24','27','30','33'],'30'],
+['a2','ממוצעים',2,'ממוצע 6 תלמידים 80. תלמיד שביעי העלה ממוצע ל־82. ציונו?',['90','92','94','96'],'94'],
+['m1','כפל וחילוק מהיר',1,'48 × 25 = ?',['1000','1100','1200','1250'],'1200'],
+['m2','כפל וחילוק מהיר',1,'1125 ÷ 25 = ?',['35','40','45','50'],'45'],
+['m3','כפל וחילוק מהיר',2,'63 × 99 = ?',['6177','6237','6297','6337'],'6237'],
+['s1','מהירות',2,'אותו מרחק ב־60 קמ״ש וחזרה ב־120 קמ״ש. מה המהירות הממוצעת?',['80','90','100','110'],'80'],
+['s2','מהירות',1,'שעה ב־50 קמ״ש ושעה ב־70. ממוצע?',['55','60','62','65'],'60'],
+['w1','עבודה והספק',1,'עובד א׳ מסיים ב־6 שעות וב׳ ב־3. יחד?',['1.5','2','2.5','3'],'2'],
+['w2','עבודה והספק',2,'ברז א׳ ממלא ב־4 שעות וב׳ ב־12. יחד?',['2','3','4','6'],'3'],
+['f1','שברים',1,'איזה שבר גדול יותר?',['7/8','8/10','שווים','אי אפשר לדעת'],'7/8'],
+['f2','שברים',2,'איזה שבר הקרוב ביותר ל־1?',['9/10','11/12','19/20','29/30'],'29/30'],
+['x1','אלגברה',1,'אם 3x + 6 = 24, מהו x?',['4','5','6','8'],'6'],
+['x2','אלגברה',2,'אם x:y=3:5 ו־x+y=40, מהו x?',['12','15','18','25'],'15']
+].map(x=>({id:x[0],topic:x[1],lvl:x[2],stem:x[3],opts:x[4],ans:x[5],method:'חזרה משאלה ישנה',why:'זו שאלה מהמאגר הישן.',steps:['חזור לעיקרון של הנושא ופתור מסודר.'],fast:'השתמש בקיצור הדרך המתאים לנושא.',trap:'אל תמהר לפני שזיהית מה קבוע ומה משתנה.',sanity:'בדוק שהתשובה הגיונית ביחס לנתונים.'}));
+
+const KEY='psychometric_web_v1',INT=[0,1,3,7,14,30];
+const today=()=>{let d=new Date();d.setHours(0,0,0,0);return d.toISOString().slice(0,10)};
+const add=n=>{let d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const $=id=>document.getElementById(id);
+const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const fmt=n=>Number.isInteger(n)?String(n):String(Math.round(n*100)/100);
+function uniqueOpts(ans,candidates){let s=[String(ans)];for(const c of candidates){let v=String(c);if(!s.includes(v))s.push(v);if(s.length===4)break}while(s.length<4){let base=parseFloat(ans)||10,v=String(Math.round((base+ri(2,12))*100)/100);if(!s.includes(v))s.push(v)}return shuffle(s)}
+function qobj(topic,lvl,stem,ans,cands,method,why,steps,fast,trap,sanity){return{id:'g-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),topic,lvl,stem,ans:String(ans),opts:uniqueOpts(ans,cands),method,why,steps,fast,trap,sanity}}
+function pctText(x){return Number.isInteger(x)?x+'%':fmt(x)+'%'}
+
+const GEN={
+'אחוזים':[
+()=>{let p=pick([5,10,12.5,15,20,25,30,40,50,75]),n=pick([80,120,160,200,240,320,400,480]),a=n*p/100;while(!Number.isInteger(a)){n+=80;a=n*p/100}return qobj('אחוזים',1,`כמה הם ${p}% מתוך ${n}?`,a,[a+n*.05,a-n*.05,n*p/10,n/p],'פירוק אחוזים נוחים',`${p}% הוא חלק מתוך 100. המטרה היא לפרק לאחוזים שקל לחשב בראש.`,[`מצא 10% או שבר מוכר כמו 25%=1/4 או 12.5%=1/8.`,`חבר או הכפל לפי הצורך.`,`כאן מתקבל ${a}.`],p===25?`25% = רבע, לכן ${n}/4 = ${a}.`:p===12.5?`12.5% = שמינית, לכן ${n}/8 = ${a}.`:`פרק את ${p}% לחלקים נוחים במקום כפל עשרוני.`,`טעות נפוצה: לחלק ב-${p} במקום לחשב ${p} מתוך 100.`,`התשובה צריכה להיות ${p<50?'קטנה משמעותית':'בסדר גודל דומה'} ל-${n}.`)},
+()=>{let base=pick([80,100,120,160,200,240,300,400]),p=pick([10,20,25,30,40,50]),up=Math.random()<.5,newv=base*(up?1+p/100:1-p/100),diff=Math.abs(newv-base);return qobj('אחוזים',2,`ערך השתנה מ-${base} ל-${fmt(newv)}. בכמה אחוזים הוא ${up?'עלה':'ירד'}?`,pctText(p),[pctText(diff/newv*100),pctText(p+5),pctText(Math.max(1,p-5))],'אחוז שינוי תמיד ביחס לערך המקורי',`הבסיס לחישוב הוא ${base}, כי זה הערך שממנו יצאנו.`,[`מצא הפרש: ${fmt(newv)} - ${base} = ${fmt(up?diff:-diff)}; בגודל מוחלט ${fmt(diff)}.`,`חלק את ההפרש בערך המקורי: ${fmt(diff)}/${base}.`,`כפול 100 נותן ${p}%.`],`שאל: "${fmt(diff)} הוא איזה חלק מ-${base}?"`,`מלכודת: לחלק בערך החדש ${fmt(newv)}. אחוז שינוי נמדד מהמקור.`,`אם ${p}% מ-${base} הם ${fmt(diff)}, התוצאה מתאימה בדיוק להפרש.`)},
+()=>{let original=pick([80,100,120,160,200,240]),p=pick([10,20,25,50]),up=Math.random()<.5,final=original*(up?1+p/100:1-p/100);return qobj('אחוזים',2,`לאחר ${up?'עלייה':'ירידה'} של ${p}% התקבל הערך ${fmt(final)}. מה היה הערך המקורי?`,original,[final*(1-p/100),final/(1-p/100),final/(1+p/100),original+20],'עבודה לאחור עם מקדם',`${up?'עלייה':'ירידה'} של ${p}% פירושה כפל ב-${up?1+p/100:1-p/100}. כדי לחזור למקור, מחלקים במקדם.`,[`כתוב את המקדם: ${up?1+p/100:1-p/100}.`,`המקור = ${fmt(final)} / ${up?1+p/100:1-p/100}.`,`מתקבל ${original}.`],`אל "תחסיר ${p}%" מהערך הסופי. חלק במקדם.`,`הטעות הקלאסית היא לחשוב שאחוז העלייה ואחוז החזרה סימטריים. הם פועלים על בסיסים שונים.`,`בדיקה: ${original} × ${up?1+p/100:1-p/100} = ${fmt(final)}.`)},
+()=>{let p=pick([10,20,25]),start=pick([100,200,400]),mid=start*(1+p/100),final=mid*(1-p/100),loss=(start-final)/start*100;return qobj('אחוזים',3,`מחיר עלה ב-${p}% ולאחר מכן ירד ב-${p}%. מה השינוי הכולל ביחס למחיר המקורי?`,pctText(-loss),[pctText(0),pctText(loss),pctText(-p),pctText(-(p/2))],'אחוזים עוקבים פועלים על בסיסים שונים',`העלייה והירידה אינן מבטלות זו את זו, כי הירידה מחושבת מהמחיר שכבר עלה.`,[`נוח להציב מחיר התחלתי ${start}.`,`אחרי עלייה: ${start} → ${fmt(mid)}.`,`אחרי ירידה: ${fmt(mid)} → ${fmt(final)}.`,`השינוי הוא ${fmt(final-start)}, כלומר ירידה של ${fmt(loss)}%.`],`כשאותו p% עולה ואז יורד: ההפסד הוא p²/100 אחוז. כאן ${p}²/100 = ${fmt(loss)}%.`,`מלכודת: לבחור 0% רק כי המספרים ${p}% ו-${p}% זהים.`,`התוצאה חייבת להיות מעט מתחת למחיר המקורי, לא רחוק ממנו.`)},
+()=>{let whole=pick([40,60,80,120,160,200]),frac=pick([[1,4],[1,5],[3,4],[2,5],[3,5]]),part=whole*frac[0]/frac[1],p=100*frac[0]/frac[1];return qobj('אחוזים',1,`${fmt(part)} הם כמה אחוזים מתוך ${whole}?`,pctText(p),[pctText(100*part/(whole+part)),pctText(p+10),pctText(Math.max(5,p-10))],'חלק מתוך שלם',`מחפשים איזה חלק ${fmt(part)} מהווה מתוך ${whole}.`,[`כתוב ${fmt(part)}/${whole}.`,`צמצם: ${frac[0]}/${frac[1]}.`,`המר לאחוז: ${p}%.`],`אם אתה מזהה שבר מוכר — 1/4=25%, 1/5=20%, 3/4=75%.`,`מלכודת: להפוך את השבר ולחשב ${whole}/${fmt(part)}.`,`${fmt(part)} קטן מ-${whole}, לכן האחוז חייב להיות מתחת ל-100%.`)}
+],
+'יחסים':[
+()=>{let a=ri(2,7),b=ri(2,7);while(a===b)b=ri(2,7);let k=pick([3,4,5,6,8,10]),total=(a+b)*k,askA=Math.random()<.5,ans=(askA?a:b)*k;return qobj('יחסים',1,`היחס בין קבוצה א׳ לקבוצה ב׳, לפי הסדר הזה, הוא ${a}:${b}, ובסך הכול יש ${total}. כמה יש ב${askA?'קבוצה א׳':'קבוצה ב׳'}?`,ans,[a+b,ans+k,ans-k,total-ans],'יחס כחלקים',`היחס ${a}:${b} אומר שסך הכול יש ${a+b} חלקים שווים.`,[`חלק אחד = ${total}/${a+b} = ${k}.`,`הקבוצה המבוקשת היא ${askA?a:b} חלקים.`,`לכן ${askA?a:b}×${k} = ${ans}.`],`סכום היחס קודם: ${a+b}. משם חלק אחד ואז הקבוצה המבוקשת.`,`מלכודת: לחלק את ${total} רק באחד מאיברי היחס.`,`שתי הקבוצות יחד צריכות לחזור ל-${total}.`)},
+()=>{let a=ri(2,6),b=ri(2,7);let k=pick([3,4,5,6,8]),diff=Math.abs(a-b)*k;if(diff===0)return GEN['יחסים'][1]();let ans=(a+b)*k;return qobj('יחסים',2,`היחס בין קבוצה א׳ לקבוצה ב׳, לפי הסדר הזה, הוא ${a}:${b}. ההפרש ביניהן הוא ${diff}. כמה פריטים יש בשתי הקבוצות יחד?`,ans,[diff*(a+b),ans+k,ans-k,(a+b)*diff],'הפרש ביחס מייצג מספר חלקים',`ההפרש בין ${a} ל-${b} הוא ${Math.abs(a-b)} חלקים. הוא שווה בפועל ל-${diff}.`,[`${Math.abs(a-b)} חלקים = ${diff}.`,`חלק אחד = ${diff}/${Math.abs(a-b)} = ${k}.`,`סך הכול ${a+b} חלקים = ${ans}.`],`תתחיל מההפרש — הוא נותן את גודל החלק מיד.`,`מלכודת: לחשוב שההפרש ${diff} הוא חלק אחד גם כשפער היחס גדול מ-1.`,`ההפרש בין הקבוצות לפי ${k} לחלק אכן יוצא ${diff}.`)},
+()=>{let a=ri(3,7),b=ri(1,4),c=b+ri(1,3),k=pick([3,4,5,6]);let add=(c-b)*k,initial=(a+b)*k;return qobj('יחסים',2,`היחס בין א׳ לב׳ הוא ${a}:${b}. נוספו ${add} פריטים רק לקבוצה ב׳, והיחס נהיה ${a}:${c}. כמה פריטים היו בסך הכול בהתחלה?`,initial,[initial+add,a*k,b*k,(a+c)*k],'מה נשאר קבוע בשינוי יחס',`קבוצה א׳ לא השתנתה, ולכן ${a} החלקים שלה מייצגים אותו מספר לפני ואחרי. שינוי ב׳ מ-${b} ל-${c} הוא ${c-b} חלקים.`,[`התוספת ${add} מייצגת ${c-b} חלקים.`,`חלק אחד = ${add}/${c-b} = ${k}.`,`בהתחלה היו ${a+b} חלקים.`,`לכן ${a+b}×${k} = ${initial}.`],`סמן קודם את הצד שלא השתנה. אחר כך תרגם את התוספת להפרש בין היחסים.`,`מלכודת: להשתמש ביחס החדש כדי לחשב את הסך ההתחלתי.`,`אחרי התוספת יהיו ${initial+add}, והקבוצות הן ${a*k} ו-${c*k}, כך שהיחס באמת ${a}:${c}.`)},
+()=>{let a=ri(2,5),b=ri(3,7),c=a+ri(1,3),k=pick([4,5,6,8]);let add=(c-a)*k,initial=(a+b)*k;return qobj('יחסים',2,`היחס א׳:ב׳ הוא ${a}:${b}. נוספו ${add} רק לקבוצה א׳ והיחס נהיה ${c}:${b}. כמה היו בסך הכול לפני התוספת?`,initial,[initial+add,b*k,c*k,(c+b)*k],'הצד הקבוע קובע את גודל החלק',`קבוצה ב׳ לא השתנתה, ולכן ${b} החלקים נשארו באותו גודל. תוספת א׳ היא ${c-a} חלקים.`,[`${c-a} חלקים = ${add}.`,`חלק אחד = ${k}.`,`בהתחלה: ${a+b} חלקים = ${initial}.`],`הסתכל על ההפרש ${a}→${c}. זה מספר החלקים שנוספו.`,`מלכודת: לחשב חלק לפי כל התוספת כאילו היא חלק אחד.`,`המספרים לפני: ${a*k} ו-${b*k}; אחרי: ${c*k} ו-${b*k}.`)},
+()=>{let a=pick([2,3,4]),b=pick([3,4,5]),c=pick([2,3,5]),d=pick([3,4,5]);let L=b*c/gcd(b,c),ka=L/b,kb=L/c,A=a*ka,B=L,C=d*kb,ans=A+C;return qobj('יחסים',3,`נתון א׳:ב׳ = ${a}:${b}, וב׳:ג׳ = ${c}:${d}. מהו היחס בין א׳ לג׳?`,`${A}:${C}`,[`${a}:${d}`,`${a*c}:${b*d}`,`${A+C}:${B}`,`${C}:${A}`],'איחוד יחסים דרך האיבר המשותף',`כדי להשוות א׳ וג׳ חייבים לגרום לב׳ להיות אותו מספר חלקים בשני היחסים.`,[`ביחס הראשון ב׳=${b}; בשני ב׳=${c}.`,`המכנה המשותף הקטן הוא ${L}.`,`מכפילים את היחס הראשון ב-${ka}: א׳:ב׳ = ${A}:${B}.`,`מכפילים את השני ב-${kb}: ב׳:ג׳ = ${B}:${C}.`,`לכן א׳:ג׳ = ${A}:${C}.`],`השווה קודם את האיבר המשותף ב׳ — בדיוק כמו מכנה משותף בשברים.`,`מלכודת: לחבר או להכפיל ישר את המספרים בלי להשוות את ב׳.`,`ב׳ קיבל אותו ערך ${B} בשני היחסים, לכן החיבור חוקי.`)}
+],
+'ממוצעים':[
+()=>{let n=ri(4,8),avg=pick([60,70,75,80,85]),newAvg=avg+pick([1,2,3]),newVal=(n+1)*newAvg-n*avg;return qobj('ממוצעים',2,`ממוצע ${n} ציונים הוא ${avg}. לאחר הוספת ציון נוסף הממוצע עלה ל-${newAvg}. מה הציון שנוסף?`,newVal,[avg,newAvg,newVal-5,newVal+5],'ממוצע הוא קיצור של סכום',`הדרך הבטוחה היא לעבור מסכום ישן לסכום חדש.`,[`סכום ישן = ${n}×${avg} = ${n*avg}.`,`סכום חדש = ${n+1}×${newAvg} = ${(n+1)*newAvg}.`,`הציון החדש = ${(n+1)*newAvg}-${n*avg} = ${newVal}.`],`קיצור: הממוצע עלה ב-${newAvg-avg} עבור ${n+1} אנשים, לכן החדש גבוה מהישן ב-${(newAvg-avg)*(n+1)} → ${newVal}.`,`מלכודת: לחשב פשוט ${newAvg-avg} ולחשוב שזה הציון שנוסף.`,`הציון החדש חייב להיות מעל ${newAvg}, כי הוא משך את הממוצע כלפי מעלה.`)},
+()=>{let n=ri(5,9),avg=pick([20,30,40,50,60]),newAvg=avg-pick([1,2,3]),removed=n*avg-(n-1)*newAvg;return qobj('ממוצעים',2,`ממוצע ${n} מספרים הוא ${avg}. לאחר שמסירים מספר אחד, ממוצע ${n-1} הנותרים הוא ${newAvg}. מה המספר שהוסר?`,removed,[avg,newAvg,removed-5,removed+5],'השוואת סכומים לפני ואחרי',`המספר שהוסר הוא בדיוק ההפרש בין הסכום המקורי לסכום שנותר.`,[`סכום מקורי = ${n}×${avg} = ${n*avg}.`,`סכום חדש = ${n-1}×${newAvg} = ${(n-1)*newAvg}.`,`הוסר ${n*avg}-${(n-1)*newAvg} = ${removed}.`],`שני כפליים קצרים והפרש — בדרך כלל מהיר יותר ממשוואה.`,`מלכודת: לחסר בין הממוצעים בלבד.`,`מכיוון שהממוצע ירד אחרי ההסרה, המספר שהוסר חייב להיות גבוה מהממוצע המקורי.`)},
+()=>{let n1=pick([2,3,4,5]),n2=pick([2,3,4,5]),a1=pick([60,70,80,90]),a2=pick([50,60,70,80,90]);let ans=(n1*a1+n2*a2)/(n1+n2);if(!Number.isInteger(ans))return GEN['ממוצעים'][2]();return qobj('ממוצעים',2,`בקבוצה א׳ ${n1} אנשים עם ממוצע ${a1}; בקבוצה ב׳ ${n2} אנשים עם ממוצע ${a2}. מה הממוצע של שתי הקבוצות יחד?`,ans,[(a1+a2)/2,ans+5,ans-5,a1],'ממוצע משוקלל לפי גודל הקבוצות',`אי אפשר תמיד לעשות ממוצע של שני הממוצעים, כי לקבוצות יכול להיות גודל שונה.`,[`סכום קבוצה א׳ = ${n1}×${a1} = ${n1*a1}.`,`סכום קבוצה ב׳ = ${n2}×${a2} = ${n2*a2}.`,`סכום כולל = ${n1*a1+n2*a2}; אנשים = ${n1+n2}.`,`ממוצע = ${ans}.`],`עבור כל קבוצה: גודל × ממוצע, ואז חלק בסך האנשים.`,`מלכודת: (${a1}+${a2})/2 — נכון רק אם הקבוצות שוות בגודל.`,`הממוצע המשולב חייב להיות בין ${Math.min(a1,a2)} ל-${Math.max(a1,a2)}.`)},
+()=>{let n=ri(4,8),avg=pick([60,70,75,80]),old=pick([40,50,60,70]),inc=pick([10,20,30]),neu=old+inc,newAvg=avg+inc/n;return qobj('ממוצעים',3,`בממוצע של ${n} מספרים הוחלף המספר ${old} במספר ${neu}. אם הממוצע המקורי היה ${avg}, מה הממוצע החדש?`,fmt(newAvg),[fmt(avg+inc),fmt(avg+inc/(n-1)),fmt(avg-inc/n),fmt(neu)],'שינוי בסכום מחולק במספר האיברים',`החלפה של ${old} ב-${neu} מגדילה את הסכום הכולל ב-${inc}, אבל מספר האיברים נשאר ${n}.`,[`השינוי בסכום = ${neu}-${old} = ${inc}.`,`השינוי בממוצע = ${inc}/${n} = ${fmt(inc/n)}.`,`ממוצע חדש = ${avg}+${fmt(inc/n)} = ${fmt(newAvg)}.`],`אין צורך לחשב את כל הסכום — רק שינוי בסכום / מספר האיברים.`,`מלכודת: להוסיף את כל ${inc} לממוצע.`,`העלייה בממוצע צריכה להיות קטנה מהעלייה באיבר יחיד.`)}
+],
+'כפל וחילוק מהיר':[
+()=>{let n=pick([24,28,32,36,44,48,52,64,72,84]),ans=n*25;return qobj('כפל וחילוק מהיר',1,`${n} × 25 = ?`,ans,[n*20,n*30,ans+100,ans-100],'25 הוא רבע מ-100',`כפל ב-25 נהיה קל כשמחליפים 25 ב-100/4.`,[`${n}÷4 = ${n/4}.`,`${n/4}×100 = ${ans}.`],`×25 = ÷4 ×100.`,`מלכודת: כפל ארוך למרות שיש מבנה מיוחד.`,`25 כפול מספר סביב ${n} צריך להיות בערך ${n/4} מאות.`)},
+()=>{let ans=pick([24,32,36,44,48,56,64]),n=ans*25;return qobj('כפל וחילוק מהיר',1,`${n} ÷ 25 = ?`,ans,[ans-4,ans+4,n/100,n/5],'חילוק ב-25 דרך כפל ב-4',`25×4=100, לכן נוח להכפיל את המונה ב-4 ולחלק ב-100.`,[`${n}×4 = ${n*4}.`,`${n*4}÷100 = ${ans}.`],`÷25 = ×4 ÷100.`,`מלכודת: לחלק שוב ושוב ב-5 כשאפשר להגיע ל-100 מיד.`,`${ans}×25 = ${n}, אז התוצאה מאומתת.`)},
+()=>{let n=pick([16,24,32,40,48,56,64,72]),ans=n*125;return qobj('כפל וחילוק מהיר',2,`${n} × 125 = ?`,ans,[n*100,n*150,ans+500,ans-500],'125 הוא שמינית מ-1000',`125 = 1000/8.`,[`${n}÷8 = ${n/8}.`,`${n/8}×1000 = ${ans}.`],`×125 = ÷8 ×1000.`,`מלכודת: לפרק ל-100+25 ולבצע שני חישובים ארוכים.`,`התוצאה צריכה להסתיים ב-000 כאשר ${n} מתחלק ב-8.`)},
+()=>{let n=ri(21,89),ans=n*99;return qobj('כפל וחילוק מהיר',2,`${n} × 99 = ?`,ans,[n*100,ans+n,ans-100,ans+100],'99 = 100 − 1',`כפל ב-99 הוא כמעט כפל ב-100.`,[`${n}×100 = ${n*100}.`,`החסר פעם אחת ${n}.`,`${n*100}-${n} = ${ans}.`],`×99 = ×100 − המספר עצמו.`,`מלכודת: לשכוח להחסיר פעם אחת את המספר.`,`התוצאה צריכה להיות מעט מתחת ל-${n*100}.`)},
+()=>{let n=pick([12,14,16,18,22,24,26,28,32,36]),ans=n*15;return qobj('כפל וחילוק מהיר',1,`${n} × 15 = ?`,ans,[n*10,n*20,ans+n,ans-n],'15 = 10 + 5',`כפל ב-15 הוא כפל ב-10 ועוד חצי מכפל ב-10.`,[`${n}×10 = ${n*10}.`,`5×${n} = חצי מזה = ${n*5}.`,`חיבור = ${ans}.`],`×15 = ×10 + חצי ממנו.`,`מלכודת: לעשות כפל ארוך בלי לנצל 15=10+5.`,`התוצאה בין ${n*10} ל-${n*20}.`)}
+],
+'מהירות':[
+()=>{let v=pick([40,50,60,70,80,90,100]),t=pick([2,3,4]),d=v*t;return qobj('מהירות',1,`רכב עבר ${d} ק״מ ב-${t} שעות. מה מהירותו הממוצעת?`,v,[v-10,v+10,d/t/2,d],'דרך חלקי זמן',`מהירות ממוצעת מוגדרת כדרך כוללת חלקי זמן כולל.`,[`${d}/${t} = ${v} קמ״ש.`],`כאן אין מלכודת: דרך ÷ זמן.`,`מלכודת: להכפיל דרך בזמן.`,`ב-${t} שעות במהירות ${v}, אכן עוברים ${d} ק״מ.`)},
+()=>{let pair=pick([[60,120,80],[40,60,48],[30,90,45],[60,90,72]]),a=pair[0],b=pair[1],ans=pair[2],L=a*b/gcd(a,b),dist=L;let t1=dist/a,t2=dist/b;return qobj('מהירות',2,`רכב נוסע מרחק מסוים במהירות ${a} קמ״ש וחוזר אותו מרחק במהירות ${b} קמ״ש. מה המהירות הממוצעת?`,ans,[(a+b)/2,Math.min(a,b),Math.max(a,b),ans+5],'מרחקים שווים — זמן שונה',`במרחקים שווים המהירות האיטית משפיעה יותר, כי מבלים בה יותר זמן.`,[`בחר מרחק נוח: ${dist} ק״מ לכל כיוון.`,`זמן הלוך: ${dist}/${a} = ${t1} שעות.`,`זמן חזור: ${dist}/${b} = ${t2} שעות.`,`דרך כוללת ${2*dist}; זמן כולל ${t1+t2}; ממוצע = ${ans}.`],`בחר מרחק שמתחלק בשתי המהירויות. אל תעשה ממוצע חשבוני.`,`מלכודת: (${a}+${b})/2 = ${(a+b)/2}. זה נכון רק בזמנים שווים.`,`הממוצע חייב להיות בין ${a} ל-${b}, וקרוב יותר למהירות האיטית.`)},
+()=>{let a=pick([40,50,60,70]),b=a+pick([20,30,40]),ans=(a+b)/2;return qobj('מהירות',1,`רכב נוסע שעה במהירות ${a} קמ״ש ושעה נוספת במהירות ${b} קמ״ש. מה המהירות הממוצעת?`,ans,[a,b,ans-5,ans+5],'זמנים שווים',`כשפרקי הזמן שווים, כל מהירות מקבלת אותו משקל.`,[`בשעה הראשונה עוברים ${a} ק״מ.`,`בשעה השנייה ${b} ק״מ.`,`סה״כ ${a+b} ק״מ ב-2 שעות → ${ans}.`],`זמנים שווים → ממוצע חשבוני של המהירויות.`,`מלכודת: להשתמש בנוסחת מרחקים שווים.`,`הממוצע בדיוק באמצע בין ${a} ל-${b}.`)},
+()=>{let a=pick([40,50,60,70]),b=pick([30,40,50,60]),t=pick([2,3,4]),d=(a+b)*t;return qobj('מהירות',2,`שני כלי רכב יוצאים זה לקראת זה ממרחק ${d} ק״מ, במהירויות ${a} ו-${b} קמ״ש. אחרי כמה שעות ייפגשו?`,t,[t-1,t+1,d/Math.abs(a-b),d/a],'מהירות יחסית בתנועה זה לקראת זה',`המרחק ביניהם נסגר בכל שעה ב-${a+b} ק״מ.`,[`מהירות סגירה = ${a}+${b} = ${a+b}.`,`זמן = ${d}/${a+b} = ${t} שעות.`],`זה לקראת זה → מחברים מהירויות.`,`מלכודת: לחסר מהירויות; חיסור מתאים לרדיפה באותו כיוון.`,`ב-${t} שעות הם יחד מכסים ${a*t}+${b*t} = ${d} ק״מ.`)}
+],
+'עבודה והספק':[
+()=>{let pair=pick([[6,3,2],[4,12,3],[8,8,4],[6,6,3],[10,15,6]]),a=pair[0],b=pair[1],ans=pair[2];return qobj('עבודה והספק',1,`עובד א׳ מסיים עבודה ב-${a} שעות ועובד ב׳ ב-${b} שעות. כמה זמן ייקח להם יחד?`,ans,[Math.min(a,b),Math.max(a,b),(a+b)/2,ans+1],'מחברים הספקים, לא זמנים',`מי שמסיים ב-${a} שעות עושה 1/${a} עבודה לשעה; השני 1/${b}.`,[`הספק א׳ = 1/${a}.`,`הספק ב׳ = 1/${b}.`,`ביחד: 1/${a}+1/${b} = 1/${ans} עבודה לשעה.`,`לכן הזמן ${ans} שעות.`],`עבור כל עובד כתוב 1/זמן, חבר, ואז הפוך.`,`מלכודת: לעשות ממוצע של ${a} ו-${b}.`,`עבודה משותפת חייבת לקחת פחות מהזמן של העובד המהיר ביותר: פחות מ-${Math.min(a,b)}.`)},
+()=>{let a=pick([6,8,10,12]),t=pick([2,3,4]);if(t>=a)return GEN['עבודה והספק'][1]();let b=1/(1/t-1/a);if(!Number.isInteger(b)||b<=0||b>30)return GEN['עבודה והספק'][1]();return qobj('עבודה והספק',3,`עובד א׳ מסיים עבודה לבדו ב-${a} שעות. יחד עם עובד ב׳ הם מסיימים ב-${t} שעות. בכמה שעות עובד ב׳ מסיים לבדו?`,b,[a-t,a+t,b+2,b-2],'הספק חסר = הספק משותף − הספק ידוע',`ההספק המשותף הוא 1/${t}; ממנו מחסירים את 1/${a}.`,[`הספק יחד = 1/${t}.`,`הספק א׳ = 1/${a}.`,`הספק ב׳ = 1/${t} - 1/${a} = 1/${b}.`,`לכן ב׳ צריך ${b} שעות.`],`במקום משוואת זמן, עבוד עם "חלק עבודה לשעה".`,`מלכודת: ${a}-${t}; זמנים לא מתחברים ומתחסרים כך.`,`ב׳ לבדו חייב להיות איטי יותר מהעבודה המשותפת, לכן ${b}>${t}.`)},
+()=>{let workers=pick([3,4,5,6]),days=pick([4,6,8,10]),mult=pick([2,3]),newWorkers=workers*mult,newDays=days/mult;return qobj('עבודה והספק',2,`${workers} עובדים זהים מסיימים עבודה ב-${days} ימים. כמה ימים יידרשו ל-${newWorkers} עובדים זהים?`,fmt(newDays),[days*mult,days,mult,fmt(newDays+1)],'יחס הפוך עובדים–זמן',`אם כל העובדים זהים, מכפלת עובדים×ימים נשארת קבועה.`,[`סה״כ עבודה = ${workers}×${days} = ${workers*days} ימי-עובד.`,`מחלקים ב-${newWorkers}: ${workers*days}/${newWorkers} = ${fmt(newDays)} ימים.`],`כפלת את מספר העובדים פי ${mult} → הזמן קטן פי ${mult}.`,`מלכודת: לחשוב שיותר עובדים פירושו יותר זמן.`,`${newWorkers}×${fmt(newDays)} = ${workers*days}, אותה כמות עבודה.`)}
+],
+'שברים':[
+()=>{let pairs=pick([[[7,8],[8,10]],[[5,6],[6,8]],[[9,10],[10,12]],[[11,15],[7,10]]]),a=pairs[0],b=pairs[1],left=a[0]*b[1],right=b[0]*a[1],ans=left>right?`${a[0]}/${a[1]}`:`${b[0]}/${b[1]}`;return qobj('שברים',1,`איזה שבר גדול יותר: ${a[0]}/${a[1]} או ${b[0]}/${b[1]}?`,ans,[ans===`${a[0]}/${a[1]}`?`${b[0]}/${b[1]}`:`${a[0]}/${a[1]}`,'שווים','אי אפשר לדעת'],'כפל בהצלבה',`אין צורך לעבור לעשרוני. משווים ${a[0]}×${b[1]} מול ${b[0]}×${a[1]}.`,[`${a[0]}×${b[1]} = ${left}.`,`${b[0]}×${a[1]} = ${right}.`,`הגדול יותר הוא ${ans}.`],`השוואת שברים שונים → כפל בהצלבה.`,`מלכודת: להשוות מונים או מכנים בנפרד כששניהם שונים.`,`אם תרצה בדיקה, הערך העשרוני של התשובה צריך להיות מעט גדול יותר.`)},
+()=>{let ds=shuffle([8,10,12,20,25,30]).slice(0,4),opts=ds.map(d=>`${d-1}/${d}`),best=Math.max(...ds),ans=`${best-1}/${best}`;return qobj('שברים',2,`איזה מהשברים הבאים קרוב ביותר ל-1?`,ans,opts.filter(x=>x!==ans),'השווה את החסר ל-1',`כל שבר הוא 1 פחות 1/מכנה. ככל שהמכנה גדול יותר, החסר קטן יותר.`,ds.map(d=>`${d-1}/${d} חסר ל-1 בדיוק 1/${d}.`).concat([`החסר הקטן ביותר הוא 1/${best}, לכן ${ans}.`]),`אל תמיר לעשרוני; בדוק כמה חסר מכל שבר ל-1.`,`מלכודת: לבחור את השבר עם המונה הגדול בלי לבדוק את היחס למכנה.`,`${ans} חסר רק 1/${best}, פחות מכל האחרים.`)},
+()=>{let d=pick([3,4,5,6,8]),num=ri(1,d-1),n=d*pick([8,10,12,15,18,20]);let ans=n*num/d;return qobj('שברים',1,`כמה הם ${num}/${d} מתוך ${n}?`,ans,[n/d,n*num,ans+n/d,ans-n/d],'שבר מכמות = כפל',`מחלקים את הכמות למספר חלקים לפי המכנה ואז לוקחים את מספר החלקים לפי המונה.`,[`${n}/${d} = ${n/d} לכל חלק.`,`${num} חלקים = ${num}×${n/d} = ${ans}.`],`קודם חלקי המכנה, אחר כך כפול המונה.`,`מלכודת: כפול המכנה וחלקי המונה.`,`התוצאה צריכה להיות קטנה מ-${n}, כי השבר קטן מ-1.`)},
+()=>{let d=pick([6,8,10,12]),a=ri(1,d-3),b=ri(1,d-a-1),rem=d-a-b;return qobj('שברים',2,`אדם הוציא ${a}/${d} מכספו בבוקר ועוד ${b}/${d} בערב. איזה חלק מכספו נשאר?`,`${rem}/${d}`,[`${a+b}/${d}`,`${d-a}/${d}`,`${d-b}/${d}`,`${rem}/${Math.max(1,d-1)}`],'אותו מכנה — עובדים עם המונים',`כשמכנים זהים, מחברים את החלקים שהוצאו ואז מחסרים מ-1.`,[`${a}/${d}+${b}/${d} = ${a+b}/${d}.`,`1 = ${d}/${d}.`,`נשאר ${d-a-b}/${d}.`],`אותו מכנה → רק מונים.`,`מלכודת: לחבר גם את המכנים.`,`הוצאה + יתרה צריכות יחד להיות בדיוק ${d}/${d}=1.`)}
+],
+'אלגברה':[
+()=>{let x=ri(2,12),a=pick([2,3,4,5]),b=pick([3,6,9,12]),c=a*x+b;return qobj('אלגברה',1,`אם ${a}x + ${b} = ${c}, מהו x?`,x,[x-1,x+1,c/a,(c-b)],'בידוד הנעלם',`מבטלים קודם את האיבר החופשי ואז מחלקים במקדם של x.`,[`${a}x = ${c}-${b} = ${c-b}.`,`x = ${c-b}/${a} = ${x}.`],`העבר ${b} אגף, ואז חלק ב-${a}.`,`מלכודת: לחלק ב-${a} לפני שמחסרים ${b}.`,`הצבה: ${a}×${x}+${b} = ${c}.`)},
+()=>{let a=ri(2,5),b=ri(3,7),k=pick([3,4,5,6,8]),sum=(a+b)*k,ans=a*k;return qobj('אלגברה',2,`אם x:y = ${a}:${b} וגם x+y = ${sum}, מהו x?`,ans,[b*k,k,sum-ans,a+b],'יחס + סכום = חלקים',`למרות הסימון האלגברי, זו למעשה שאלת יחס.`,[`יש ${a+b} חלקים בסך הכול.`,`חלק אחד = ${sum}/${a+b} = ${k}.`,`x = ${a}×${k} = ${ans}.`],`אל תפתח שתי משוואות אם היחס כבר נותן חלוקה לחלקים.`,`מלכודת: להציב x=${a}, y=${b}; היחס קובע פרופורציה, לא ערכים מוחלטים.`,`x+y = ${ans}+${b*k} = ${sum}.`)},
+()=>{let x=ri(3,15),y=ri(1,x-1),sum=x+y,diff=x-y;return qobj('אלגברה',2,`נתון x+y=${sum} וגם x−y=${diff}. מהו x?`,x,[y,sum/2,diff,x+1],'חיבור משוואות',`כשמחברים את שתי המשוואות, y נעלם מיד.`,[`(x+y)+(x−y) = ${sum}+${diff}.`,`2x = ${sum+diff}.`,`x = ${x}.`],`חבר את המשוואות — אין צורך לפתור את y.`,`מלכודת: לחסר במקום לחבר ואז למצוא את y כשלא נשאלת עליו.`,`בדיקה: x+y=${x}+${y}=${sum} וגם x−y=${diff}.`)},
+()=>{let x=ri(2,8),a=ri(2,5),b=ri(1,6),expr=a*x+b;return qobj('אלגברה',1,`אם x=${x}, מה ערך הביטוי ${a}x+${b}?`,expr,[a+b,x+b,a*x,expr+1],'הצבה מסודרת',`מחליפים כל x בערך הנתון ורק אז מבצעים פעולות.`,[`${a}×${x} = ${a*x}.`,`${a*x}+${b} = ${expr}.`],`כפל לפני חיבור.`,`מלכודת: לחשב ${a}+${x}+${b}.`,`התוצאה חייבת להיות גדולה מ-${a*x} ב-${b}.`)}
+]
+};
+
+/* V4: New conceptual templates. All original; official exams linked separately. */
+const v4Q=(topic,lvl,stem,ans,bad,method,story,steps,quick,trap,check)=>{
+ const q=qobj(topic,lvl,stem,ans,bad,method,story,steps,quick,trap,check);
+ q.origin='original';q.v4=true;return q;
+};
+// Ratios: EVERY question uses ordered, named quantities; never ambiguous A:B shorthand.
+GEN['יחסים']=[
+()=>{let a=ri(2,7),b=ri(2,7),k=pick([3,4,5,6,8]),n=(a+b)*k,askA=Math.random()<.5,ans=(askA?a:b)*k;
+return v4Q('יחסים',1,`בכיתה יש בנים ובנות. על כל ${a} בנים יש ${b} בנות. מספר התלמידים הכולל הוא ${n}. כמה ${askA?'בנים':'בנות'} יש בכיתה?`,ans,[n-ans,k,ans+k,ans-k],'חלקים שלמים',`דמיין שקיות שוות: ${a} שקיות לבנים ו־${b} שקיות לבנות. כל שקית מכילה אותו מספר תלמידים.`,[`קודם סופרים שקיות: ${a}+${b}=${a+b}.`,`כל שקית מכילה ${n}÷${a+b}=${k} תלמידים.`,`ל${askA?'בנים':'בנות'} יש ${askA?a:b} שקיות, כלומר ${ans} תלמידים.`],`זכור: סכום חלקים → גודל חלק → הקבוצה המבוקשת.`,`אסור להתבלבל בסדר: הבנים מופיעים ראשונים והבנות שניות.`,`בנים: ${a*k}; בנות: ${b*k}; ביחד: ${n}.`)},
+()=>{let a=ri(3,8),b=ri(2,6);if(a===b)a++;let k=ri(3,9),gap=Math.abs(a-b)*k,total=(a+b)*k;
+return v4Q('יחסים',2,`בקבוצה א׳ יש ${a} חלקים שווים, ובקבוצה ב׳ יש ${b} חלקים שווים. ההפרש בין מספר האנשים בקבוצות הוא ${gap}. כמה אנשים יש בשתיהן יחד?`,total,[gap,total+k,total-k,(a+b)*gap],'הפרש בין חלקים',`ההפרש ${gap} אינו שקית שלמה בהכרח. הוא מתאים ל־${Math.abs(a-b)} שקיות.`,[`הפער במספר החלקים הוא ${Math.abs(a-b)}.`,`לכן חלק יחיד הוא ${gap}÷${Math.abs(a-b)}=${k}.`,`בסך הכול יש ${a+b} חלקים, כלומר ${total} אנשים.`],`חלק = הפרש בפועל ÷ הפרש בחלקים.`,`אם פער היחס הוא שני חלקים, אסור לקרוא לכל ההפרש 'חלק אחד'.`,`${a}×${k} ו־${b}×${k} שונים בדיוק ב־${gap}.`)},
+()=>{let a=ri(3,7),b=ri(2,5),d=ri(1,3),k=pick([4,5,6,8]);let added=d*k,b2=b+d,answer=(a+b)*k;
+return v4Q('יחסים',2,`לפני שינוי: על כל ${a} תלמידים מקבוצה א׳ היו ${b} תלמידים מקבוצה ב׳. הוסיפו רק לקבוצה ב׳ ${added} תלמידים. אחרי השינוי, על כל ${a} תלמידים מקבוצה א׳ היו ${b2} תלמידים מקבוצה ב׳. כמה תלמידים היו בשתי הקבוצות לפני השינוי?`,answer,[answer+added,(a+b2)*k,a*k,b*k],'מזהים את הקבוצה הקבועה',`דמיין חבילות: א׳ לא השתנתה בכלל, ולכן גודל כל חבילה נשאר ${k}. התוספת לב׳ היא ${d} חבילות.`,[`שומרים את א׳ כפי שהיא: ${a} חלקים לפני וגם אחרי.`,`מספר החלקים בב׳ גדל מ־${b} ל־${b2}: שינוי של ${d} חלקים.`,`${added} תלמידים הם ${d} חלקים; חלק יחיד הוא ${k}.`,`לפני השינוי היו ${a+b} חלקים, לכן ${answer} תלמידים.`],`קבע מי לא השתנה, ואז חלק את התוספת בהפרש החלקים.`,`הטעות היא להכפיל בסכום החלקים אחרי השינוי במקום לפניו.`,`א׳=${a*k}; ב׳ לפני=${b*k}, אחרי=${b2*k}.`)},
+()=>{let a=ri(2,5),b=ri(3,7),d=ri(1,3),k=pick([4,5,6,7]);let added=d*k,a2=a+d,answer=(a+b)*k;
+return v4Q('יחסים',2,`למחסן א׳ ולמחסן ב׳ יש מלאי ביחס מסודר: לכל ${a} ארגזים במחסן א׳ יש ${b} ארגזים במחסן ב׳. הוסיפו ${added} ארגזים למחסן א׳ בלבד, וכעת לכל ${a2} ארגזים במחסן א׳ יש ${b} במחסן ב׳. כמה ארגזים היו בשני המחסנים לפני התוספת?`,answer,[answer+added,(a2+b)*k,a*k,b*k],'שינוי בצד הראשון',`מחסן ב׳ לא השתנה. לכן היחידה המשותפת ביחס נשארת באותו גודל.`,[`א׳ עלה מ־${a} ל־${a2} חלקים: תוספת ${d} חלקים.`,`${added}÷${d}=${k} ארגזים בכל חלק.`,`לפני התוספת היו ${a}+${b}=${a+b} חלקים.`,`סך הכול ${answer}.`],`אל תזיז את המספרים בין א׳ וב׳! רשום כל פעם מי הראשון ומי השני.`,`תוספת לא׳ אינה משנה את ב׳. אל תחשב לפי החלקים החדשים.`,`לפני: א׳=${a*k}, ב׳=${b*k}; אחרי: א׳=${a2*k}, ב׳=${b*k}.`)},
+()=>{let a=ri(5,8),b=ri(2,4),pair=pick([[2,3],[3,4],[1,1]]),u=pair[0],v=pair[1];let k=(u+v)*ri(2,5),total=(a+b)*k,move=a*k-total*u/(u+v);if(move<=0)return GEN['יחסים'][4]();
+return v4Q('יחסים',3,`לפני העברה: בקבוצה א׳ ${a} חלקים ובקבוצה ב׳ ${b} חלקים. כל חלק מייצג ${k} אנשים. מעבירים אנשים מא׳ לב׳ בלי לשנות את המספר הכולל. אחרי ההעברה, על כל ${u} אנשים בא׳ יש ${v} בב׳. כמה אנשים הועברו?`,move,[move+k,move-k,total*u/(u+v),total*v/(u+v)],'יחס משתנה אבל הסכום קבוע',`זה כמו להעביר קוביות מקופסה לקופסה: שום קובייה לא נעלמת.`,[`בהתחלה א׳=${a*k}, ב׳=${b*k}, וביחד ${total}.`,`ביחס החדש יש ${u+v} חלקים. כל חלק מייצג ${total}÷${u+v}=${total/(u+v)} אנשים.`,`א׳ צריכה להישאר עם ${total*u/(u+v)} אנשים.`,`לפני היו בה ${a*k}, ולכן הועברו ${a*k}−${total*u/(u+v)}=${move}.`],`בהעברות: סך הכול קבוע. חשב את גודל א׳ *אחרי* והחסר מהגודל *לפני*.`,`מלכודת: להשתמש בגודל חלק ישן גם ביחס החדש.`,`לאחר ההעברה א׳=${total*u/(u+v)}, ב׳=${total*v/(u+v)} והסכום נשאר ${total}.`)},
+()=>{let a=pick([2,3,4]),b=pick([3,4,5]),c=pick([2,3,5]),d=pick([2,3,4,5]);let L=b*c/gcd(b,c),A=a*(L/b),C=d*(L/c),g=gcd(A,C),aa=A/g,cc=C/g,ans=`${aa} ל־${cc}`;
+return v4Q('יחסים',3,`נתון: בקבוצות א׳ וב׳, על כל ${a} אנשים בא׳ יש ${b} אנשים בב׳. בקבוצות ב׳ וג׳, על כל ${c} אנשים בב׳ יש ${d} אנשים בג׳. אם נבטא את היחס א׳ לעומת ג׳ במספרים שלמים מצומצמים, כמה אנשים בא׳ יש על כל כמה אנשים בג׳?`,ans,[`${cc} ל־${aa}`,`${a} ל־${d}`,`${a*c} ל־${b*d}`,`${aa+1} ל־${cc}`],'משווים את ב׳ בשני היחסים',`דמיין שב׳ היא אותה קופסה שהופיעה בשתי תמונות. חייבים לתת לה אותו מספר לפני שמחברים את התמונות.`,[`ב׳ בהשוואה הראשונה היא ${b} חלקים, ובשנייה ${c}.`,`בחר ב׳=${L} חלקים, שמתחלק בשניהם.`,`לכן א׳=${a}×${L/b}=${A}, וג׳=${d}×${L/c}=${C}.`,`צמצום היחס בין א׳ לג׳ נותן ${ans}.`],`בחר את ב׳ כמכנה משותף. אל תכפיל יחסים באופן עיוור.`,`הסדר כאן הוא תמיד א׳ לעומת ג׳; אל תחליף את המונה והמכנה.`,`הקבוצה המשותפת ב׳ היא ${L} חלקים בשתי הדרכים.`)},
+()=>{let a=pick([2,3,4]),b=pick([3,4,5]),percent=pick([20,25,40,50]),k=pick([20,40,60]),tot=(a+b)*k,redA=a*k*percent/100,redB=b*k*(100-percent)/100,ans=(redA+redB)/tot*100;if(!Number.isInteger(ans))return GEN['יחסים'][6]();
+return v4Q('יחסים',4,`בבית ספר שתי קבוצות: א׳ מונה ${a*k} תלמידים וב׳ מונה ${b*k} תלמידים. בקבוצה א׳ ${percent}% משתתפים בחוג, ובקבוצה ב׳ ${100-percent}% משתתפים. איזה אחוז מכל תלמידי בית הספר משתתף בחוג?`,`${ans}%`,[`${50}%`,`${percent}%`,`${100-percent}%`,`${fmt((percent+100-percent)/2+5)}%`],'יחסים + ממוצע משוקלל',`לא מספיק לעשות ממוצע של שני האחוזים, כי בקבוצות יש מספר תלמידים שונה.`,[`בקבוצה א׳ ${a*k} תלמידים; ${percent}% מתוכם הם ${redA}.`,`בקבוצה ב׳ ${b*k} תלמידים; ${100-percent}% מתוכם הם ${redB}.`,`בסך הכול משתתפים ${redA+redB} מתוך ${tot}.`,`האחוז הכולל הוא ${ans}%.`],`אחוז מכלל האנשים = מספר המשתתפים בשתי הקבוצות / מספר האנשים הכולל.`,`מלכודת: לחבר אחוזים או לעשות ממוצע רגיל בלי לשקלל גדלים.`,`האחוז הכולל חייב להיות בין ${percent}% ל־${100-percent}%.`)},
+()=>{let a=pick([3,4,5]),b=pick([2,3,4]),k=pick([10,12,15]),xa=a*k,xb=b*k,t=pick([5,10,15]),ans=(xa+t)/(xb-t);let num=xa+t,den=xb-t;if(den<=0)return GEN['יחסים'][7]();let gg=gcd(num,den),txt=`${num/gg} ל־${den/gg}`;
+return v4Q('יחסים',4,`בקבוצה א׳ ${xa} תלמידים ובקבוצה ב׳ ${xb} תלמידים. ${t} תלמידים עוברים מקבוצה ב׳ לקבוצה א׳. מהו היחס המצומצם בין מספר התלמידים בקבוצה א׳ לבין מספר התלמידים בקבוצה ב׳ אחרי המעבר?`,txt,[`${xa/gg} ל־${xb/gg}`,`${den/gg} ל־${num/gg}`,`${xa} ל־${xb}`,`${(xa+t)/gg} ל־${xb/gg}`],'מעבר בין קבוצות: אחד עולה והשני יורד',`אותם תלמידים עברו מקום: א׳ גדלה, ב׳ קטנה, וביחד נשאר אותו מספר.`,[`לפני המעבר א׳=${xa}, ב׳=${xb}.`,`אחרי המעבר א׳=${xa}+${t}=${num}; ב׳=${xb}−${t}=${den}.`,`מצמצמים את שני המספרים באותו גורם ${gg}.`,`היחס המסודר א׳ לעומת ב׳ הוא ${txt}.`],`קודם חשב כמויות אמתיות אחרי השינוי, ורק אז צמצם יחס.`,`אסור להוסיף את ${t} לשתי הקבוצות: זו העברה, לא תוספת מבחוץ.`,`הסכום אחרי המעבר ${num+den} שווה לסכום לפני ${xa+xb}.`)}
+];
+// Harder-than-V3, conceptually different generators across the other topics.
+GEN['אחוזים'].push(
+()=>{let a=pick([20,25,40]),b=pick([10,20,25]),n=pick([200,400,800]),final=n*(1+a/100)*(1-b/100),change=fmt((final/n-1)*100),ans=Number(change)>=0?`עלה ב־${change}%`:`ירד ב־${Math.abs(Number(change))}%`;
+return v4Q('אחוזים',3,`מחיר מוצר היה ${n} ש״ח. העלו אותו ב־${a}% ואז נתנו הנחה של ${b}% מהמחיר החדש. מה השינוי הכולל ביחס למחיר ההתחלתי?`,ans,[`עלה ב־${a-b}%`,`ירד ב־${a-b}%`,`לא השתנה`,`עלה ב־${a+b}%`],'שינוי כפול על בסיס משתנה',`הנחה פועלת על המחיר אחרי ההעלאה, לא על המחיר המקורי.`,[`מחיר אחרי העלאה: ${n}×${1+a/100}=${fmt(n*(1+a/100))}.`,`מחיר אחרי הנחה: ${fmt(n*(1+a/100))}×${1-b/100}=${fmt(final)}.`,`ההפרש מהמקור הוא ${fmt(final-n)}; ביחס ל־${n}, השינוי הוא ${ans}.`],`כשיש שני אחוזים — הכפל את המקדמים, ואל תחבר אותם.`,`${a} פחות ${b} אינו תמיד השינוי, כי הבסיס השתנה.`,`בדיקה: ${fmt(final)} לעומת ${n} מראים את כיוון השינוי.`)},
+()=>{let p=pick([20,25,50]),n=pick([160,240,320,400]),portion=n*p/100,rest=n-portion,q=pick([25,50]),second=rest*q/100,ans=portion+second;
+return v4Q('אחוזים',4,`בחנות היו ${n} מוצרים. ביום הראשון נמכרו ${p}% מהמלאי. ביום השני נמכרו ${q}% מהמלאי שנשאר. כמה מוצרים נמכרו בשני הימים יחד?`,ans,[portion+q*n/100,second,n-ans,ans+portion],'אחוז מהיתרה ולא מההתחלה',`היום השני רואה רק את מה שנשאר על המדף אחרי היום הראשון.`,[`ביום ראשון נמכרו ${portion}, ונשארו ${rest}.`,`ביום שני נמכרו ${q}% מ־${rest}, כלומר ${second}.`,`ביחד נמכרו ${portion}+${second}=${ans}.`],`צייר שתי שורות: התחלה → יתרה → מכירה מהיתרה.`,`המלכודת: לחשב גם את היום השני מתוך ${n}.`,`לא יכול להימכר יותר מהמלאי המקורי ${n}.`)}
+);
+GEN['ממוצעים'].push(
+()=>{let n1=pick([3,4,5,6]),n2=pick([2,3,4,5]),m1=pick([60,70,80]),m2=m1+pick([10,20,30]),combined=(n1*m1+n2*m2)/(n1+n2),ans=fmt(combined);
+return v4Q('ממוצעים',3,`בקבוצה א׳ ${n1} משתתפים וממוצע הציונים הוא ${m1}. בקבוצה ב׳ ${n2} משתתפים וממוצע הציונים הוא ${m2}. מה הממוצע של שתי הקבוצות יחד?`,ans,[fmt((m1+m2)/2),fmt(combined+5),fmt(combined-5),m1],'ממוצע משוקלל',`הממוצע הוא כמו לחלק את כל הנקודות שכולם צברו לשקיות שוות.`,[`קבוצה א׳ צברה ${n1}×${m1}=${n1*m1} נקודות.`,`קבוצה ב׳ צברה ${n2}×${m2}=${n2*m2} נקודות.`,`מחלקים את הסכום ${n1*m1+n2*m2} בין ${n1+n2} אנשים: ${ans}.`],`חבר סכומים, לא ממוצעים.`,`ממוצע רגיל של שני הממוצעים נכון רק אם גודל שתי הקבוצות שווה.`,`הממוצע הכולל בין ${m1} ל־${m2}.`)},
+()=>{let n1=pick([3,4,5]),n2=pick([4,5,6]),a=pick([65,70,75,80]),b=a+pick([10,15,20]),c=(n1*a+n2*b)/(n1+n2);let ans=b;
+return v4Q('ממוצעים',4,`בקבוצה א׳ ${n1} תלמידים שממוצעם ${a}. בקבוצה ב׳ ${n2} תלמידים. ממוצע כל ${n1+n2} התלמידים יחד הוא ${fmt(c)}. מה ממוצע קבוצה ב׳?`,ans,[fmt(c),a,ans-5,ans+5],'השלמת סכום חסר',`כדי למצוא את הממוצע של ב׳ קודם מגלים כמה נקודות יש לכולם יחד, ואז מחסרים מה שכבר שייך לא׳.`,[`הסכום הכולל: ${n1+n2}×${fmt(c)}=${n1*a+n2*b}.`,`הסכום של א׳: ${n1}×${a}=${n1*a}.`,`הסכום של ב׳: ${n1*a+n2*b}−${n1*a}=${n2*b}.`,`ממוצע ב׳: ${n2*b}÷${n2}=${ans}.`],`סכום כולל פחות סכום ידוע, ואז חלק במספר האנשים שנותרו.`,`אסור לחסר בין הממוצעים עצמם.`,`ממוצע ב׳ גבוה מהמשולב כי ממוצע א׳ נמוך ממנו.`)}
+);
+GEN['מהירות'].push(
+()=>{let slow=pick([30,40,50]),fast=slow+pick([20,30,40]),lead=pick([30,60,90]),ans=lead/(fast-slow);
+return v4Q('מהירות',3,`רכב א׳ נוסע במהירות ${slow} קמ״ש. רכב ב׳ יוצא אחריו באותו כיוון כשהוא נמצא ${lead} ק״מ מאחור, ונוסע במהירות ${fast} קמ״ש. כעבור כמה שעות רכב ב׳ ישיג את רכב א׳?`,fmt(ans),[fmt(lead/fast),fmt(lead/(fast+slow)),fmt(ans+1),fmt(ans/2)],'מהירות סגירת פער באותו כיוון',`תאר שני רצים: המהיר מקטין בכל שעה רק את ההפרש שבין המהירויות.`,[`בכל שעה ב׳ מצמצם פער של ${fast}−${slow}=${fast-slow} ק״מ.`,`פער התחלתי ${lead} ק״מ.`,`זמן ההשגה: ${lead}÷${fast-slow}=${fmt(ans)} שעות.`],`באותו כיוון: מחסרים מהירויות, ואז פער ÷ הפרש.`,`זה לקראת זה מחברים, אבל כשאחד רודף אחרי השני מחסרים.`,`${fmt(ans)}×${fast-slow}=${lead} ק״מ — הפער נסגר.`)},
+()=>{let v=pick([40,60,80]),d=pick([120,160,240]),stop=pick([.5,1,1.5]),a=fmt(d/v+stop);return v4Q('מהירות',3,`רכב נסע ${d} ק״מ במהירות קבועה של ${v} קמ״ש. בדרך עצר ל־${stop} שעות. מה הזמן הכולל של הנסיעה כולל העצירה?`,a,[fmt(d/v),fmt(d/v-stop),fmt(d/v+stop*2),fmt(d*v+stop)],'דרך / מהירות + עצירות',`השעון רץ גם כשהרכב עומד, אבל הרכב לא מתקדם בעצירה.`,[`זמן נסיעה נטו: ${d}÷${v}=${fmt(d/v)} שעות.`,`זמן עצירה: ${stop} שעות.`,`הזמן הכולל: ${fmt(d/v)}+${stop}=${a} שעות.`],`להפריד נסיעה ועצירות, ורק אז לחבר.`,`מלכודת: להתעלם מזמן העצירה כששואלים זמן כולל.`,`הזמן הכולל חייב להיות גדול מזמן הנסיעה נטו.`)}
+);
+GEN['עבודה והספק'].push(
+()=>{let a=pick([4,6,8]),n=pick([2,3]),t=a/n;return v4Q('עבודה והספק',3,`${n} עובדים זהים מסיימים עבודה ב־${t} שעות. אם רק עובד אחד עובד באותו קצב, בכמה שעות יסיים את העבודה?`,a,[t,t/n,a+t,a-n],'יותר עובדים = יותר הספק',`דמיין קיר שצריך לצבוע: ${n} צובעים מחלקים את העבודה ביניהם. אחד לבד יעבוד פי ${n} זמן.`,[`קצב כל עובד זהה.`,`${n} עובדים מסיימים ב־${t} שעות.`,`אחד עובד פי ${n} פחות מהר מכולם יחד, לכן צריך ${t}×${n}=${a} שעות.`],`מספר עובדים × זמן הוא קבוע באותה עבודה.`,`הטעות היא לחלק את זמן הצוות במספר העובדים במקום להכפיל.`,`אחד לבדו חייב לקחת יותר זמן מקבוצה.`)},
+()=>{let rateA=pick([4,6,8]),rateB=pick([6,8,12]),L=rateA*rateB/gcd(rateA,rateB),work=(L/rateA)+(L/rateB),t=pick([1,2]),done=t*work/L;if(done>=1)return GEN['עבודה והספק'][GEN['עבודה והספק'].length-1]();let rem=1-done,ans=fmt(rem*rateA);return v4Q('עבודה והספק',4,`עובד א׳ מסיים עבודה ב־${rateA} שעות, ועובד ב׳ ב־${rateB} שעות. הם עבדו יחד ${t} שעות, ואז ב׳ עזב. כמה שעות נוספות צריך א׳ כדי לסיים את העבודה לבדו?`,ans,[fmt(rem*rateB),fmt(rateA-t),fmt(rem),fmt(ans+t)],'עבודה שבוצעה + עבודה שנותרה',`דמיין משטח שמחולק לחלקים: אחרי שעתיים יחד חלק מהמשטח כבר צבוע, וא׳ מסיים רק את השאר.`,[`בשעה א׳ עושה 1/${rateA} מהעבודה וב׳ עושה 1/${rateB}.`,`ביחד בכל שעה הם עושים ${work}/${L} עבודה.`,`ב־${t} שעות עשו ${t*work}/${L}; נשאר ${fmt(rem)} מהעבודה.`,`א׳ מסיים עבודה מלאה ב־${rateA} שעות, לכן את החלק שנותר יסיים ב־${ans} שעות.`],`חשב חלק שנשאר, והכפל בזמן של א׳ לעבודה שלמה.`,`מלכודת: לשכוח שהשאלה מבקשת זמן *נוסף*, לא זמן כולל.`,`א׳ לבד מסיים את מה שנותר בפחות מ־${rateA} שעות.`)}
+);
+GEN['שברים'].push(
+()=>{let d=pick([4,5,8,10]),n=pick([80,120,160,200]),take=n/d,after=n-take,part=pick([2,4]),next=after/part,ans=fmt(take+next);return v4Q('שברים',3,`בכלי היו ${n} ליטרים. הוציאו 1/${d} מהכמות. לאחר מכן הוציאו 1/${part} מהכמות שנותרה. כמה ליטרים הוציאו בסך הכול?`,ans,[fmt(n/d+n/part),fmt(next),fmt(n-ans),fmt(take)],'שבר מתוך מה שנותר',`כמו עוגה: אחרי שאכלת פרוסה, בפעם הבאה רבע מהעוגה שנשארה קטן מרבע העוגה המקורית.`,[`בהתחלה הוציאו ${n}÷${d}=${take} ליטרים.`,`נשארו ${after}.`,`בפעם השנייה הוציאו ${after}÷${part}=${fmt(next)}.`,`בסך הכול הוציאו ${ans} ליטרים.`],`כתוב תמיד 'נותר' בין שתי פעולות.`,`אי אפשר לחשב את שני השברים מהכמות המקורית.`,`הכמות שהוציאו קטנה מ־${n}.`)},
+()=>{let a=pick([2,3,4,5]),b=a+pick([1,2]),c=pick([2,3,4]),d=c+pick([1,2]),prod=a*c,den=b*d,g=gcd(prod,den),answer=`${prod/g}/${den/g}`;
+return v4Q('שברים',3,`איזה חלק מהסכום כולו הם ${a}/${b} מתוך ${c}/${d} ממנו?`,answer,[`${a+c}/${b+d}`,`${a}/${b*d}`,`${prod}/${den+1}`,`${b*d}/${prod}`],'חלק מתוך חלק = כפל שברים',`כאילו חותכים עוגה לשבר אחד ואז חותכים רק את החלק הזה שוב.`,[`הפעולה היא ${a}/${b} × ${c}/${d}.`,`מכפילים מונים: ${a}×${c}=${prod}.`,`מכפילים מכנים: ${b}×${d}=${den}.`,`מצמצמים ומקבלים ${answer}.`],`כשכתוב 'מתוך' שבר אחר, בדרך כלל מכפילים.`,`לא מחברים שברים כשמבקשים חלק מתוך חלק.`,`התוצאה קטנה מכל אחד מהשברים המקוריים כשהם מתחת ל־1.`)}
+);
+GEN['אלגברה'].push(
+()=>{let x=ri(3,15),a=ri(2,5),b=ri(2,6),c=ri(1,5),right=a*x+b*(x-c),ans=x;return v4Q('אלגברה',3,`מספר x מקיים את המשוואה ${a}x + ${b}(x − ${c}) = ${right}. מה ערכו של x?`,ans,[x-1,x+1,right/(a+b),right/b],'פתיחת סוגריים ואיסוף איברים',`יש כאן כמה קופסאות של x: ${a} קופסאות ועוד ${b} קופסאות, אבל מהשניות הורידו קבוע.`,[`פותחים: ${a}x + ${b}x − ${b*c} = ${right}.`,`אוספים: ${a+b}x = ${right+b*c}.`,`מחלקים: x = ${right+b*c}÷${a+b} = ${x}.`],`פתח סוגריים, אסוף x, בודד.`,`מלכודת: לא להכפיל גם את ${c} ב־${b}.`,`בהצבה x=${x} מתקבל בדיוק ${right}.`)},
+()=>{let a=ri(2,7),b=ri(2,7),x=ri(2,9),y=ri(2,9),sum=x+y,diff=a*x-b*y;let ans=x;return v4Q('אלגברה',4,`שני מספרים חיוביים x ו־y מקיימים x+y=${sum} וגם ${a}x−${b}y=${diff}. מהו x?`,ans,[y,x+1,x-1,fmt(diff/(a+b))],'שתי משוואות בשני נעלמים',`את y אפשר להחליף במשהו שמכיל רק x, כי יודעים כמה הם ביחד.`,[`מהמשוואה הראשונה: y=${sum}−x.`,`מציבים בשנייה: ${a}x−${b}(${sum}−x)=${diff}.`,`פותחים: ${a+b}x−${b*sum}=${diff}.`,`לכן ${a+b}x=${diff+b*sum}, ואז x=${x}.`],`אם נתון סכום x+y, החלף אחד הנעלמים ב־'סכום פחות השני'.`,`שמור על הסימן מינוס לפני סוגריים.`,`בדיקה: x=${x}, y=${y}; שתי המשוואות מתקיימות.`)}
+);
+GEN['גיאומטריה']=[
+()=>{let a=ri(6,18),b=ri(4,12),peri=2*(a+b),area=a*b;return v4Q('גיאומטריה',2,`מלבן שאורך צלע אחת שלו ${a} ס״מ ואורך השנייה ${b} ס״מ. מה שטחו בסמ״ר?`,area,[peri,a+b,2*area,fmt(area/2)],'שטח מלבן = אורך × רוחב',`דמיין רצפה שמכוסה ריבועים של סנטימטר על סנטימטר.`,[`בכל שורה ${a} ריבועים.`,`יש ${b} שורות.`,`לכן ${a}×${b}=${area} ריבועים.`],`שטח הוא מכפלת שתי הצלעות.`,`מלכודת: היקף = סכום אורכי המסגרת, שטח = פנים המלבן.`,`שטח נמדד ביחידות ריבועיות, לא ס״מ.`)},
+()=>{let a=pick([6,8,10,12]),b=pick([4,6,8]),ratio=pick([2,3]);let area=a*b/2,larger=area*ratio*ratio;return v4Q('גיאומטריה',3,`משולש ששטחו ${area} סמ״ר הוגדל כך שכל אחת מצלעותיו נעשתה ארוכה פי ${ratio}. מה שטח המשולש החדש?`,larger,[area*ratio,area+ratio,area/ratio,area*ratio*ratio*ratio],'דמיון: שטח משתנה בריבוע היחס',`אם מרחיבים ציור פי ${ratio} גם לרוחב וגם לגובה, מספר הריבועים עולה פי ${ratio}×${ratio}.`,[`שטח התחלתי ${area}.`,`ההגדלה בכל צלע היא פי ${ratio}.`,`לכן השטח גדל פי ${ratio}²=${ratio*ratio}.`,`שטח חדש ${area}×${ratio*ratio}=${larger}.`],`צלעות פי k → שטח פי k².`,`מלכודת: להכפיל שטח רק פי ${ratio}.`,`אם שני ממדים גדלו, גם השטח חייב לגדול יותר מפי ${ratio}.`)},
+()=>{let r=pick([3,4,5,6,8]),a=r*r;return v4Q('גיאומטריה',3,`מעגל בעל רדיוס ${r} ס״מ. מה שטחו?`,`${a}π`,[`${2*r}π`,`${r}π`,`${2*a}π`,`${a}`],'שטח מעגל = πr²',`הרדיוס הוא המרחק מהמרכז לקצה, לא הקוטר.`,[`מעלים את הרדיוס בריבוע: ${r}×${r}=${a}.`,`מכפילים ב־π.`,`שטח המעגל הוא ${a}π סמ״ר.`],`שטח מעגל: π כפול רדיוס בריבוע.`,`מלכודת: 2πr זו נוסחת היקף, לא שטח.`,`ככל שהרדיוס גדל, השטח גדל בריבוע.`)},
+()=>{let a=ri(5,12),b=ri(5,12),h=ri(4,9),area=(a+b)*h/2;return v4Q('גיאומטריה',4,`בטרפז שני בסיסים מקבילים שאורכם ${a} ס״מ ו־${b} ס״מ, וגובהו ${h} ס״מ. מה שטחו?`,fmt(area),[fmt((a+b)*h),fmt(a*b*h/2),fmt((a-b)*h/2),fmt(a+b+h)],'שטח טרפז',`דמיין שני טרפזים זהים שיוצרים מקבילית: הבסיס שלה הוא סכום שני בסיסי הטרפז.`,[`מחברים בסיסים: ${a}+${b}=${a+b}.`,`מכפילים בגובה: ${a+b}×${h}=${(a+b)*h}.`,`מחלקים ב־2: ${fmt(area)} סמ״ר.`],`(בסיס גדול + בסיס קטן) × גובה ÷ 2.`,`מלכודת: לקחת ממוצע בלי להכפיל בגובה.`,`השטח בין שטחי מלבנים של גובה ${h} ורוחב ${Math.min(a,b)} או ${Math.max(a,b)}.`)}
+];
+GEN['חזקות ושורשים']=[
+()=>{let a=pick([2,3,4,5]),x=ri(5,8),y=ri(2,4),ans=`${a} בחזקת ${x-y}`;return v4Q('חזקות ושורשים',2,`מהי התוצאה המצומצמת של ${a} בחזקת ${x}, חלקי ${a} בחזקת ${y}?`,ans,[`${a} בחזקת ${x+y}`,`${a} בחזקת ${x*y}`,`${a} בחזקת ${y-x}`,`${a} בחזקת ${x-y+1}`],'אותו בסיס בחילוק: מחסרים מעריכים',`יש ${x} עותקים של ${a} למעלה ו־${y} למטה. אפשר לצמצם ${y} עותקים זהים.`,[`משאירים את הבסיס ${a}.`,`מחסרים מעריכים: ${x}−${y}=${x-y}.`,`מקבלים ${ans}.`],`a^m / a^n = a^(m−n).`,`מלכודת: לחלק מעריכים במקום לחסר.`,`אפשר להציב ${a} קטן ולראות שהצמצום נכון.`)},
+()=>{let a=pick([2,3,5]),x=ri(2,4),ans=a**(2*x),sq=a**x;return v4Q('חזקות ושורשים',3,`אם x=${sq}, כמה שווה x בריבוע?`,ans,[sq,a*x,ans+sq,ans/sq],'חזקה של חזקה',`ריבוע של מספר הוא המספר כפול עצמו.`,[`x=${a} בחזקת ${x}.`,`x² = (${a} בחזקת ${x})×(${a} בחזקת ${x}).`,`אותו בסיס בכפל: מחברים מעריכים → ${a} בחזקת ${2*x} = ${ans}.`],`(a^n)^2=a^(2n).`,`מלכודת: להכפיל את הבסיס ב־2 במקום להכפיל את המעריך ב־2.`,`${sq}×${sq}=${ans}.`)},
+()=>{let a=pick([3,4,5,6,7,8,9]),b=pick([2,3,4,5]),ans=a*b;return v4Q('חזקות ושורשים',3,`מה ערך הביטוי √${a*a} × √${b*b} ?`,ans,[a+b,a*a+b*b,Math.abs(a-b),a*a*b*b],'שורש של ריבוע חיובי',`שורש הוא הפעולה ששואלת: איזה מספר כפול עצמו נותן את מה שבפנים?`,[`√${a*a}=${a}.`,`√${b*b}=${b}.`,`לכן המכפלה היא ${a}×${b}=${ans}.`],`הוצא קודם שורשים מושלמים, ואז כפול.`,`מלכודת: לחבר במקום לכפול.`,`${ans}²=${a*a*b*b}.`)}
+];
+GEN['הסתברות וספירה']=[
+()=>{let red=ri(2,6),blue=ri(3,8),total=red+blue;let g=gcd(red,total),ans=`${red/g}/${total/g}`;return v4Q('הסתברות וספירה',2,`בשק יש ${red} כדורים אדומים ו־${blue} כחולים. שולפים באקראי כדור אחד. מה ההסתברות שהוא אדום?`,ans,[`${blue}/${total}`,`${red}/${blue}`,`${total}/${red}`,`${1}/${total}`],'מקרים רצויים מתוך אפשריים',`דמיין שמוציאים כדור בעיניים עצומות. לכל הכדורים אותו סיכוי.`,[`כדורים אפשריים: ${red}+${blue}=${total}.`,`כדורים אדומים רצויים: ${red}.`,`הסתברות ${red}/${total}, מצמצמים ל־${ans}.`],`רצויים ÷ כולם.`,`המלכודת: לחלק אדומים בכחולים במקום בסך הכדורים.`,`הסתברות בין 0 ל־1.`)},
+()=>{let red=ri(3,7),blue=ri(2,6),n=red+blue,num=red*(red-1),den=n*(n-1),g=gcd(num,den),ans=`${num/g}/${den/g}`;return v4Q('הסתברות וספירה',3,`בשק ${red} כדורים אדומים ו־${blue} כחולים. מוציאים שני כדורים בלי להחזיר את הראשון. מה ההסתברות ששניהם אדומים?`,ans,[`${red}/${n}`,`${red*red}/${n*n}`,`${blue*(blue-1)}/${n*(n-1)}`,`${red}/${n-1}`],'ללא החזרה: סיכויים משתנים',`אחרי שמוציאים אדום אחד, נשאר אדום אחד פחות וכדור אחד פחות בסך הכול.`,[`אדום בראשון: ${red}/${n}.`,`אדום בשני, בתנאי שהראשון אדום: ${red-1}/${n-1}.`,`מכפילים: (${red}/${n})×(${red-1}/${n-1})=${num}/${den}.`,`מצמצמים ל־${ans}.`],`רצף אירועים: הסתברות ראשון × הסתברות שני לאחר הראשון.`,`אל תשאיר אותם מספר כדורים בניסיון השני.`,`שני אדומים נדירים יותר מאדום אחד, לכן התוצאה קטנה מ־${fmt(red/n)}.`)},
+()=>{let a=ri(3,6),b=ri(2,5),c=ri(2,4),ans=a*b*c;return v4Q('הסתברות וספירה',3,`להרכבת קוד בוחרים תחילה אחת מ־${a} אותיות, אחריה אחת מ־${b} ספרות, ולבסוף אחד מ־${c} סימנים. כמה קודים שונים אפשר להרכיב?`,ans,[a+b+c,a*b,a+b*c,ans+a],'עקרון הכפל בספירה',`על כל בחירה ראשונה אפשר לשדך כל בחירה שנייה, ולכל צירוף כזה כל בחירה שלישית.`,[`אפשרויות לשלב הראשון: ${a}.`,`לכל אחת מהן ${b} אפשרויות לשני, ולכן ${a*b} זוגות.`,`לכל זוג ${c} אפשרויות לשלישי, לכן ${a}×${b}×${c}=${ans}.`],`'וגם' בין בחירות בלתי תלויות → מכפילים אפשרויות.`,`אל תחבר כשהמשימה כוללת שלבים עוקבים.`,`מספר קודים גדול לפחות מכל אחד ממספרי האפשרויות.`)}
+];
+TRICKS.push(
+{t:'גיאומטריה',a:['מלבן: שטח = אורך × רוחב','משולש: שטח = בסיס × גובה ÷ 2','מעגל: שטח = πr²','דמיון: צלעות פי k → שטח פי k²'],f:['שטח טרפז = (בסיס 1 + בסיס 2) × גובה ÷ 2']},
+{t:'חזקות ושורשים',a:['אותו בסיס בכפל → מחברים מעריכים','אותו בסיס בחילוק → מחסרים מעריכים','(a^m)^n = a^(m×n)','√(a²)=|a|'],f:['2^5 ÷ 2^3 = 2² = 4']},
+{t:'הסתברות וספירה',a:['הסתברות = מקרים רצויים / אפשריים','בלי החזרה — המלאי משתנה אחרי שליפה','עקרון הכפל: אפשרויות של שלבים בלתי תלויים מוכפלות'],f:['3 אדומים מתוך 5: P=3/5']}
+);
+GEN['כפל וחילוק מהיר'].push(
+()=>{let n=pick([27,36,48,63,72,84,96]),p=pick([97,98,99]),a=n*p;return v4Q('כפל וחילוק מהיר',3,`${n} × ${p} = ?`,a,[n*100,a+n,a-n,a+100],'קרוב ל־100',`לא צריך להכפיל בכפל ארוך: ${p} הוא כמעט 100.`,[`${n}×100=${n*100}.`,`הפער ל־100 הוא ${100-p}, ולכן מחסרים ${100-p} פעמים ${n}.`,`${n*100}−${100-p}×${n}=${a}.`],`כפל במספר קרוב ל־100: ×100 פחות התיקון.`,`מלכודת: לשכוח לחסר את כל הפער מ־100.`,`התוצאה חייבת להיות מעט מתחת ל־${n*100}.`)},
+()=>{let n=pick([25,50,75,125]),a=pick([24,36,48,64]),b=100-a,ans=100*n;return v4Q('כפל וחילוק מהיר',4,`חשב בלי כפל ארוך: ${a} × ${n} + ${b} × ${n} = ?`,ans,[n*(a-b),n*(a+b+1),a*n,b*n],'גורם משותף',`יש לנו ${n} חבילות בשתי הקבוצות. אפשר לחבר את מספר החבילות לפני שמכפילים.`,[`לשני האיברים יש גורם משותף ${n}.`,`מוציאים אותו: (${a}+${b})×${n}.`,`הסכום בסוגריים הוא 100, לכן ${n}×100=${ans}.`],`כשאותו מספר מופיע בשתי מכפלות, חבר קודם את המקדמים.`,`מלכודת: לבצע שני כפליים ארוכים ולחבר.`,`חישוב מהיר: ${a}+${b}=100 ולכן התוצאה מסתיימת ב־00.`)}
+);
+
+
+// V4.3 — advanced multi-step templates for the learner's weak areas.
+GEN['יחסים'].push(
+()=>{let k=pick([6,9,12,15]),m=4*k/3,total=5*k;return qobj('יחסים',3,`בקבוצה א׳ ובקבוצה ב׳ היחס ההתחלתי הוא א׳:ב׳ = 3:2. מעבירים ${m} אנשים מקבוצה א׳ אל קבוצה ב׳, ואז היחס החדש א׳:ב׳ = 1:2. כמה אנשים היו בשתי הקבוצות יחד לפני ההעברה?`,total,[total+m,3*k,2*k,total-m],'יחס משתנה בהעברה — הסכום נשאר קבוע',`מציירים את הקבוצות כ־3k ו־2k. המעבר אינו מוסיף אנשים: הוא רק משנה את חלוקתם.`,[`נסמן את הקבוצות לפני ההעברה: א׳=3k, ב׳=2k.`,`אחרי העברה: א׳=3k−${m}, ב׳=2k+${m}.`,`היחס החדש 1:2 אומר: פעמיים מספר אנשי א׳ שווה למספר אנשי ב׳.`,`לכן 2×(3k−${m})=2k+${m}; נקבל k=${k}.`,`הסך בהתחלה הוא 3k+2k=5×${k}=${total}.`],`יחס אחרי העברה: כתוב 3k−${m} ו־2k+${m}; הסכום נשאר 5k.`,`מלכודת: לחשוב שהסכום גדל ב־${m}. הייתה העברה בין הקבוצות, לא תוספת.`,`לפני: א׳=${3*k}, ב׳=${2*k}; אחרי: א׳=${3*k-m}, ב׳=${2*k+m}. היחס החדש הוא 1:2.`)},
+()=>{let k=pick([4,5,6,8,10]),total=8*k;return qobj('יחסים',3,`היחס ההתחלתי בין קבוצה א׳ לקבוצה ב׳ (בסדר א׳:ב׳) הוא 5:3. מעבירים ${k} אנשים מקבוצה ב׳ לקבוצה א׳. לאחר ההעברה היחס א׳:ב׳ הוא 3:1. כמה אנשים היו בסך הכול לפני ההעברה?`,total,[5*k,3*k,total+k,total-k],'העברה שומרת על סכום הקבוצות',`נסמן את מספר האנשים בכל קבוצה כחלקים: א׳=5k וב׳=3k.`,[`נסמן חלק אחד באות x. לפני: קבוצה א׳=5x וקבוצה ב׳=3x.`,`אחרי שמעבירים ${k} אנשים מקבוצה ב׳ לקבוצה א׳: א׳=5x+${k}, ב׳=3x−${k}.`,`היחס החדש 3:1 ולכן 5x+${k}=3×(3x−${k}).`,`נפתור: 5x+${k}=9x−${3*k}, כלומר 4x=${4*k} ולכן x=${k}.`,`בהתחלה היו שמונה חלקים: 8×${k}=${total}.`],`זכור: כשמעבירים אנשים הסכום נשאר קבוע; בדוק שהיחס החדש מתקבל.`,`מלכודת: להוסיף את מספר המועברים לסכום הכולל.`,`א׳=${6*k}, ב׳=${2*k} אחרי המעבר; היחס 3:1 והסכום ${total}.`)},
+()=>{let a=ri(2,4),b=ri(2,5),c=ri(2,5),d=ri(2,5),L=b*c/gcd(b,c),ka=L/b,kb=L/c,A=a*ka,B=L,C=d*kb,k=pick([2,3,4]),total=(A+B+C)*k,ans=C*k;return qobj('יחסים',4,`היחס בין קבוצה א׳ לקבוצה ב׳ (א׳:ב׳) הוא ${a}:${b}, והיחס בין קבוצה ב׳ לקבוצה ג׳ (ב׳:ג׳) הוא ${c}:${d}. בשלוש הקבוצות יחד יש ${total} אנשים. כמה בקבוצה ג׳?`,ans,[A*k,B*k,ans+k,ans*2],'השוואת האיבר המשותף ואז חלוקה לחלקים',`שתי המשוואות מזכירות את קבוצה ב׳. חייבים להשוות את גודל החלק של ב׳ לפני שאפשר לחבר.`,[`מביאים את ב׳ למספר חלקים משותף: ${L}.`,`מכפילים את היחס הראשון ב־${ka}: א׳:ב׳ = ${A}:${B}.`,`מכפילים את השני ב־${kb}: ב׳:ג׳ = ${B}:${C}.`,`סך הכול ${A+B+C} חלקים, וכל חלק ${k} אנשים.`,`לכן בקבוצה ג׳ ${C} חלקים × ${k} = ${ans}.`],`מיישרים קודם את ב׳: זה כמו מכנה משותף. רק אז סופרים חלקים.`,`אסור לחבר שני יחסים כשקבוצה ב׳ מופיעה בהם במספר חלקים שונה.`,`בדיקה: א׳=${A*k}, ב׳=${B*k}, ג׳=${C*k}, וסכומם ${total}.`)}
+);
+GEN['ממוצעים'].push(
+()=>{let n=ri(3,5),m=ri(5,7),a=pick([60,70,75,80]),b=a+pick([10,15,20]),total=n*a+m*b,ans=fmt(total/(n+m));return qobj('ממוצעים',3,`בקבוצה א׳ יש ${n} תלמידים עם ממוצע ${a}, ובקבוצה ב׳ יש ${m} תלמידים עם ממוצע ${b}. מה הממוצע של שתי הקבוצות יחד?`,ans,[fmt((a+b)/2),fmt((total+a)/(n+m)),fmt((total+b)/(n+m)),fmt(a+b)],'ממוצע משוקלל — סכום לפני חילוק',`אוספים את כל הציונים כאילו שמים קוביות בקערה אחת, ורק אז מחלקים שווה בין כל ${n+m} התלמידים.`,[`סכום קבוצה א׳: ${n}×${a}=${n*a}.`,`סכום קבוצה ב׳: ${m}×${b}=${m*b}.`,`מחברים סכומים: ${n*a}+${m*b}=${total}.`,`מספר התלמידים הכולל: ${n}+${m}=${n+m}.`,`הממוצע המאוחד: ${total}/${n+m}=${ans}.`],`ממוצע קבוצות = (כמות א׳×ממוצע א׳ + כמות ב׳×ממוצע ב׳) / סך האנשים.`,`מלכודת: (ממוצע א׳ + ממוצע ב׳)/2 נכון רק כשמספר האנשים בשתי הקבוצות שווה.`,`ממוצע של שתי קבוצות חייב להיות בין ${a} ל־${b}.`)},
+()=>{let n=ri(4,7),avg=pick([50,55,60]),increase=ri(3,6),known=avg+pick([10,15,20]),newavg=avg+increase,ans=(n+2)*newavg-n*avg-known;return qobj('ממוצעים',4,`ממוצע של ${n} ציונים היה ${avg}. נוספו שני ציונים, והממוצע של כל ${n+2} הציונים הפך ל־${newavg}. אחד הציונים החדשים הוא ${known}. מהו הציון החדש השני?`,ans,[ans+increase,ans-increase,known,avg+increase],'השוואת סכומים ישן וחדש',`ממוצע איננו מספר שמחברים לציונים. קודם מחשבים את סכום כל הציונים.`,[`סכום ישן: ${n}×${avg}=${n*avg}.`,`סכום חדש: ${n+2}×${newavg}=${(n+2)*newavg}.`,`סכום שני המצטרפים: ${(n+2)*newavg}−${n*avg}=${(n+2)*newavg-n*avg}.`,`מצטרף אחד קיבל ${known}, לכן השני קיבל ${ans}.`],`תמיד: סכום = ממוצע×כמות; שינוי בסכום = סכום החדשים.`,`מלכודת: להפחית ממוצעים בלי להתחשב בכך שמספר האיברים גדל בשניים.`,`בדיקה: (${n*avg}+${known}+${ans})/${n+2}=${newavg}.`)}
+);
+GEN['מהירות'].push(
+()=>{let a=pick([40,50,60]),b=a+40,delay=2,first=1,a2=a+20,gap1=2*a-40,t=1+gap1/20;return qobj('מהירות',4,`מכונית א׳ יוצאת במהירות ${a} קמ״ש. שעתיים אחריה יוצאת מכונית ב׳ במהירות ${b} קמ״ש, באותו כיוון. שעה לאחר יציאת ב׳, מכונית א׳ מגבירה את מהירותה ל־${a2} קמ״ש. כמה שעות לאחר יציאת ב׳ תתרחש ההשגה?`,t,[t-1,t+1,t+2,t-0.5],'השגה בשני שלבים — הפער ומהירות הסגירה משתנים',`בכל שלב בודקים כמה קילומטרים ב׳ מתקרבת לא׳ בכל שעה. אם א׳ משנה מהירות — גם מהירות סגירת הפער משתנה.`,[`בהתחלה א׳ לבדה במשך שעתיים, לכן היתרון: ${a}×2=${2*a} ק״מ.`,`בשעת המרדף הראשונה הפער קטן ב־${b}−${a}=40 ק״מ.`,`נותר פער של ${2*a}−40=${gap1} ק״מ.`,`א׳ מגבירה מהירות ל־${a2}, וכעת הפער נסגר ב־${b}−${a2}=20 ק״מ בשעה.`,`צריך עוד ${gap1}/20=${gap1/20} שעות, בתוספת השעה הראשונה: ${t} שעות.`],`הפרד לשלבים; בכל שלב זמן = פער שצריך לסגור / מהירות סגירה.`,`מלכודת: להשתמש בהפרש המהירויות הראשון לכל זמן המרדף.`,`בדיקה: לאחר שעה הפער ${gap1}; אחרי עוד ${gap1/20} שעות × 20 קמ״ש הוא אפס.`)},
+()=>{let v1=pick([40,50,60]),v2=pick([80,90,100]),breakMin=30,dist=v1+v2,ans=fmt(dist/2.5);return qobj('מהירות',3,`רכב נסע שעה במהירות ${v1} קמ״ש, נח במשך חצי שעה, ואז נסע שעה במהירות ${v2} קמ״ש. מה מהירותו הממוצעת לאורך כל הזמן, כולל העצירה?`,ans,[fmt((v1+v2)/2),fmt(dist/2),fmt(dist/3),fmt(v1+v2)],'מהירות ממוצעת היא מרחק כולל חלקי זמן כולל',`בעצירה הרכב לא מתקדם, אבל הזמן ממשיך לעבור ולכן הוא חייב להיכלל במכנה.`,[`בשעה הראשונה נסע ${v1} ק״מ.`,`בשעה האחרונה נסע ${v2} ק״מ.`,`הדרך הכוללת: ${v1}+${v2}=${dist} ק״מ.`,`הזמן הכולל: 1+0.5+1=2.5 שעות.`,`מהירות ממוצעת: ${dist}/2.5=${ans} קמ״ש.`],`חבר את כל הדרכים וחלק בכל הזמנים, גם דקות עצירה.`,`מלכודת: ממוצע רגיל של שתי המהירויות תוך התעלמות מחצי שעת העצירה.`,`מהירות ממוצעת כולל עצירה תהיה קטנה מהממוצע של מהירויות הנסיעה.`)}
+);
+GEN['שברים'].push(
+()=>{let d1=pick([3,4]),d2=pick([2,3,4]),num=(d1-1)*(d2-1),den=d1*d2,g=gcd(num,den),ans=`${num/g}/${den/g}`;return qobj('שברים',3,`בקופסה היו סוכריות. ביום ראשון אכלו 1/${d1} מהסוכריות. ביום שני אכלו 1/${d2} מהסוכריות שנותרו אחרי יום ראשון. איזה חלק מהכמות המקורית נותר בסוף?`,ans,[`${d1-1}/${d1}`,`${d2-1}/${d2}`,`${1}/${d1+d2}`,`${1}/${d1*d2}`],'שבר מתוך מה שנותר — בסיס משתנה',`כל פעם לוקחים חלק מהקופסה כפי שהיא באותו רגע, לא מהכמות המקורית.`,[`אחרי היום הראשון נשאר (${d1}-1)/${d1} = ${d1-1}/${d1}.`,`ביום השני נשאר (${d2}-1)/${d2} מן היתרה.`,`מכפילים: (${d1-1}/${d1}) × (${d2-1}/${d2}) = ${num}/${den}.`,`מצמצמים ומקבלים ${ans}.`],`בכל שלב מחברים את השבר שנותר במכפלה — לא מחסרים שני שברים מהמקור.`,`מלכודת: לחסר 1/${d1}+1/${d2} מהכמות המקורית, אף שהיום השני מחושב מהיתרה.`,`השבר הסופי חייב להיות קטן מהשבר שנותר אחרי היום הראשון.`)}
+);
+
+const topics=Object.keys(GEN);
+function fresh(){let cards={};WORDS.forEach(w=>cards[w.id]={seen:false,stage:0,due:today(),reviews:0,again:0,hard:0,good:0});return{cards,stats:{streak:0,last:null,eRev:0,qTot:0,qCor:0,qTime:0},topic:{},mist:[],notes:'',history:[]}}
+function load(){let b=fresh();try{let r=JSON.parse(localStorage.getItem(KEY)||'null');if(!r)return b;b.cards={...b.cards,...(r.cards||{})};b.stats={...b.stats,...(r.stats||{})};b.topic=r.topic||{};b.mist=Array.isArray(r.mist)?r.mist:[];b.notes=r.notes||'';b.history=Array.isArray(r.history)?r.history:[];return b}catch(e){return b}}
+let S=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}render()}
+const toast=t=>{let e=$('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1500)};
+function go(v){document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));$(v).classList.remove('hidden');document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.v===v));if(v==='tricks')drawTricks();if(v==='mistakes')drawMist();if(v==='coach')makeSummary();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>go(b.dataset.v));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const seen=()=>WORDS.filter(w=>S.cards[w.id].seen),master=()=>WORDS.filter(w=>S.cards[w.id].stage>=4),due=()=>WORDS.filter(w=>S.cards[w.id].seen&&S.cards[w.id].due<=today());
+function tstat(t){return S.topic[t]||{correct:0,total:0,time:0}}
+function weakTopic(){let a=topics.map(topic=>{let s=tstat(topic);return{topic,total:s.total||0,acc:s.total?Math.round(s.correct/s.total*100):100,time:s.total?Math.round(s.time/s.total):0}}).filter(x=>x.total>0);return a.sort((a,b)=>a.acc-b.acc||b.time-a.time)[0]||null}
+function render(){$('streak').textContent=S.stats.streak||0;$('hs').textContent=seen().length;$('hm').textContent=master().length;$('ha').textContent=S.stats.qTot?Math.round(S.stats.qCor/S.stats.qTot*100)+'%':'—';$('ht').textContent=S.stats.qTot?Math.round(S.stats.qTime/S.stats.qTot)+' שנ׳':'—';$('eTotal').textContent=WORDS.length;$('eDue').textContent=due().length;$('eMaster').textContent=master().length;$('eRev').textContent=S.stats.eRev||0;let w=weakTopic(),a=[];if(due().length)a.push(`באנגלית מחכות ${due().length} מילים לחזרה.`);else a.push(seen().length?'אין חזרות דחופות באנגלית כרגע.':'באנגלית עדיין לא התחלת — מומלץ אימון יומי קצר.');if(w)a.push(`בכמותי: ${w.topic} הוא הנושא החלש כרגע (${w.acc}% דיוק, ${w.time} שנ׳ בממוצע). האימון החלש יתמקד בו עם וריאציות חדשות.`);else a.push('בכמותי עדיין אין מספיק נתונים — התחל באימון מעורב.');$('advice').textContent=a.join(' ')}
+render();
+
+let E={q:[],i:0,r:{again:0,hard:0,good:0},dir:'en'};
+function startEng(quick=false){let q=due().sort((a,b)=>((S.cards[b.id].again||0)*3+(S.cards[b.id].hard||0))-((S.cards[a.id].again||0)*3+(S.cards[a.id].hard||0))).map(w=>w.id),freshIds=WORDS.filter(w=>!S.cards[w.id].seen).slice(0,quick?0:5).map(w=>w.id);q=[...q,...freshIds];if(quick)q=WORDS.slice().sort((a,b)=>S.cards[a.id].stage-S.cards[b.id].stage).slice(0,5).map(w=>w.id);if(!q.length)q=WORDS.slice(0,5).map(w=>w.id);E={q:q.slice(0,5),i:0,r:{again:0,hard:0,good:0},dir:'en'};$('engSession').classList.remove('hidden');$('edone').classList.add('hidden');$('ecard').classList.remove('hidden');go('eng');showEng()}
+function showEng(){if(E.i>=E.q.length)return finishEng();let w=WORDS.find(x=>x.id===E.q[E.i]),c=S.cards[w.id];E.dir=(!c.seen||((c.reviews+E.i)%2===0))?'en':'he';$('ecount').textContent=`${E.i+1}/${E.q.length}`;$('ebar').style.width=E.i/E.q.length*100+'%';$('eanswer').classList.add('hidden');$('erating').classList.add('hidden');$('erevealWrap').classList.remove('hidden');$('erecall').classList.add('hidden');$('erecallInput').value='';if(E.dir==='en'){$('eprompt').textContent=c.seen?'מה המשמעות? נסה לשלוף לפני החשיפה.':'מילה חדשה';$('efront').className='word';$('efront').textContent=w.en}else{$('eprompt').textContent='מה המילה באנגלית?';$('efront').className='he';$('efront').textContent=w.he;$('erecall').classList.remove('hidden')}$('emeaning').textContent=`${w.en} — ${w.he}`;$('eexample').textContent=w.ex;$('etrans').textContent='נסה להבין את המשפט גם בלי לתרגם כל מילה.'}
+function reveal(){ $('eanswer').classList.remove('hidden');$('erating').classList.remove('hidden');$('erevealWrap').classList.add('hidden')}
+$('ereveal').onclick=reveal;$('erecallCheck').onclick=()=>{let w=WORDS.find(x=>x.id===E.q[E.i]);if(!$('erecallInput').value.trim())return toast('כתוב תשובה');reveal();toast($('erecallInput').value.trim().toLowerCase()===w.en?'נכון ✅':'בדוק את התשובה')};
+document.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{let r=b.dataset.rate,id=E.q[E.i],c=S.cards[id];c.seen=true;c.reviews++;c[r]++;S.stats.eRev++;E.r[r]++;if(r==='again'){c.stage=0;c.due=add(1);/* חזרה תבוצע באימון הבא; בכל סשן נשארים חמישה כרטיסים */}else if(r==='hard'){c.stage=Math.max(1,c.stage);c.due=add(1)}else{c.stage=Math.min(5,c.stage+1);c.due=add(INT[c.stage])}E.i++;save();showEng()});
+function finishEng(){$('ecard').classList.add('hidden');$('edone').classList.remove('hidden');$('ebar').style.width='100%';$('esummary').textContent=`ידעתי ${E.r.good}, כמעט ${E.r.hard}, לא ידעתי ${E.r.again}.`;mark();save()}
+$('engDaily').onclick=()=>startEng(false);$('engQuick').onclick=()=>startEng(true);$('homeEng').onclick=()=>startEng(false);
+
+let selTopic=topics[0];
+function chips(){let c=$('chips');c.innerHTML='';topics.forEach(t=>{let b=document.createElement('button');b.className='chip'+(t===selTopic?' active':'');b.textContent=t;b.onclick=()=>{selTopic=t;chips()};c.appendChild(b)})}
+chips();
+function desiredLevel(topic){let s=tstat(topic);if(!s.total||s.total<3)return Math.random()<.55?1:2;let acc=s.correct/s.total,avg=s.time/s.total;if(acc>=.85&&avg<=70)return pick([2,2,3,3,3]);if(acc>=.75)return pick([1,2,2,3]);if(acc<.6)return pick([1,1,2]);return pick([1,2,2])}
+function genOne(topic,forcedLevel=null){let pool=GEN[topic];for(let tries=0;tries<25;tries++){let q=pick(pool)();let target=forcedLevel||desiredLevel(topic);if(Math.abs(q.lvl-target)<=1)return q}return pick(pool)()}
+function buildSession(mode,n){let out=[],seenStem=new Set(),targetTopic=selTopic;if(mode==='weak'){let w=weakTopic();if(w)targetTopic=w.topic}
+for(let i=0;i<n;i++){let topic=mode==='topic'||mode==='weak'?targetTopic:topics[i%topics.length];if(mode==='mix'||mode==='sprint')topic=pick(topics);let q,tries=0;do{q=genOne(topic);tries++}while(seenStem.has(q.stem)&&tries<20);seenStem.add(q.stem);out.push(q)}return out}
+
+let QS={list:[],i:0,correct:0,time:0,start:0,int:null,mode:'mix'};
+function startQ(mode,n,title){QS={list:buildSession(mode,n),i:0,correct:0,time:0,start:0,int:null,mode};$('qSession').classList.remove('hidden');$('qdone').classList.add('hidden');$('qwrap').classList.remove('hidden');$('qtitle').textContent=title;go('quant');showQ()}
+function hideExplain(){['qex','qdeep','qfast','qtrap','qsanity'].forEach(id=>$(id).classList.add('hidden'))}
+function showQ(){clearInterval(QS.int);if(QS.i>=QS.list.length)return finishQ();let q=QS.list[QS.i];QS.start=Date.now();$('qcount').textContent=`${QS.i+1}/${QS.list.length}`;$('qbar').style.width=QS.i/QS.list.length*100+'%';$('qbadge').textContent=q.topic;$('qlevel').textContent='רמה '+q.lvl;$('qmethod').textContent='כלי: '+q.method;$('qstem').textContent=isolateNumericRatios(q.stem);$('qopts').innerHTML=q.opts.map((o,i)=>`<label class="opt"><input type="radio" name="qo" value="${String(o).replace(/"/g,'&quot;')}"><span>${String.fromCharCode(65+i)}. ${o}</span></label>`).join('');hideExplain();$('qcheck').classList.remove('hidden');$('qnext').classList.add('hidden');tick();QS.int=setInterval(tick,250)}
+function tick(){let s=Math.floor((Date.now()-QS.start)/1000);$('timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+$('qcheck').onclick=()=>{let x=document.querySelector('input[name="qo"]:checked');if(!x)return toast('בחר תשובה');clearInterval(QS.int);let q=QS.list[QS.i],sec=Math.round((Date.now()-QS.start)/1000),ok=x.value===q.ans;if(ok)QS.correct++;QS.time+=sec;document.querySelectorAll('input[name="qo"]').forEach(i=>{let l=i.closest('.opt');if(i.value===q.ans)l.classList.add('ok');if(i.checked&&i.value!==q.ans)l.classList.add('bad');i.disabled=true});
+$('qex').innerHTML=`<h4>${ok?'נכון ✅':'לא נכון ❌'} — למה?</h4>${q.why}`;$('qex').classList.remove('hidden');
+if(!ok){$('qdeep').innerHTML=`<h4>🔍 פתרון מעמיק — שלב אחר שלב</h4><ol class="steps">${q.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;$('qdeep').classList.remove('hidden');$('qtrap').innerHTML=`<h4>⚠️ המלכודת הנפוצה</h4>${q.trap}`;$('qtrap').classList.remove('hidden');$('qsanity').innerHTML=`<h4>🧪 בדיקת שפיות</h4>${q.sanity}`;$('qsanity').classList.remove('hidden')}
+$('qfast').innerHTML=`<h4>⚡ הדרך הטובה במבחן</h4>${q.fast}<br><small>זמן שלך: ${sec} שניות</small>`;$('qfast').classList.remove('hidden');
+record(q,ok,sec,x.value);$('qcheck').classList.add('hidden');$('qnext').classList.remove('hidden');save()};
+$('qnext').onclick=()=>{QS.i++;showQ()};
+function record(q,ok,sec,choice){S.stats.qTot++;S.stats.qCor+=ok?1:0;S.stats.qTime+=sec;let s=S.topic[q.topic]||{correct:0,total:0,time:0};s.total++;s.correct+=ok?1:0;s.time+=sec;S.topic[q.topic]=s;S.history.push({date:new Date().toISOString(),topic:q.topic,lvl:q.lvl,correct:ok,time:sec,stem:q.stem});if(S.history.length>300)S.history=S.history.slice(-300);if(!ok){let key=q.stem;let m=S.mist.find(x=>(x.stem||x.id)===key);if(m){m.count=(m.count||1)+1;m.snapshot=q;m.lastChoice=choice}else S.mist.push({id:q.id,stem:q.stem,topic:q.topic,count:1,snapshot:q,lastChoice:choice})}}
+function finishQ(){clearInterval(QS.int);$('qwrap').classList.add('hidden');$('qdone').classList.remove('hidden');$('qbar').style.width='100%';let avg=QS.list.length?Math.round(QS.time/QS.list.length):0;$('qsummary').textContent=`תוצאה ${QS.correct}/${QS.list.length}. זמן ממוצע ${avg} שניות. השאלות באימון הבא ייווצרו מחדש עם וריאציות אחרות.`;mark();save()}
+$('qPersonal').onclick=()=>startQ('personal',5,'5 שאלות מאתגרות בשבילך');$('qTopic').onclick=()=>startQ('topic',5,`אימון: ${selTopic}`);$('qMix').onclick=()=>startQ('mix',5,'אימון מעורב');$('qWeak').onclick=()=>startQ('weak',5,'האזור החלש שלי');$('qSprint').onclick=()=>startQ('sprint',5,'ספרינט 5');$('homeQuant').onclick=()=>startQ('mix',5,'אימון מעורב');
+
+function drawTricks(){let g=$('tricksGrid');g.innerHTML='';TRICKS.forEach(t=>{let d=document.createElement('div');d.className='trick';d.innerHTML=`<h3>${t.t}</h3><ul>${t.a.map(x=>`<li>${x}</li>`).join('')}</ul>${t.f.map(x=>`<div class="formula">${x}</div>`).join('')}`;g.appendChild(d)})}
+$('trickQuiz').onclick=()=>{selTopic=pick(topics);chips();startQ('topic',5,'בחן אותי על טריקים')};
+
+function retryQuestion(q){QS={list:[q],i:0,correct:0,time:0,start:0,int:null,mode:'retry'};$('qSession').classList.remove('hidden');$('qdone').classList.add('hidden');$('qwrap').classList.remove('hidden');$('qtitle').textContent='חזרה על טעות';go('quant');showQ()}
+function drawMist(){let b=$('mistakesList');b.innerHTML='';if(!S.mist.length){b.innerHTML='<div class="note">עדיין אין טעויות שמורות.</div>';return}S.mist.slice().sort((a,b)=>(b.count||1)-(a.count||1)).forEach((m,idx)=>{let q=m.snapshot||LEGACY.find(x=>x.id===m.id);let d=document.createElement('div');d.className='q';if(q)d.innerHTML=`<span class="pill">${m.topic||q.topic}</span> <span class="pill">טעית ${m.count||1} פעמים</span><div class="stem" style="font-size:16px;margin-top:10px">${q.stem}</div><div class="ex fast"><b>⚡ הדרך המהירה:</b> ${q.fast||'חזור לעיקרון של הנושא ופתור מסודר.'}</div><div class="actions"><button class="btn secondary" data-retry="${idx}">תרגל שוב</button></div>`;else d.innerHTML=`<span class="pill">${m.topic||'נושא'}</span> <span class="pill">טעית ${m.count||1} פעמים</span><p class="muted">זו טעות מהגרסה הישנה. היא נשמרה בסטטיסטיקה, אבל נוסח השאלה אינו זמין.</p>`;b.appendChild(d)});document.querySelectorAll('[data-retry]').forEach(btn=>btn.onclick=()=>{let m=S.mist.slice().sort((a,b)=>(b.count||1)-(a.count||1))[+btn.dataset.retry],q=m.snapshot||LEGACY.find(x=>x.id===m.id);if(q)retryQuestion(q)})}
+
+function levelStats(){let out={1:{c:0,t:0,time:0},2:{c:0,t:0,time:0},3:{c:0,t:0,time:0},4:{c:0,t:0,time:0}};for(const h of S.history){if(!h.lvl)continue;let x=out[h.lvl];if(!x)continue;x.t++;x.c+=h.correct?1:0;x.time+=h.time||0}return out}
+function makeSummary(){let w=weakTopic(),weakWords=WORDS.map(x=>({w:x,c:S.cards[x.id],score:S.cards[x.id].again*2+S.cards[x.id].hard-S.cards[x.id].good})).filter(x=>x.c.seen).sort((a,b)=>b.score-a.score).slice(0,6),ls=levelStats();
+let lines=['סיכום Psychometric Trainer V4.3','','אנגלית:',`- נחשפו: ${seen().length}/${WORDS.length}`,`- בשליטה: ${master().length}`,`- לחזרה היום: ${due().length}`,`- מילים חלשות: ${weakWords.length?weakWords.map(x=>x.w.en).join(', '):'אין מספיק נתונים'}`,'','כמותי:',`- שאלות מצטברות: ${S.stats.qTot}`,`- דיוק כולל: ${S.stats.qTot?Math.round(S.stats.qCor/S.stats.qTot*100)+'%':'אין נתונים'}`,`- זמן ממוצע: ${S.stats.qTot?Math.round(S.stats.qTime/S.stats.qTot)+' שניות':'אין נתונים'}`,`- נושא חלש: ${w?w.topic+' — '+w.acc+'%, '+w.time+' שנ׳':'אין מספיק נתונים'}`,`- טעויות שונות במחברת: ${S.mist.length}`,'','ביצועים לפי נושא:',...topics.map(t=>{let x=S.topic[t];return x&&x.total?`- ${t}: ${Math.round(x.correct/x.total*100)}% (${x.correct}/${x.total}), ${Math.round(x.time/x.total)} שנ׳`:`- ${t}: טרם תורגל`}),'','ביצועים לפי רמה (מאז V3):',...([1,2,3,4].map(l=>ls[l].t?`- רמה ${l}: ${Math.round(ls[l].c/ls[l].t*100)}%, ${Math.round(ls[l].time/ls[l].t)} שנ׳, ${ls[l].t} שאלות`:`- רמה ${l}: אין עדיין נתונים`)),``,`הערות שלי: ${$('notes').value.trim()||'אין כרגע.'}`,'','בקשה לצ׳אט: התאם את האימון הבא לביצועים. תן לי וריאציות חדשות ולא חזרה מילולית על אותה שאלה. אם אני טועה — הסבר לעומק את העיקרון, הדרך המהירה והמלכודת. אם אני מדויק אבל איטי — תרגל זיהוי וקיצור דרך.'];$('summary').value=lines.join('\n');S.notes=$('notes').value;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+$('refreshSummary').onclick=()=>{makeSummary();toast('הסיכום עודכן')};$('copySummary').onclick=async()=>{makeSummary();try{await navigator.clipboard.writeText($('summary').value)}catch(e){$('summary').select();document.execCommand('copy')}toast('הועתק')};$('notes').value=S.notes||'';
+function mark(){let t=today();if(S.stats.last!==t){if(!S.stats.last)S.stats.streak=1;else{let d=Math.round((new Date(t)-new Date(S.stats.last))/86400000);S.stats.streak=d===1?(S.stats.streak||0)+1:1}S.stats.last=t}}
+drawTricks();drawMist();makeSummary();
+
+/* V4 - teaching-first quantitative upgrades; uses V3's existing storage key. */
+(function(){
+const escapeHTML=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const toggle=(id,on)=>$(id)?.classList.toggle('hidden',!on);
+const examUrl='https://www.nite.org.il/wp-content/uploads/2025/08/psychometric_summer_2025_acc.pdf';
+const examHub='https://www.nite.org.il/practice-tests/hebrew-practice-tests/';
+
+// Genuine examination materials remain on NITE's site; no copyrighted questions reproduced.
+const nav=document.querySelector('.top nav');
+const officialButton=document.createElement('button');officialButton.className='nav';officialButton.textContent='📄 מבחנים אמיתיים';officialButton.onclick=()=>go('official');nav.appendChild(officialButton);
+const official=document.createElement('section');official.id='official';official.className='view hidden';
+official.innerHTML=`<div class="panel"><div class="section"><div><small>OFFICIAL EXAMS · מאל״ו</small><h2>📄 תרגול ממבחנים אמיתיים</h2></div><span class="pill">חומר מקור רשמי</span></div><p class="muted">כאן פותחים בחינה מקורית של המרכז הארצי לבחינות ולהערכה ופועלים מול השאלות כפי שהתפרסמו. השאלות אינן מועתקות לאתר שלנו; לכל חומרי הבחינה זכויות יוצרים של מאל״ו.</p><div class="two"><div class="card"><h3>קיץ 2025 — בחינה רשמית</h3><p class="muted">ב־PDF המלא יש שני פרקי חשיבה כמותית ומפתח תשובות לקראת הסוף. תרגל מהמסמך המקורי, עם טיימר.</p><a class="btn primary v4-link" href="${examUrl}" target="_blank" rel="noopener noreferrer">פתח PDF רשמי ↗</a></div><div class="card"><h3>ארכיון הבחינות הרשמיות</h3><p class="muted">בחינות נוספות לפי שנה ומועד באתר מאל״ו, עם מפתחות תשובות לפרקים.</p><a class="btn secondary v4-link" href="${examHub}" target="_blank" rel="noopener noreferrer">פתח מאגר מאל״ו ↗</a></div></div></div><div class="panel"><h3>🧩 יומן תרגול מבחינות אמת</h3><p class="muted">פתור שאלה ב־PDF המקורי, ואז תעד אותה כאן. לרגעים שבהם תשובה לא מובנת, צור הודעה מוכנה לצ׳אט עם מועד, פרק ומספר שאלה — בלי להעתיק את השאלה המוגנת בזכויות יוצרים.</p><div class="v4-form"><label>מועד הבחינה<select id="realExam"><option value="קיץ 2025">קיץ 2025</option><option value="מועד אחר במאל״ו">מועד אחר במאל״ו</option></select></label><label>פרק כמותי<select id="realSection"><option value="ראשון">ראשון</option><option value="שני">שני</option></select></label><label>מספר שאלה<input id="realNumber" type="number" inputmode="numeric" min="1" max="30" value="1"></label><label>איך הלך?<select id="realResult"><option value="טעיתי">טעיתי</option><option value="עניתי נכון אבל הייתי איטי">נכון אבל איטי</option><option value="עניתי נכון">נכון</option></select></label></div><label style="display:block;margin-top:12px">באיזה שלב נתקעת? (לא חובה)<textarea id="realNote" placeholder="למשל: לא הבנתי למה מתייחסים דווקא לסכום הקבוצות..." rows="3"></textarea></label><div class="actions"><button id="realSave" class="btn primary">שמור ליומן</button><button id="realCopy" class="btn secondary">העתק בקשת הסבר לצ׳אט</button></div><div id="realList" class="v4-log"></div></div>`;
+document.querySelector('main').appendChild(official);
+
+// Choice: adaptive learning or genuinely demanding challenge; no false difficulty promise.
+const toolbar=document.createElement('div');toolbar.className='v4-difficulty';toolbar.innerHTML=`<div><b>רמת תרגול</b><small>רמת אתגר כוללת חשיבה רב־שלבית, לא רק מספרים גדולים</small></div><div class="v4-switch"><button type="button" id="levelAdaptive" class="chip">אדפטיבי</button><button type="button" id="levelChallenge" class="chip">אתגר רמות 3–4</button></div>`;
+document.querySelector('#quant .chips').after(toolbar);
+if(!['adaptive','challenge'].includes(S.v4Level))S.v4Level='adaptive';
+function paintLevels(){ $('levelAdaptive').classList.toggle('active',S.v4Level==='adaptive');$('levelChallenge').classList.toggle('active',S.v4Level==='challenge')}
+$('levelAdaptive').onclick=()=>{S.v4Level='adaptive';paintLevels();save()};
+$('levelChallenge').onclick=()=>{S.v4Level='challenge';paintLevels();save()};paintLevels();
+
+// Correct difficulty selection. V3 previously picked a random template BEFORE finding the target level.
+desiredLevel=function(topic){
+ const s=tstat(topic);if(S.v4Level==='challenge')return pick([3,4,4]);
+ if(!s.total||s.total<3)return pick([2,2,3]);
+ const accuracy=s.correct/s.total,avg=s.time/s.total;
+ const recent=(S.history||[]).filter(h=>h.topic===topic).slice(-6);
+ if(recent.length>=4){const hit=recent.filter(h=>h.correct).length/recent.length;
+   const rt=recent.reduce((sum,h)=>sum+(h.time||0),0)/recent.length;
+   if(hit>=.8&&rt<=85)return pick([3,3,4,4]);
+   if(hit<.5)return pick([2,2,3]);
+ }
+ if(s.total>=6&&accuracy>=.85&&avg<=75)return pick([3,3,4,4]);
+ if(accuracy>=.75)return pick([2,3,3]);
+ if(accuracy<.55)return pick([1,2,2,3]);
+ return pick([2,2,3]);
+};
+genOne=function(topic,level){
+ const pool=GEN[topic]||GEN['יחסים'],want=level||desiredLevel(topic),variants=pool.map(f=>f());
+ const candidates=variants.filter(q=>q.lvl===want),adjacent=variants.filter(q=>Math.abs(q.lvl-want)===1);
+ return pick(candidates.length?candidates:adjacent.length?adjacent:variants);
+};
+buildSession=function(mode,n){
+ const output=[],seenStems=new Set(),recent=new Set((S.history||[]).slice(-35).map(h=>h.stem)),topicWeak=weakTopic()?.topic||selTopic;
+ const templateOrder={};for(const topic of topics){templateOrder[topic]=shuffle((GEN[topic]||[]).map((_,i)=>i))}
+ for(let i=0;i<n;i++){
+  const topic=mode==='personal'?['יחסים','יחסים','ממוצעים','מהירות','שברים'][i%5]:mode==='topic'?selTopic:mode==='weak'?topicWeak:mode==='sprint'?pick(topics):topics[i%topics.length];
+  const pool=GEN[topic];let best=null,bestScore=-1e10;
+  for(let j=0;j<Math.max(12,pool.length*2);j++){
+   const target=mode==='personal'?pick([3,3,4]):desiredLevel(topic);
+   const fn=pool[templateOrder[topic][j%pool.length]];
+   const q=fn();const delta=Math.abs(q.lvl-target);
+   let score=(q.lvl>=3?10:0)-delta*12;
+   if(mode==='sprint'&&q.lvl>3)score-=4;
+   if(mode==='personal'&&q.lvl<3)score-=100;
+   if(seenStems.has(q.stem))score-=1000;
+   if(recent.has(q.stem))score-=60;
+   if(output.some(x=>x.method===q.method&&x.topic===q.topic))score-=18;
+   score+=Math.random()*2;
+   if(score>bestScore){best=q;bestScore=score}
+  }
+  output.push(best);seenStems.add(best.stem);
+ }
+ return output;
+};
+// No hint showing the method before the learner has committed to an answer.
+showQ=function(){
+ clearInterval(QS.int);if(QS.i>=QS.list.length)return finishQ();const q=QS.list[QS.i];
+ QS.start=Date.now();$('qcount').textContent=`${QS.i+1}/${QS.list.length}`;
+ $('qbar').style.width=QS.i/QS.list.length*100+'%';$('qbadge').textContent=q.topic;
+ $('qlevel').textContent=`רמה ${q.lvl} · ${q.lvl>=3?'חשיבה מתקדמת':'בניית יסודות'}`;
+ $('qmethod').textContent='🧠 קודם בחר שיטה בעצמך';$('qmethod').classList.remove('revealed');
+ $('qstem').textContent=isolateNumericRatios(q.stem);
+ $('qopts').innerHTML=q.opts.map((value,i)=>`<label class="opt"><input type="radio" name="qo" value="${escapeHTML(value)}"><span>${String.fromCharCode(65+i)}. ${escapeHTML(isolateNumericRatios(value))}</span></label>`).join('');
+ hideExplain();toggle('qcheck',true);toggle('qnext',false);
+ const qp=document.querySelector('#qwrap .q');qp.classList.remove('v4-fade');void qp.offsetHeight;qp.classList.add('v4-fade');
+ tick();QS.int=setInterval(tick,250);
+};
+const simpleIntroductions={
+ 'יחסים':'יחס הוא מתכון: אם בכל סיבוב לוקחים כך וכך מהקבוצה הראשונה וכך וכך מהשנייה, חייבים לשמור על סדר הקבוצות ועל גודל המנה.',
+ 'אחוזים':'אחוז הוא חלק מתוך 100. לכן 25% הוא רבע ו־50% הוא חצי. בכל שינוי שאל: מתוך איזה מספר מחשבים?',
+ 'ממוצעים':'ממוצע הוא חלוקה שווה: קודם מחברים את כל מה שיש, ואז מחלקים בין המשתתפים.',
+ 'מהירות':'מהירות אומרת כמה קילומטרים מספיקים בכל שעה. הדרך הנכונה מתחילה משאלה מהו המרחק ומה הזמן.',
+ 'עבודה והספק':'דמיין בריכה: כל פועל ממלא חלק ממנה בשעה. עובדים יחד מחברים את הכמות שממלאים, לא את השעות.',
+ 'שברים':'שבר הוא פרוסה מעוגה. שים לב איזו עוגה נשארה לפני שמבקשים עוד פרוסה.',
+ 'אלגברה':'המשוואה היא מאזניים: מותר לבצע אותה פעולה בשני הצדדים בלי לשבור את האיזון.',
+ 'כפל וחילוק מהיר':'במקום כפל ארוך, מחפשים מספר עגול שקל לעבוד איתו: 25 קשור ל־100, ו־125 קשור ל־1000.',
+ 'גיאומטריה':'קודם תחליט אם מודדים מסגרת (היקף) או את מה שבפנים (שטח). אלה פעולות שונות.',
+ 'חזקות ושורשים':'חזקה היא כפל חוזר של אותו מספר. שורש שואל איזה מספר מוכפל בעצמו נותן את התוצאה.',
+ 'הסתברות וספירה':'סופרים כמה אפשרויות טובות יש וכמה אפשרויות קיימות בסך הכול. רק אחר כך מחלקים.'
+};
+const trickFor=q=>TRICKS.find(t=>t.t===q.topic);
+
+const learningGuides={
+ 'יחסים':{visual:'🟦 🟦　|　🟨 🟨 🟨',story:'דמיין שתי ערימות קוביות: בערימה א׳ שתי קוביות ובערימה ב׳ שלוש. היחס א׳:ב׳ הוא 2:3. אם מכפילים כל קובייה בארבע, נקבל 8 ו־12, אבל היחס עדיין 2:3.',core:'מהי קבוצה א׳ ומהי ב׳? מה נשאר קבוע? האם מוסיפים אנשים או רק מעבירים ביניהם?',why:'מספרי היחס הם חלקים שווי־גודל, לא מספר האנשים עצמם. קודם מוצאים את גודל החלק ורק אחר כך את מספר האנשים.',source:'https://en.khanacademy.org/kmap/functions-a/x55c35f12b8945431%3Arates-ratios/x55c35f12b8945431%3Avisualize-equivalent-ratios/v/ratios-with-tape-diagrams',label:'שיעור ויזואלי: יחסים עם תרשימי קוביות'},
+ 'ממוצעים':{visual:'🍎 🍎 🍎 🍎　→　👧 👦',story:'אם יש ארבעה תפוחים ומחלקים אותם שווה בין שני ילדים, כל ילד יקבל שניים. ממוצע הוא בדיוק חלוקה שווה כזאת. אם יש קבוצות, צריך לספור את כל התפוחים ואת כל הילדים.',core:'האם השתנה מספר המשתתפים? מהו הסכום לפני השינוי ומהו הסכום אחריו?',why:'ממוצע × מספר איברים = הסכום. לכן לא צריך לנחש ערך חסר: מחסרים סכומים.',source:'https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/a/mean-and-median',label:'Khan Academy: ממוצע כחלוקה שווה'},
+ 'מהירות':{visual:'🚙 — — — — 🚗',story:'דמיין שרכב אחד נמצא 60 ק״מ לפני רכב אחר. אם הראשון נוסע 50 קמ״ש והשני 80 קמ״ש, בכל שעה הפער קטן רק ב־30 ק״מ. הרכב הראשון עדיין מתקדם!',core:'מי יצא קודם? מהו הפער ברגע שהמרדף מתחיל? האם המהירויות משתנות?',why:'באותו כיוון מחסרים מהירויות כדי למצוא כמה קילומטרים הפער קטן בכל שעה. אם יש שינוי מהירות, מחלקים לשלבים.',source:'https://en.khanacademy.org/math/algebra-1-ny-next-gen/xd156c2c030b6ba5d%3Alinear-equations-graphs/xd156c2c030b6ba5d%3Amodeling-with-linear-equations-and-inequalities/v/comparing-linear-rates-example',label:'Khan Academy: דוגמת השגה והפרשי מהירויות'},
+ 'אחוזים':{visual:'🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜',story:'תדמיין 100 סוכריות. 20% פירושו 20 סוכריות. אם מספר הסוכריות משתנה, גם מה ש־20% מייצג משתנה.',core:'מהו השלם המקורי? מהו השלם החדש? ביחס לאיזה שלם שואלים?',why:'אחוז שינוי = הפרש חלקי הכמות המקורית. כשמחשבים שוב אחוז, השלם החדש יכול להיות אחר.',source:'https://www.khanacademy.org/test-prep/v2-sat-math/x0fcc98a58ba3bea7%3Aproblem-solving-and-data-analysis-easier/x0fcc98a58ba3bea7%3Apercentages-easier/a/v2-sat-lesson-percentages?classCode=8PDCTZH5',label:'Khan Academy: למה אחוז שינוי מחושב כך'},
+ 'שברים':{visual:'🍫 ▪ ▪ ▪ ▪',story:'אם אכלת חצי שוקולד, נשאר חצי. אם אחר כך אכלת חצי ממה שנשאר — אכלת רבע מהשוקולד המקורי, לא עוד חצי מהמקור.',core:'ממה מחשבים בכל שלב את השבר — מהכמות המקורית או ממה שנשאר?',why:'שבר מכמות הוא כפל. שינוי אחרי שינוי פועל על כמות חדשה ולכן לרוב מכפילים את השברים שנשארו.',source:'https://www.khanacademy.org/math/up-math-cbse-class-7-2026/x7f5284df092bf027%3Aworking-with-fractions/x7f5284df092bf027%3Adivision-of-fractions/v/division-of-fractions',label:'Khan Academy: הבנת שברים באמצעות ציור'},
+ 'עבודה והספק':{visual:'🪣 ＋ 🪣　→　🏊',story:'אם עובד מסיים בריכה בארבע שעות, בשעה אחת הוא ממלא רבע בריכה. אם שני עובדים עובדים יחד, מחברים את החלק שכל אחד ממלא בכל שעה.',core:'כמה חלקים מהעבודה מסיים כל עובד בשעה אחת? האם העובדים עובדים במקביל?',why:'מחברים הספקים (עבודה לשעה), ולא זמני סיום. אחר כך הופכים מהספק לזמן.',source:'https://en.khanacademy.org/math/pre-algebra/pre-algebra-ratios-rates/pre-algebra-ratio-word-problems',label:'Khan Academy: יחידות והספקים'},
+ 'אלגברה':{visual:'⚖️　3 קופסאות + 6 = 24',story:'משוואה היא מאזניים. אם מורידים שש קוביות מצד אחד, חייבים להוריד שש גם מהצד השני כדי להישאר מאוזנים.',core:'איזו פעולה אפשר לבצע בשני הצדדים בלי לשנות את האיזון?',why:'במשוואה שומרים על שוויון בשני הצדדים. המטרה היא להשאיר את הנעלם לבדו.',source:'https://www.khanacademy.org/math/7th-grade-illustrative-math',label:'Khan Academy: פתרון משוואות מדורג'},
+ 'גיאומטריה':{visual:'▭ ⬛',story:'היקף הוא הדרך ללכת מסביב לגדר. שטח הוא מספר האריחים שאפשר להניח בתוך החדר. אלה שתי שאלות שונות.',core:'מחפשים אורך גדר, שטח של רצפה, זווית או יחס בין צורות?',why:'בחירת הנוסחה נקבעת על פי מה שמודדים. יחידות עוזרות לבדוק: שטח בסמ״ר, אורך בס״מ.',source:'https://www.khanacademy.org/math/6th-grade-math',label:'Khan Academy: מושגים בסיסיים בגיאומטריה'},
+ 'הסתברות וספירה':{visual:'🔴 🔴 🔵 🔵 🔵',story:'בשק עם שני כדורים אדומים ושלושה כחולים יש חמישה אפשריים ורק שניים רצויים. לכן הסיכוי לאדום הוא 2/5.',core:'כמה תוצאות אפשריות? כמה מהן מתאימות? האם יש החזרה בין שליפות?',why:'הסתברות היא רצויות מתוך כלל האפשרויות. כשמוציאים בלי החזרה, גם המונה וגם המכנה משתנים.',source:'https://www.khanacademy.org/math/statistics-probability',label:'Khan Academy: הסתברות בסיסית'},
+ 'חזקות ושורשים':{visual:'2² = 2×2 = 4',story:'חזקה היא דרך קצרה לכתוב כפל חוזר; שורש שואל איזה מספר כפול עצמו נותן את המספר הנתון.',core:'האם מחפשים מכפלה חוזרת, שורש, או השוואה בין חזקות?',why:'מפרקים את הביטוי לפעולות פשוטות לפני שמחשבים את המספר הסופי.',source:'https://www.khanacademy.org/math/pre-algebra',label:'Khan Academy: חזקות ושורשים'},
+ 'כפל וחילוק מהיר':{visual:'25 × 4 = 100',story:'אם צריך לכפול ב־25, אפשר לחשוב על רבע של 100. לכן 48×25 = (48÷4)×100.',core:'יש גורם משותף? המספר קרוב ל־10 או ל־100?',why:'מתמטיקה בראש נעשית קלה כשמחליפים את הביטוי בביטוי שקול ונוח יותר.',source:'https://www.khanacademy.org/math/arithmetic',label:'Khan Academy: יסודות הכפל והחילוק'}
+};
+const isolateNumericRatios=text=>String(text??'').replace(/(\d+)\s*:\s*(\d+)/g,'\u2066$1:$2\u2069');
+const conceptHTML=q=>{const c=learningGuides[q.topic];if(!c)return '';
+ return `<div class="v43-tutor"><div class="v43-tutor-label">🧸 קודם הרעיון — בלי נוסחאות</div><div class="v43-visual">${escapeHTML(c.visual)}</div><p>${escapeHTML(c.story)}</p><p><b>מה לשאול את עצמי?</b> ${escapeHTML(c.core)}</p><p><b>למה השיטה עובדת?</b> ${escapeHTML(c.why)}</p><a href="${c.source}" target="_blank" rel="noopener noreferrer" class="v43-source">🎓 ללמוד את הרעיון בשיעור חיצוני: ${escapeHTML(c.label)} ↗</a><div class="v43-source-note">השיעור מסביר את העיקרון; הפתרון של השאלה הזאת נכתב במיוחד לתרגול.</div></div>`;};
+const explainDetailed=(q,correct,time)=>{
+ const trick=trickFor(q),intro=simpleIntroductions[q.topic]||'בוא נבין קודם מה נתון ומה בדיוק מבקשים למצוא.';
+ $('qmethod').textContent=`🔧 הכלי: ${q.method}`;$('qmethod').classList.add('revealed');
+ $('qex').innerHTML=`<h4>${correct?'✅ נכון — והנה גם הלמה':'❌ לא נורא — לומדים מהיסוד'}</h4><p>${escapeHTML(q.why)}</p>`;
+ $('qdeep').innerHTML=`<h4>📖 שיעור קצר על השאלה</h4>${conceptHTML(q)}<p><b>איך מחברים את הדוגמה לשאלה?</b> ${escapeHTML(intro)}</p><p><b>הכלי בשאלה הזו:</b> ${escapeHTML(q.method)}.</p><h4>🧱 פותרים בקוביות, שלב אחרי שלב</h4><ol class="steps v43-step-list">${(q.steps||[]).map((step,i)=>`<li><strong>שלב ${i+1}:</strong> ${escapeHTML(isolateNumericRatios(step))}</li>`).join('')}</ol><div class="v43-answer">🎯 <b>התוצאה הסופית:</b> ${escapeHTML(isolateNumericRatios(q.ans))}</div>`;
+ $('qfast').innerHTML=`<h4>⚡ עכשיו הדרך המהירה לפסיכומטרי</h4><p>${escapeHTML(q.fast)}</p>${trick?`<div class="v4-rule">📒 בדף הטריקים של ${escapeHTML(q.topic)} תמצא גם: <b>${escapeHTML(trick.a.find(x=>q.fast.includes(x.slice(0,5)))||trick.a[0])}</b></div>`:''}<small>זמן הפתרון: ${time} שניות${time>75?' · נסה למצוא שלב שאפשר לדלג עליו בפעם הבאה':''}</small>`;
+ $('qtrap').innerHTML=`<h4>⚠️ הטעות שאנשים נופלים בה</h4><p>${escapeHTML(q.trap)}</p>`;
+ $('qsanity').innerHTML=`<h4>🔎 איך בודקים שהמספר הגיוני?</h4><p>${escapeHTML(q.sanity)}</p>`;
+ for(const id of ['qex','qdeep','qfast','qtrap','qsanity'])toggle(id,true);
+};
+$('qcheck').onclick=()=>{
+ const selected=document.querySelector('input[name="qo"]:checked');if(!selected)return toast('בחר תשובה לפני הבדיקה');
+ clearInterval(QS.int);const q=QS.list[QS.i],seconds=Math.max(1,Math.round((Date.now()-QS.start)/1000)),correct=selected.value===q.ans;
+ if(correct)QS.correct++;QS.time+=seconds;
+ document.querySelectorAll('input[name="qo"]').forEach(i=>{
+  const label=i.closest('.opt');label.classList.toggle('ok',i.value===q.ans);
+  label.classList.toggle('bad',i.checked&&!correct);i.disabled=true;
+ });
+ explainDetailed(q,correct,seconds);
+ record(q,correct,seconds,selected.value);
+ if(S.history.length){const last=S.history[S.history.length-1];last.method=q.method;last.slowCorrect=correct&&seconds>75;last.template=q.v4?'v4':'v3';}
+ toggle('qcheck',false);toggle('qnext',true);save();
+};
+
+// Error notebook now includes the full original step-by-step explanation even if the answer was correct on a retry.
+drawMist=function(){
+ const b=$('mistakesList');b.innerHTML='';if(!S.mist.length){b.innerHTML='<div class="note">עדיין אין טעויות שמורות.</div>';return}
+ const all=S.mist.slice().sort((a,b)=>(b.count||1)-(a.count||1));
+ all.forEach((m,idx)=>{
+  const q=m.snapshot||LEGACY.find(x=>x.id===m.id),card=document.createElement('article');card.className='q v4-error-card';
+  if(!q){card.textContent='טעות ישנה בנושא '+(m.topic||'לא ידוע')+' — נוסח השאלה אינו זמין.';b.appendChild(card);return}
+  card.innerHTML=`<div class="chips"><span class="pill">${escapeHTML(m.topic||q.topic)}</span><span class="pill">${m.count||1} טעויות</span></div><h3 class="v4-stem">${escapeHTML(q.stem)}</h3><div class="v4-correct">התשובה הנכונה: <b>${escapeHTML(q.ans)}</b></div><details><summary>📖 הסבר עמוק וכל השלבים</summary>${conceptHTML(q)}<p>${escapeHTML(simpleIntroductions[q.topic]||'נבין מה נתון ומה מבוקש.')}</p><ol class="steps">${(q.steps||[]).map(s=>`<li>${escapeHTML(s)}</li>`).join('')}</ol><p><b>⚡ דרך מהירה:</b> ${escapeHTML(q.fast||'פתח את דף הטריקים.')}</p><p><b>⚠️ מלכודת:</b> ${escapeHTML(q.trap||'קרא מה השאלה מבקשת.')}</p><p><b>בדיקה:</b> ${escapeHTML(q.sanity||'בדוק בהצבה.')}</p></details><label class="v4-own-note">📝 מה הטעה אותי?<textarea data-errornote="${idx}" placeholder="למשל: החלפתי בין סדר קבוצות א׳ וב׳...">${escapeHTML(m.note||'')}</textarea></label><div class="actions"><button class="btn secondary" data-retry="${idx}">נסה שוב</button></div>`;
+  b.appendChild(card);
+ });
+ document.querySelectorAll('[data-errornote]').forEach(t=>t.onchange=()=>{all[+t.dataset.errornote].note=t.value;save()});
+ document.querySelectorAll('[data-retry]').forEach(btn=>btn.onclick=()=>{const m=all[+btn.dataset.retry],q=m.snapshot||LEGACY.find(x=>x.id===m.id);if(q)retryQuestion(q)});
+};
+// V3's levelStats handled only levels 1-3; level 4 must not crash the summary.
+levelStats=function(){const out={1:{c:0,t:0,time:0},2:{c:0,t:0,time:0},3:{c:0,t:0,time:0},4:{c:0,t:0,time:0}};for(const h of (S.history||[])){if(!h.lvl)continue;const x=out[h.lvl];if(!x)continue;x.t++;x.c+=h.correct?1:0;x.time+=h.time||0}return out;};
+const oldMakeSummary=makeSummary;
+makeSummary=function(){oldMakeSummary();
+ const history=S.history||[],recent=history.slice(-20),slow=recent.filter(x=>x.correct&&x.time>75),wrong=recent.filter(x=>!x.correct);
+ const l4=levelStats()[4]; const details=[`\nאבחון V4 — ${new Date().toLocaleDateString('he-IL')}:`,`- מצב קושי: ${S.v4Level==='challenge'?'אתגר רמות 3–4':'אדפטיבי'}`,`- רמה 4: ${l4.t?Math.round(l4.c/l4.t*100)+'% מתוך '+l4.t+' שאלות':'טרם תורגל'}`,`- 20 תשובות אחרונות: ${recent.length}`,`- שגיאות אחרונות: ${wrong.length}`,`- נכון אבל מעל 75 שניות: ${slow.length}`,`- נושאי טעויות אחרונות: ${wrong.map(x=>x.topic).join(', ')||'אין'}`,`- טכניקות ששווה לקצר: ${slow.map(x=>x.method||x.topic).join(', ')||'אין עדיין'}`,`- שאלות ממבחן רשמי שתועדו: ${(S.realLog||[]).length}`,`- סדר יחסים: בשאלות V4 הקבוצות מוצגות בשמות ובסדר מפורש.`,`\nהדרכה מבוקשת: הסבר כל שאלה עם דוגמת קוביות/קבוצות, שלבים קטנים, קיצור דרך, מלכודת, ולמה התשובה הסופית מתאימה. תן 5 שאלות קשות על נושאים חלשים — ללא חזרה מילולית.`];
+ $('summary').value+="\n"+details.join('\n');
+};
+// The existing notes textarea is left unchanged and historical progress is preserved.
+$('realSave').onclick=()=>{
+ const recordReal={when:new Date().toISOString(),exam:$('realExam').value,section:$('realSection').value,num:Math.max(1,Math.min(30,Number($('realNumber').value)||1)),result:$('realResult').value,note:$('realNote').value.trim()};
+ if(!Array.isArray(S.realLog))S.realLog=[];S.realLog.unshift(recordReal);S.realLog=S.realLog.slice(0,100);
+ save();realList();toast('נשמר ביומן בחינות אמת');
+};
+function realList(){const box=$('realList'),entries=Array.isArray(S.realLog)?S.realLog:[];box.innerHTML=entries.length?`<h4>תיעוד אחרון</h4>`+entries.slice(0,10).map(r=>`<div class="v4-log-row"><b>${escapeHTML(r.exam)}</b> · כמותי ${escapeHTML(r.section)} · שאלה ${r.num}<br><small>${escapeHTML(r.result)}${r.note?' — '+escapeHTML(r.note):''}</small></div>`).join(''):'<p class="muted">עדיין אין שאלות רשמיות ביומן.</p>'}
+realList();
+$('realCopy').onclick=async()=>{
+ const message=`אני מתרגל מבחינת מאל״ו הרשמית: ${$('realExam').value}, פרק כמותי ${$('realSection').value}, שאלה ${$('realNumber').value}. התוצאה שלי: ${$('realResult').value}. מה לא הבנתי: ${$('realNote').value||'צריך הסבר מהיסוד'}. תסביר לי איך לזהות את העיקרון, לפתור צעד צעד בשפה פשוטה ואז בדרך הפסיכומטרית המהירה. אם אין לך את נוסח השאלה, בקש ממני צילום או טקסט.`;
+ try{await navigator.clipboard.writeText(message);toast('ההודעה הועתקה')}catch(e){const t=document.createElement('textarea');t.value=message;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('נסה להדביק את ההודעה בצ׳אט')}
+};
+const oldGo=go;go=function(v){oldGo(v);if(v==='official'){officialButton.classList.add('active');realList()}else officialButton.classList.remove('active');if(v==='mistakes')drawMist();if(v==='coach')makeSummary()};
+// Initial render after override: show V4's notebook, and announce interactive readiness.
+drawMist();render();
+console.info('Psychometric Trainer V4 enhancements ready');
+})();
+
+</script>
+
+
+
+<script>
+/* V4.2 flashcard-based analogies and logic. Depends only on V4's S, save, go, toast, mark. */
+(function(){
+'use strict';
+const A=[
+ {id:'a01',level:1,stem:'רופא : מטופל',opts:['מורה : תלמיד','נגר : מסמר','נהג : כביש','אופה : תנור'],ans:'מורה : תלמיד',relation:'בעל מקצוע והאדם שהוא נותן לו שירות.',why:'רופא מטפל במטופל. באותו אופן מורה מלמד תלמיד.',trap:'אל תסתפק בכך ששתי המילים שייכות לאותו תחום. חפש מי עושה מה למי.'},
+ {id:'a02',level:1,stem:'מפתח : מנעול',opts:['סיסמה : חשבון','עט : שולחן','כובע : שמש','כפפה : יד'],ans:'סיסמה : חשבון',relation:'דבר שמאפשר לפתוח או להיכנס למשהו.',why:'מפתח פותח מנעול. סיסמה מאפשרת להיכנס לחשבון.',trap:'"שמש" ו"כובע" קשורים, אבל הכובע לא פותח את השמש.'},
+ {id:'a03',level:1,stem:'דבורה : כוורת',opts:['נמלה : קן','דג : סנפיר','ציפור : שיר','כלב : רצועה'],ans:'נמלה : קן',relation:'יצור חי והמקום שבו הוא חי כחלק ממושבה.',why:'דבורים חיות בכוורת ונמלים חיות בקן.',trap:'היזהר מזוג שמציין איבר גוף ולא מקום מגורים.'},
+ {id:'a04',level:1,stem:'מספריים : לגזור',opts:['מחט : לתפור','ספר : לקרוא','צלחת : לאכול','מפה : לטייל'],ans:'מחט : לתפור',relation:'כלי והפעולה הישירה שמבצעים באמצעותו.',why:'באמצעות מספריים גוזרים; באמצעות מחט תופרים.',trap:'ספר הוא מה שקוראים, אך אינו הכלי שבעזרתו קוראים.'},
+ {id:'a05',level:1,stem:'גור : כלב',opts:['אפרוח : תרנגולת','ביצה : עוגה','תלמיד : מחברת','זרע : אדמה'],ans:'אפרוח : תרנגולת',relation:'שלב צעיר ובעל החיים הבוגר מאותו סוג.',why:'גור גדל לכלב, ואפרוח גדל לתרנגולת.',trap:'חפש תהליך התבגרות של אותו יצור, לא רק קשר בין שני דברים.'},
+ {id:'a06',level:1,stem:'רעב : לאכול',opts:['צמא : לשתות','עייף : לעבוד','קפוא : לרוץ','כועס : לחייך'],ans:'צמא : לשתות',relation:'תחושה או צורך, והפעולה הישירה שמספקת אותו.',why:'כשאתה רעב אתה רוצה לאכול; כשאתה צמא אתה רוצה לשתות.',trap:'לא כל פעולה שמישהו עושה בעקבות תחושה היא בהכרח הפתרון לצורך.'},
+ {id:'a07',level:1,stem:'נגר : עץ',opts:['פסל : שיש','מורה : כיתה','שופט : חוק','רופא : מרפאה'],ans:'פסל : שיש',relation:'איש מקצוע וחומר הגלם שעליו הוא עובד.',why:'נגר מעבד עץ. פסל יכול לעבד שיש.',trap:'כיתה ומרפאה הן מקומות, לא חומרי גלם.'},
+ {id:'a08',level:1,stem:'סופר : ספר',opts:['מלחין : יצירה מוזיקלית','קורא : עיתון','מאזין : רדיו','מוכר : חנות'],ans:'מלחין : יצירה מוזיקלית',relation:'יוצר ותוצר היצירה שלו.',why:'סופר יוצר ספר ומלחין יוצר יצירה מוזיקלית.',trap:'קורא משתמש בספר, אך לא יוצר אותו.'},
+ {id:'a09',level:1,stem:'קיץ : חום',opts:['חורף : קור','גשם : מטרייה','אביב : פרח','לילה : שינה'],ans:'חורף : קור',relation:'עונה ותנאי מזג אוויר האופייני לה.',why:'קיץ מאופיין בחום וחורף בקור.',trap:'פריחה אופיינית לאביב, אך השאלה מחפשת את תכונת מזג האוויר.'},
+ {id:'a10',level:1,stem:'עין : לראות',opts:['אוזן : לשמוע','אצבע : לכתוב','שן : לחייך','רגל : נעל'],ans:'אוזן : לשמוע',relation:'איבר חישה ותפקודו הישיר.',why:'בעין רואים ובאוזן שומעים.',trap:'כתיבה כוללת גם אצבעות, אך האצבע אינה איבר חישה של כתיבה.'},
+ {id:'a11',level:2,stem:'חוק : לציית',opts:['פקודה : לבצע','סיפור : להמציא','ציור : לצבוע','בעיה : להחמיר'],ans:'פקודה : לבצע',relation:'הוראה והתגובה המצופה ממי שמקבל אותה.',why:'לחוק מצייתים ולפקודה מצופה לבצע.',trap:'אל תסתפק ב"שם עצם ופועל קשור"; חפש חובה או ציפייה.'},
+ {id:'a12',level:2,stem:'שאלה : תשובה',opts:['בעיה : פתרון','ספר : ספרייה','קיר : צבע','חלון : אור'],ans:'בעיה : פתרון',relation:'דבר שמעורר צורך במענה והדבר שנותן את המענה.',why:'תשובה פותרת שאלה; פתרון פותר בעיה.',trap:'לא מחפשים דבר שבא בדרך כלל אחריו בזמן, אלא את פתרון הצורך.'},
+ {id:'a13',level:2,stem:'מבוא : ספר',opts:['פתיח : הרצאה','כותרת : עיתון','כריכה : עמוד','שער : גדר'],ans:'פתיח : הרצאה',relation:'חלק פתיחה שמציג יצירה או פעילות גדולה ממנו.',why:'מבוא פותח ומציג ספר; פתיח פותח ומציג הרצאה.',trap:'כריכה היא חלק מהספר, אך אינה דווקא חלק שמציג את תוכנו.'},
+ {id:'a14',level:2,stem:'זהיר : פזיז',opts:['נדיב : קמצן','נעים : ידידותי','מהיר : זריז','אמיץ : גיבור'],ans:'נדיב : קמצן',relation:'שתי תכונות אופי מנוגדות.',why:'זהירות ופזיזות מנוגדות. כך גם נדיבות וקמצנות.',trap:'מהיר וזריז הן מילים קרובות, לא הפכים.'},
+ {id:'a15',level:2,stem:'ללחוש : לצעוק',opts:['לפסוע : לרוץ','לצייר : לכתוב','לחשוב : לדעת','לשתות : לאכול'],ans:'לפסוע : לרוץ',relation:'אותה משפחת פעילות בעוצמה נמוכה מול עוצמה גבוהה.',why:'ללחוש זו צורת דיבור שקטה, ולצעוק צורת דיבור חזקה. לפסוע זו תנועה איטית ולרוץ מהירה.',trap:'לא מספיק שמדובר בשני פעלים; חפש סקאלה משותפת.'},
+ {id:'a16',level:2,stem:'רעוע : להתמוטט',opts:['שביר : להישבר','חד : לחתוך','חדש : להשתמש','רחב : להתרחב'],ans:'שביר : להישבר',relation:'תכונה שמגבירה את הסיכון לאירוע לא רצוי.',why:'משהו רעוע עלול להתמוטט; משהו שביר עלול להישבר.',trap:'חד יכול לחתוך, אך חיתוך אינו אירוע של הרס הדבר החד עצמו.'},
+ {id:'a17',level:2,stem:'אטום : חדיר',opts:['קשיח : גמיש','זעיר : קטן','מואר : בוהק','פשוט : קל'],ans:'קשיח : גמיש',relation:'תכונות מנוגדות מבחינת מעבר או שינוי.',why:'אטום לא מאפשר מעבר; חדיר מאפשר. קשיח אינו מתכופף בקלות; גמיש כן.',trap:'מילים נרדפות כמו זעיר וקטן אינן מנוגדות.'},
+ {id:'a18',level:2,stem:'לייבש : רטיבות',opts:['לנקות : לכלוך','לחמם : אש','ללמוד : ידיעה','להשקות : מים'],ans:'לנקות : לכלוך',relation:'פעולה שמסלקת או מפחיתה מצב לא רצוי.',why:'לייבש מסלק רטיבות; לנקות מסלק לכלוך.',trap:'חימום יוצר חום, ולא מסלק אותו.'},
+ {id:'a19',level:2,stem:'תרופה : מחלה',opts:['מטרייה : גשם','מצפן : כיוון','ספר : ידע','מראה : השתקפות'],ans:'מטרייה : גשם',relation:'אמצעי שמפחית השפעה של תופעה לא רצויה.',why:'תרופה נועדה להתמודד עם מחלה; מטרייה מסייעת להתמודד עם הגשם.',trap:'מצפן מציג כיוון, אך הכיוון אינו תופעה שממנה מתגוננים.'},
+ {id:'a20',level:2,stem:'בלם : להאט',opts:['מגבר : להגביר','שעון : למדוד','סולם : לטפס','מטאטא : לטאטא'],ans:'מגבר : להגביר',relation:'מכשיר שתפקידו לשנות עוצמה או קצב בכיוון מסוים.',why:'בלם מפחית מהירות; מגבר מעלה עוצמה.',trap:'שעון מודד זמן, לא משנה אותו.'},
+ {id:'a21',level:3,stem:'להשמיט : חסר',opts:['להוסיף : נוסף','להזהיר : בטוח','להתנצל : נסלח','להבטיח : אפשרי'],ans:'להוסיף : נוסף',relation:'פעולה שמביאה לכך שמשהו חסר או נוסף.',why:'אם משמיטים פריט — הפריט נעשה חסר. אם מוסיפים פריט — יש פריט נוסף.',trap:'להזהיר אינו מבטיח בטיחות; היחס צריך להיות תוצאה ישירה.'},
+ {id:'a22',level:3,stem:'פשרה : מחלוקת',opts:['גישור : סכסוך','דיון : הסכמה','איום : שקט','הסבר : תמיהה'],ans:'גישור : סכסוך',relation:'אמצעי ליישוב מצב של עימות או מחלוקת.',why:'פשרה מיועדת ליישב מחלוקת; גישור מיועד ליישב סכסוך.',trap:'דיון יכול להוביל להסכמה, אבל "הסכמה" אינה בעיה שהוא בא ליישב.'},
+ {id:'a23',level:3,stem:'תמצית : מאמר',opts:['תקציר : ספר','פסקה : דף','כותרת : משפט','איור : עיפרון'],ans:'תקציר : ספר',relation:'הצגה מקוצרת ששומרת את עיקרי המקור.',why:'תמצית מרכזת את עיקרי המאמר; תקציר מרכז את עיקרי הספר.',trap:'פסקה היא חלק מהדף, אך לא בהכרח גרסה מסוכמת שלו.'},
+ {id:'a24',level:3,stem:'להפריך : טענה',opts:['לסתור : הנחה','לבסס : ספק','לחתום : מסמך','לפרסם : ידיעה'],ans:'לסתור : הנחה',relation:'פעולה שמראה שטענה איננה נכונה.',why:'להפריך טענה פירושו להראות שהיא אינה נכונה; לסתור הנחה פירושו להראות שהיא לא מסתדרת עם העובדות.',trap:'לבסס ספק דווקא מחזק דבר; כאן מחפשים החלשה.'},
+ {id:'a25',level:3,stem:'מתון : קיצוני',opts:['מאופק : נסער','נלהב : להוט','שקט : דמום','שימושי : מועיל'],ans:'מאופק : נסער',relation:'שתי תכונות שנמצאות בקצוות שונים של עוצמת תגובה.',why:'מתון מול קיצוני; מאופק מול נסער.',trap:'נלהב ולהוט קרובות במשמעות, לא מנוגדות.'},
+ {id:'a26',level:3,stem:'חלקי : שלם',opts:['זמני : קבוע','זעיר : קטן','עלום : נסתר','סמיך : צפוף'],ans:'זמני : קבוע',relation:'מצב חסר או מוגבל לעומת מצב שאינו מוגבל באותו ממד.',why:'חלקי אינו שלם; זמני אינו קבוע. בשני הזוגות השני מבטא מצב מלא או מתמשך יותר.',trap:'אל תחפש סתם הבדל בעוצמה; ודא שיש ניגוד דומה.'}
+];
+const L=[
+ {id:'l01',level:1,stem:'כל הסוסים הם בעלי חיים. ברק הוא סוס. מה בהכרח נכון?',opts:['ברק הוא בעל חיים','כל בעלי החיים סוסים','ברק אינו בעל חיים','אין מספיק מידע'],ans:'ברק הוא בעל חיים',rule:'כל א׳ הוא ב׳; ברק הוא א׳.',why:'ברק שייך לקבוצת הסוסים, והסוסים כולם נמצאים בתוך קבוצת בעלי החיים. לכן גם ברק בעל חיים.',trap:'החץ הוא מכיוון סוס לכיוון בעל חיים, לא להפך.'},
+ {id:'l02',level:1,stem:'אם יש גשם — הכביש רטוב. אין גשם. מה בהכרח נכון?',opts:['הכביש יבש','הכביש רטוב','אי אפשר לקבוע אם הכביש רטוב','הכביש קפוא'],ans:'אי אפשר לקבוע אם הכביש רטוב',rule:'גשם ⇒ כביש רטוב.',why:'הכביש יכול להיות רטוב גם בגלל ממטרה או שטיפה. העדר גשם לא אומר שהכביש יבש.',trap:'אסור להפוך "אם א׳ אז ב׳" ל"אם לא א׳ אז לא ב׳".'},
+ {id:'l03',level:1,stem:'אם מישהו נרשם לחוג, הוא מקבל אישור. תמר לא קיבלה אישור. מה בהכרח נכון?',opts:['תמר לא נרשמה לחוג','תמר נרשמה','האישור הלך לאיבוד','תמר נרשמה לחוג אחר'],ans:'תמר לא נרשמה לחוג',rule:'נרשם ⇒ אישור. לא אישור ⇒ לא נרשם.',why:'אם תמר הייתה נרשמת, לפי הכלל היא הייתה מקבלת אישור. מאחר שלא קיבלה אישור, היא לא נרשמה.',trap:'זהו ההיפוך התקף של התנאי: שלילת התוצאה מאפשרת לשלול את התנאי.'},
+ {id:'l04',level:1,stem:'כל המדריכים קיבלו תג. עידו לא קיבל תג. מה נובע?',opts:['עידו אינו מדריך','עידו מדריך','אין מדריכים','עידו שכח את התג בבית'],ans:'עידו אינו מדריך',rule:'מדריך ⇒ תג. אין תג ⇒ אינו מדריך.',why:'אי אפשר להיות מדריך שלא קיבל תג, משום שכל המדריכים קיבלו.',trap:'אין להסיק דבר על הסיבה שלא קיבל תג.'},
+ {id:'l05',level:1,stem:'או שהמבחן יהיה ביום ראשון או שהוא יהיה ביום שני. ידוע שהוא לא יהיה ביום ראשון. מה נובע?',opts:['המבחן יהיה ביום שני','לא יהיה מבחן','המבחן יהיה בשבת','אין מסקנה'],ans:'המבחן יהיה ביום שני',rule:'לפחות אחת משתי האפשרויות מתקיימת.',why:'אם הראשונה נפסלה, השנייה חייבת להתקיים כדי שהנתון יישאר נכון.',trap:'אל תוסיף אפשרויות שלא הוזכרו בנתון.'},
+ {id:'l06',level:1,stem:'יואב גבוה מדן. דן גבוה מעומר. מי הגבוה מבין השלושה?',opts:['יואב','דן','עומר','אי אפשר לקבוע'],ans:'יואב',rule:'אם א׳ > ב׳ וגם ב׳ > ג׳, אז א׳ > ג׳.',why:'צייר שרשרת: יואב > דן > עומר.',trap:'לא צריך לדעת את הגבהים במספרים.'},
+ {id:'l07',level:2,stem:'כל מי שמדבר צרפתית יודע לקרוא. יש אדם שיודע לקרוא אך אינו מדבר צרפתית. מה נובע?',opts:['לא כל מי שקורא מדבר צרפתית','כל מי שקורא מדבר צרפתית','אף אחד לא מדבר צרפתית','אף אחד אינו יודע לקרוא'],ans:'לא כל מי שקורא מדבר צרפתית',rule:'צרפתית ⇒ קורא, אך הכיוון ההפוך אינו הכרחי.',why:'נתון במפורש שיש לפחות אדם שקורא ולא מדבר צרפתית. לכן המשפט "כולם קוראים צרפתית" לא נכון.',trap:'קבוצה קטנה יכולה להיות בתוך קבוצה גדולה בלי שכל הגדולה תהיה קטנה.'},
+ {id:'l08',level:2,stem:'בכיתה יש רק מורים או תלמידים. כל המורים לובשים חולצה כחולה. יעל נמצאת בכיתה ואינה לובשת חולצה כחולה. מה נכון?',opts:['יעל תלמידה','יעל מורה','כל התלמידים לא לובשים כחול','אין בכיתה מורים'],ans:'יעל תלמידה',rule:'מורה ⇒ כחול. לא כחול ⇒ לא מורה. בכיתה יש רק שתי אפשרויות.',why:'יעל לא יכולה להיות מורה. מכיוון שבכיתה נמצאים רק מורים או תלמידים, היא תלמידה.',trap:'אין מידע לגבי הצבע שתלמידים אחרים לובשים.'},
+ {id:'l09',level:2,stem:'אם אורי יתאמן, הוא ישתפר. אם ישתפר, יעבור את המבחן. אורי התאמן. מה נובע?',opts:['אורי יעבור את המבחן','אורי ייכשל','אורי לא השתפר','אין מסקנה'],ans:'אורי יעבור את המבחן',rule:'אימון ⇒ שיפור ⇒ מעבר.',why:'בכל פעם שהכלל הראשון מתקיים, מתקיים הבא אחריו. אפשר לחבר את שני החצים.',trap:'אל תעצור בשיפור; המשך לעקוב אחרי השרשרת.'},
+ {id:'l10',level:2,stem:'שלושה אנשים — אבי, ברק וגל — יושבים בשורה. אבי יושב מימין לברק. גל יושב משמאל לברק. מי במרכז?',opts:['ברק','אבי','גל','אי אפשר לקבוע'],ans:'ברק',rule:'מסדרים מימין לשמאל: אבי — ברק — גל.',why:'ברק נמצא משמאל לאבי ומימין לגל, כלומר בדיוק בין שניהם.',trap:'כדאי לצייר שלושה ריבועים; במיקום אין טעם להסתמך רק על הדמיון.'},
+ {id:'l11',level:2,stem:'רק מי שסיים את ההכשרה רשאי להדריך. ניר מדריך. מה בהכרח נכון?',opts:['ניר סיים את ההכשרה','כל מי שסיים מדריך','ניר לא סיים הכשרה','ניר מדריך ותיק'],ans:'ניר סיים את ההכשרה',rule:'מותר להדריך ⇒ סיים הכשרה (תנאי הכרחי).',why:'המילה "רק" קובעת תנאי חובה: כדי להדריך, צריך קודם לסיים הכשרה. לכן ניר סיים.',trap:'מסיום הכשרה לבדו לא נובע שמישהו מדריך.'},
+ {id:'l12',level:2,stem:'אין אף תלמיד בכיתה שהוא גם עייף וגם מרוכז. רוני תלמידה בכיתה והיא עייפה. מה בהכרח נכון?',opts:['רוני אינה מרוכזת','רוני מרוכזת','כל תלמיד עייף','אין תלמידים מרוכזים'],ans:'רוני אינה מרוכזת',rule:'בתוך קבוצת תלמידי הכיתה לא מתקיימים יחד עייף ומרוכז.',why:'רוני תלמידה בכיתה ועייפה, ולכן לפי הכלל אינה יכולה להיות גם מרוכזת.',trap:'שני מצבים שאינם יכולים להתקיים יחד: עייפה וגם מרוכזת.'},
+ {id:'l13',level:2,stem:'אם הספרייה פתוחה, אור ייכנס ללמוד. אור לא נכנס ללמוד. מה בהכרח נכון?',opts:['הספרייה לא פתוחה','הספרייה פתוחה','אור לא אוהב לקרוא','אי אפשר לדעת'],ans:'הספרייה לא פתוחה',rule:'פתוחה ⇒ נכנס. לא נכנס ⇒ לא פתוחה.',why:'אם הספרייה הייתה פתוחה, אור היה נכנס לפי הכלל. מאחר שלא נכנס, היא אינה פתוחה.',trap:'לא מסיקים שאור לא רצה להיכנס. המידע על הרצון אינו נתון.'},
+ {id:'l14',level:2,stem:'כל הכלבים בעיר מחוסנים. לפחות אחד מבעלי החיים בעיר הוא כלב. מה בהכרח נכון?',opts:['יש בעיר בעל חיים מחוסן','כל בעלי החיים בעיר מחוסנים','אין בעיר חתולים','כל המחוסנים הם כלבים'],ans:'יש בעיר בעל חיים מחוסן',rule:'יש לפחות כלב אחד, וכל כלב בעיר מחוסן.',why:'קח את הכלב שקיים לפי הנתון. הוא מחוסן, ולכן יש לפחות בעל חיים מחוסן אחד.',trap:'"יש אחד" לא אומר "כולם".'},
+ {id:'l15',level:3,stem:'בכנס השתתפו רק חוקרים או סטודנטים. כל החוקרים הציגו מצגת. היו שלושה משתתפים שלא הציגו מצגת. מה בהכרח נכון?',opts:['לפחות שלושה סטודנטים השתתפו בכנס','לא היו חוקרים','כל הסטודנטים הציגו מצגת','בכנס היו בדיוק שלושה סטודנטים'],ans:'לפחות שלושה סטודנטים השתתפו בכנס',rule:'לא הציג ⇒ אינו חוקר ⇒ סטודנט.',why:'שלושת האנשים שלא הציגו אינם חוקרים, לכן שלושתם סטודנטים. ייתכן שהיו סטודנטים נוספים שהציגו.',trap:'"לפחות" חשוב: לא נאמר שיש בדיוק שלושה סטודנטים.'},
+ {id:'l16',level:3,stem:'כל מי שחבר בוועדה קיבל הודעה. כל מי שקיבל הודעה הגיע לישיבה. מיה לא הגיעה לישיבה. מה בהכרח נכון?',opts:['מיה אינה חברה בוועדה','מיה חברה בוועדה','מיה קיבלה הודעה','כל מי שהגיע חבר בוועדה'],ans:'מיה אינה חברה בוועדה',rule:'חבר ועדה ⇒ הודעה ⇒ הגיע. לא הגיע ⇒ לא חבר ועדה.',why:'אם מיה הייתה חברה בוועדה, לפי השרשרת היא הייתה מגיעה. בפועל לא הגיעה, לכן אינה חברה.',trap:'אל תהפוך את כיוון השרשרת. הגיע לישיבה לא חייב להיות חבר ועדה.'},
+ {id:'l17',level:3,stem:'אומרים ש"כל המצטיינים מגישים עבודות בזמן". איזה מצב, אם יימצא, יפריך את הטענה?',opts:['מצטיין שלא הגיש עבודה בזמן','תלמיד רגיל שהגיש בזמן','מצטיין שהגיש בזמן','תלמיד רגיל שהגיש באיחור'],ans:'מצטיין שלא הגיש עבודה בזמן',rule:'כדי להפריך "כל א׳ הם ב׳" צריך למצוא א׳ שאינו ב׳.',why:'הטענה טוענת שאין אפילו מצטיין אחד שמאחר. מספיק מצטיין אחד שאיחר כדי להוכיח שהיא שגויה.',trap:'תלמיד רגיל שמאחר לא אומר דבר על המצטיינים.'},
+ {id:'l18',level:3,stem:'יש בדיוק שני שערים, א׳ וב׳. ידוע שלפחות אחד מהם פתוח, וששער א׳ סגור. מה חייב להיות נכון?',opts:['שער ב׳ פתוח','שער א׳ פתוח','שני השערים סגורים','שני השערים פתוחים'],ans:'שער ב׳ פתוח',rule:'אם קיימים בדיוק שני שערים, ולפחות אחד פתוח, סגירת א׳ מחייבת פתיחת ב׳.',why:'כל עוד יש שני שערים בלבד, אם א׳ סגור ובכל זאת לפחות אחד פתוח, ב׳ חייב להיות פתוח.',trap:'אם היו יותר משני שערים לא היינו יכולים לדעת איזה מהם פתוח.'},
+ {id:'l19',level:3,stem:'בכל יום שבו יואב רוכב, הוא גם שוחה. בחלק מהימים שבהם יואב שוחה הוא לא רוכב. מה נכון?',opts:['יש יום שבו יואב שחה ולא רכב','בכל יום ששחה גם רכב','יואב אף פעם לא רוכב','יואב לא יודע לשחות'],ans:'יש יום שבו יואב שחה ולא רכב',rule:'רוכב ⇒ שוחה. שוחה לא מחייב רוכב.',why:'המשפט השני מציין מפורשות שיש ימים שבהם יואב שוחה ולא רוכב.',trap:'שוב: אסור להחליף בין החץ לכיוון ההפוך.'},
+ {id:'l20',level:3,stem:'על השולחן שלושה תיקים: כחול, ירוק ואדום. רק התיק הכחול כבד. נבחר תיק שאינו כבד. מה אפשר להסיק?',opts:['התיק שנבחר ירוק או אדום','התיק שנבחר כחול','התיק שנבחר בהכרח ירוק','כל התיקים כבדים'],ans:'התיק שנבחר ירוק או אדום',rule:'רק כחול כבד ⇒ הירוק והאדום אינם כבדים.',why:'הכחול נפסל. נשארו שני תיקים אפשריים: ירוק או אדום.',trap:'אחרי שלילת אפשרות אחת לא חייבים להגיע לתשובה יחידה.'}
+];
+
+// Ensure every question has four distinct answers and exactly one correct answer.
+const BANK={ana:A,logic:L};
+for(const [name,pool] of Object.entries(BANK))for(const item of pool){
+ if(item.opts.length!==4||new Set(item.opts).size!==4||!item.opts.includes(item.ans))throw Error('Invalid '+name+' '+item.id);
+}
+const PREFIX={ana:'ana',logic:'logic'},LABEL={ana:'אנלוגיות',logic:'היגיון'};
+const shuffled=items=>{const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function stats(type){
+ const field=type==='ana'?'ana':'logic';
+ const prev=S[field];
+ if(!prev||typeof prev!=='object')S[field]={total:0,correct:0,history:[]};
+ S[field].total=Number(S[field].total)||0;S[field].correct=Number(S[field].correct)||0;
+ if(!Array.isArray(S[field].history))S[field].history=[];
+ return S[field];
+}
+const sessions={ana:null,logic:null};
+const el=id=>document.getElementById(id);
+function paintStats(type){const s=stats(type),id=PREFIX[type];el(id+'Total').textContent=s.total;el(id+'Acc').textContent=s.total?Math.round(s.correct/s.total*100)+'%':'—'}
+function pickCards(type,count,challenge){
+ const s=stats(type),pool=BANK[type],recent=new Set(s.history.slice(-20).map(x=>x.id));
+ const candidate=shuffled(pool.filter(x=>!challenge||x.level>=2));
+ const order=candidate.sort((a,b)=>Number(recent.has(a.id))-Number(recent.has(b.id)));
+ return order.slice(0,Math.min(count,order.length)).map(q=>({...q,opts:shuffled(q.opts)}));
+}
+function startDeck(type,count,challenge=false){
+ const id=PREFIX[type],list=pickCards(type,count,challenge);
+ sessions[type]={list,index:0,correct:0,attempted:0,start:Date.now(),flipped:false,selected:null};
+ el(id+'Session').classList.remove('hidden');el(id+'Done').classList.add('hidden');el(id+'Play').classList.remove('hidden');
+ el(id+'Mode').textContent=challenge?'אתגר':'אימון';
+ go(type==='ana'?'analogies':'logic');showCard(type);el(id+'Session').scrollIntoView({block:'start',behavior:'smooth'});
+}
+function showCard(type){
+ const id=PREFIX[type],session=sessions[type];if(!session)return;
+ if(session.index>=session.list.length){finishDeck(type);return}
+ const q=session.list[session.index];session.flipped=false;session.selected=null;session.start=Date.now();
+ el(id+'Counter').textContent=`${session.index+1} / ${session.list.length}`;
+ el(id+'Progress').style.width=100*session.index/session.list.length+'%';
+ el(id+'Level').textContent='רמה '+q.level;
+ el(id+'Prompt').textContent=q.stem;
+ el(id+'Choices').replaceChildren();
+ q.opts.forEach((option,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='answer-choice';
+  const letter=document.createElement('span');letter.className='choice-letter';letter.textContent='אבגד'[i];
+  const label=document.createElement('span');label.textContent=option;b.append(letter,label);
+  b.onclick=()=>answer(type,option);el(id+'Choices').appendChild(b);
+ });
+ el(id+'Question').classList.remove('hidden');el(id+'Explanation').classList.add('hidden');el(id+'ShowAnswer').classList.add('hidden');
+ el(id+'Question').classList.remove('card-flip-anim');void el(id+'Question').offsetWidth;el(id+'Question').classList.add('card-flip-anim');
+}
+function answer(type,value){
+ const id=PREFIX[type],session=sessions[type];if(!session||session.flipped)return;
+ const q=session.list[session.index],ok=value===q.ans,elapsed=Math.max(1,Math.round((Date.now()-session.start)/1000));
+ session.flipped=true;session.selected=value;session.attempted++;
+ if(ok)session.correct++;
+ const s=stats(type);s.total++;if(ok)s.correct++;
+ s.history.push({id:q.id,correct:ok,level:q.level,time:elapsed,at:new Date().toISOString()});
+ if(s.history.length>300)s.history=s.history.slice(-300);
+ const result=el(id+'Result');result.className='result '+(ok?'success':'fail');
+ result.textContent=ok?'✅ מצוין! זיהית את הקשר':'💡 לא בדיוק — עכשיו נבין יחד';
+ el(id+'Correct').textContent=q.ans;
+ el(id+'Relation').textContent=type==='ana'?q.relation:q.rule;
+ el(id+'Why').textContent=q.why;
+ el(id+'Trap').textContent=q.trap;
+ el(id+'Time').textContent=`זמן מענה: ${elapsed} שניות`;
+ el(id+'Question').classList.add('hidden');el(id+'Explanation').classList.remove('hidden');
+ el(id+'Explanation').classList.remove('card-flip-anim');void el(id+'Explanation').offsetWidth;el(id+'Explanation').classList.add('card-flip-anim');
+ try{save()}catch(e){console.warn('Could not persist practice state',e)}
+ paintStats(type);
+}
+function flipBack(type){const id=PREFIX[type];if(!sessions[type]?.flipped)return;el(id+'Explanation').classList.add('hidden');el(id+'Question').classList.remove('hidden');const bs=el(id+'Choices').querySelectorAll('button');bs.forEach(b=>b.disabled=true);el(id+'ShowAnswer').classList.remove('hidden');}
+function flipAnswer(type){const id=PREFIX[type];if(!sessions[type]?.flipped)return;el(id+'Question').classList.add('hidden');el(id+'Explanation').classList.remove('hidden')}
+function nextCard(type){const id=PREFIX[type],session=sessions[type];if(!session?.flipped)return;session.index++;showCard(type);el(id+'Session').scrollIntoView({block:'start',behavior:'smooth'})}
+function finishDeck(type){const id=PREFIX[type],session=sessions[type];el(id+'Play').classList.add('hidden');el(id+'Done').classList.remove('hidden');el(id+'Progress').style.width='100%';const pct=Math.round(100*session.correct/session.list.length);el(id+'Score').textContent=pct+'%';el(id+'DoneText').textContent=`${session.correct} מתוך ${session.list.length} נכונות. ${pct>=85?'אימון מצוין!':pct>=60?'יש על מה לבנות.':'נמשיך לתרגל, בקצב שלך.'}`;try{mark();save()}catch(e){}paintStats(type)}
+for(const type of ['ana','logic']){
+ const id=PREFIX[type];
+ stats(type);paintStats(type);
+ el(id+'Start').onclick=()=>startDeck(type,5);
+ el(id+'StartLong').onclick=()=>startDeck(type,5);
+ el(id+'Challenge').onclick=()=>startDeck(type,5,true);
+ el(id+'Next').onclick=()=>nextCard(type);
+ el(id+'Again').onclick=()=>flipBack(type);
+ el(id+'ShowAnswer').onclick=()=>flipAnswer(type);
+ el(id+'Replay').onclick=()=>startDeck(type,5);
+}
+if(el('homeAna'))el('homeAna').onclick=()=>go('analogies');
+if(el('homeLogic'))el('homeLogic').onclick=()=>go('logic');
+
+const earlierMakeSummary=makeSummary;
+makeSummary=function(){
+ earlierMakeSummary();
+ const a=stats('ana'),l=stats('logic');
+ el('summary').value+=`\n\nאנלוגיות (V4.3):\n- שאלות: ${a.total}\n- דיוק: ${a.total?Math.round(100*a.correct/a.total)+'%':'אין נתונים'}\n\nהיגיון (V4.3):\n- שאלות: ${l.total}\n- דיוק: ${l.total?Math.round(100*l.correct/l.total)+'%':'אין נתונים'}\n\nבקשה לצ׳אט: התאם לי גם תרגול אנלוגיות והיגיון; הסבר כל טעות באמצעות כלל קצר ודוגמה פשוטה.`;
+};
+// Existing summary buttons resolve makeSummary by reference; no handlers need to be overwritten.
+makeSummary();
+})();
+
+</script>
+</body></html>
