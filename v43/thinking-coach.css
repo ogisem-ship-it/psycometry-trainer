@@ -1,0 +1,42 @@
+/* Thinking Coach V4.4 — fits the existing light learning studio */
+.thinking-hero{background:linear-gradient(120deg,#e9f9f0,#f5fcfb 68%,#fff7e4);border:1px solid #cdebdc}
+.thinking-hero h2{font-size:clamp(24px,3.8vw,35px);margin:6px 0 12px;color:#215b4c}
+.thinking-hero>small{color:#267b62;font-size:12px;font-weight:850;letter-spacing:.05em}
+.thinking-hero p{line-height:1.8;max-width:800px}
+.thinking-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.thinking-metrics .stat{min-height:90px;background:rgba(255,255,255,.87)}
+.thinking-metrics .stat b{font-size:25px}
+.thinking-label{display:block;font-weight:800;color:#34566a;margin:15px 0 8px}
+.thinking-small{line-height:1.75;font-size:14px;margin-top:15px}
+#tcSetup select{max-width:480px}
+#tcSession{scroll-margin-top:150px}
+#tcSession .progress{margin:14px 0 18px}
+#tcSession .q{max-width:820px;margin:13px auto 0;padding:clamp(17px,3vw,26px)}
+#tcSession .stem{line-height:1.85;font-size:clamp(18px,2.7vw,22px);white-space:pre-wrap}
+#tcSession h3{font-size:18px;margin:20px 0 9px;color:#255c53}
+#tcPlan{min-height:92px;line-height:1.7}
+#tcReflection{min-height:70px;line-height:1.65}
+#tcSession .actions{margin-top:16px}
+.thinking-transfer{border:1px solid #e9d38c;background:#fff8e2;color:#75581e;border-radius:15px;padding:14px;line-height:1.7;font-weight:700}
+.thinking-hints{border:1px dashed #d9e3bf;background:#fcfcf0;border-radius:17px;padding:13px 15px;margin-top:19px}
+.thinking-hints .actions{margin:0}
+.thinking-hints .btn{min-height:41px}
+.thinking-hint{margin:12px 0 0;border-right:3px solid #e2bb53;background:white;color:#485c5c;padding:12px;border-radius:10px;line-height:1.7}
+.thinking-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:15px 0}
+.thinking-option{display:flex;align-items:center;gap:12px;background:#f8fcfa;border:1px solid #d9eae4;padding:14px 13px;border-radius:15px;min-height:65px;cursor:pointer;line-height:1.5}
+.thinking-option:hover,.thinking-option:has(input:checked){background:#eaf9f0;border-color:#6fc5a2}
+.thinking-option:focus-within{outline:2px solid #77bff3;outline-offset:2px}
+.thinking-option input{flex:0 0 19px}
+.thinking-feedback{padding:13px;background:#ecf8f2;color:#296752;border-radius:13px;font-weight:800;line-height:1.7}
+#tcReviewStage .ex{margin-top:12px;line-height:1.85}
+#tcReviewStage .ex p{white-space:pre-wrap}
+#tcSteps li{white-space:pre-wrap;margin:9px 0}
+.thinking-rating{margin-top:15px;padding:14px;border:1px solid #d4e8df;border-radius:14px;display:flex;gap:9px;flex-wrap:wrap}
+.thinking-rating legend{font-weight:800;color:#315e52;padding:0 6px}
+.thinking-rating label{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:11px;background:#f7fbf8;border:1px solid #e3eee8;cursor:pointer}
+#tcDone .note{line-height:2;font-size:16px}
+.thinking-launch{border:2px solid #a9e1c6;background:#eaf9f0}
+.thinking-launch strong{color:#197254}
+@media(max-width:760px){.thinking-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.thinking-choices{grid-template-columns:1fr}.thinking-rating{flex-direction:column}.thinking-rating label{width:100%}}
+@media(max-width:420px){#tcSession .q{padding:15px}.thinking-metrics .stat b{font-size:22px}#tcSession .actions .btn{flex:1 1 100%;white-space:normal}}
+@media(prefers-reduced-motion:reduce){#thinking *{scroll-behavior:auto!important}}
