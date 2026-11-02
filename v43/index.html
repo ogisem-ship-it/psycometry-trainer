@@ -104,6 +104,7 @@ input[type="radio"],input[type="checkbox"]{width:19px!important;min-width:19px!i
 @media(max-width:600px){.v43-tutor{padding:13px}.v43-visual{font-size:22px;letter-spacing:1px}}
 
 </style>
+<link rel="stylesheet" href="thinking-coach.css">
 </head>
 <body>
 <noscript><div style="padding:16px;background:#fff4dd;color:#8a5600;text-align:center">יש לפתוח את האתר ב־Safari או Chrome. תצוגה מקדימה שאינה מפעילה JavaScript לא תאפשר שימוש בכפתורים.</div></noscript>
@@ -502,7 +503,7 @@ GEN['שברים'].push(
 
 const topics=Object.keys(GEN);
 function fresh(){let cards={};WORDS.forEach(w=>cards[w.id]={seen:false,stage:0,due:today(),reviews:0,again:0,hard:0,good:0});return{cards,stats:{streak:0,last:null,eRev:0,qTot:0,qCor:0,qTime:0},topic:{},mist:[],notes:'',history:[]}}
-function load(){let b=fresh();try{let r=JSON.parse(localStorage.getItem(KEY)||'null');if(!r)return b;b.cards={...b.cards,...(r.cards||{})};b.stats={...b.stats,...(r.stats||{})};b.topic=r.topic||{};b.mist=Array.isArray(r.mist)?r.mist:[];b.notes=r.notes||'';b.history=Array.isArray(r.history)?r.history:[];return b}catch(e){return b}}
+function load(){let b=fresh();try{let r=JSON.parse(localStorage.getItem(KEY)||'null');if(!r)return b;b.cards={...b.cards,...(r.cards||{})};b.stats={...b.stats,...(r.stats||{})};b.topic=r.topic||{};b.mist=Array.isArray(r.mist)?r.mist:[];b.notes=r.notes||'';b.history=Array.isArray(r.history)?r.history:[];b.thinking=r.thinking&&typeof r.thinking==='object'?r.thinking:{history:[],sessions:0};return b}catch(e){return b}}
 let S=load();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}render()}
 const toast=t=>{let e=$('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1500)};
@@ -889,4 +890,5 @@ makeSummary();
 })();
 
 </script>
+<script src="thinking-coach.js"></script>
 </body></html>
