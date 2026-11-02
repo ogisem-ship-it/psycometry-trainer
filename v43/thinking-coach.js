@@ -135,7 +135,7 @@
   function historyStats(){
     const h=thinking.history;
     $c('tcTotal').textContent=String(h.length);
-    $c('tcIndependent').textContent=h.length ? Math.round(100*h.filter(x=>x.correct&&x.hints===0).length/h.length)+'%' : '—';
+    $c('tcIndependent').textContent=h.length ? Math.round(100*h.filter(x=>x.correct&&x.hints===0&&x.independentStart).length/h.length)+'%' : '—';
     $c('tcStarts').textContent=h.length ? Math.round(100*h.filter(x=>x.independentStart).length/h.length)+'%' : '—';
     $c('tcHintAverage').textContent=h.length ? (h.reduce((n,x)=>n+(x.hints||0),0)/h.length).toFixed(1) : '—';
   }
@@ -144,7 +144,7 @@
     if (session.mode==='weak') {
       const recent=thinking.history.slice(-30);
       const stats=new Map();
-      recent.forEach(x=>{const s=stats.get(x.topic)||{n:0,ind:0};s.n++;if(x.correct&&x.hints===0)s.ind++;stats.set(x.topic,s);});
+      recent.forEach(x=>{const s=stats.get(x.topic)||{n:0,ind:0};s.n++;if(x.correct&&x.hints===0&&x.independentStart)s.ind++;stats.set(x.topic,s);});
       const weak=[...stats].filter(([t,s])=>s.n>=2&&allTopics.includes(t)).sort((a,b)=>a[1].ind/a[1].n-b[1].ind/b[1].n)[0];
       return weak ? weak[0] : (typeof weakTopic==='function' && allTopics.includes(weakTopic()?.topic) ? weakTopic().topic : session.focus);
     }
@@ -178,7 +178,7 @@
     $c('tcPhase').textContent=transfer?'בדיקת העברה':'זיהוי דרך הפתרון';
     $c('tcBar').style.width=(session.index/4*100)+'%';
     $c('tcStem').textContent=q.stem;
-    $c('tcPlan').value='';
+    $c('tcPlan').value='';$c('tcUnsure').textContent='אין לי כיוון עדיין';
     $c('tcReflection').value='';
     document.querySelectorAll('input[name="tcRating"]').forEach(el=>el.checked=false);
     $c('tcHintText').replaceChildren();
@@ -191,7 +191,9 @@
   function showHint(){
     const c=session&&session.current;
     if (!c||c.correct!==null||c.hints>=3) return;
-    const h=(questions[c.q.topic]||fallback)[c.hints];
+    let h=(questions[c.q.topic]||fallback)[c.hints];
+    if(c.q.topic==='יחסים'&&c.hints===1&&c.q.stem.includes('הפרש'))h='המילה ״הפרש״ חשובה כאן: איזה חלק מהיחס מתאר את הפער בין הקבוצות?';
+    if(c.q.topic==='יחסים'&&c.hints===1&&c.q.stem.includes('מעבירים'))h='בהעברה בין קבוצות, מה נשאר ללא שינוי לפני ואחרי הפעולה?';
     c.hints++;
     const p=document.createElement('p');p.className='thinking-hint';p.textContent='רמז '+c.hints+': '+h;
     $c('tcHintText').appendChild(p);
@@ -261,8 +263,8 @@
     hidden('tcSession',true);hidden('tcDone',false);
     const h=thinking.history.slice(-4);
     const correct=h.filter(x=>x.correct).length;
-    const independent=h.filter(x=>x.correct&&x.hints===0).length;
-    const transfer=h.filter(x=>x.transfer&&x.correct&&x.hints===0).length;
+    const independent=h.filter(x=>x.correct&&x.hints===0&&x.independentStart).length;
+    const transfer=h.filter(x=>x.transfer&&x.correct&&x.hints===0&&x.independentStart).length;
     const struggle=h.filter(x=>x.selfRating==='unclear');
     $c('tcSummary').textContent='פתרת נכון '+correct+'/4 שאלות; '+independent+'/4 בלי רמז. בבדיקות ההעברה: '+transfer+'/2 פתרונות נכונים בלי רמז. '+(struggle.length?'כדאי לחזור ל־'+[...new Set(struggle.map(x=>x.topic))].join(', ')+'.':'מצוין — עברת גם את שלב השחזור.');
     $c('tcDone').scrollIntoView({behavior:'smooth',block:'start'});
@@ -280,7 +282,7 @@
   $c('tcAgain').onclick=()=>{hidden('tcSetup',false);hidden('tcDone',true);hidden('tcSession',true);$c('tcSetup').scrollIntoView({behavior:'smooth',block:'start'});};
   $c('tcCoach').onclick=()=>go('coach');
   $c('tcCommit').onclick=()=>answerStage(false);
-  $c('tcUnsure').onclick=()=>{if(session.current.hints===0)showHint();else answerStage(true);};
+  $c('tcUnsure').onclick=()=>{if(session.current.hints===0){showHint();$c('tcUnsure').textContent='עדיין תקוע? המשך לפתרון';}else answerStage(true);};
   $c('tcHint').onclick=showHint;
   $c('tcCheck').onclick=check;
   $c('tcNext').onclick=storeAndNext;
@@ -293,7 +295,7 @@
   makeSummary=function(){
     earlierSummary();
     const h=thinking.history, recent=h.slice(-20);
-    const independent=recent.filter(x=>x.correct&&x.hints===0);
+    const independent=recent.filter(x=>x.correct&&x.hints===0&&x.independentStart);
     const starts=recent.filter(x=>x.independentStart);
     const transfer=recent.filter(x=>x.transfer);
     $c('summary').value+='\n\nמאמן חשיבה (V4.4):\n'+
@@ -301,7 +303,7 @@
       '- 20 האחרונות: '+recent.length+'\n'+
       '- פתרונות נכונים בלי רמז (20 האחרונות): '+independent.length+'/'+recent.length+'\n'+
       '- התחלות עם כיוון עצמאי: '+starts.length+'/'+recent.length+'\n'+
-      '- שאלות העברה: '+transfer.filter(x=>x.correct&&x.hints===0).length+'/'+transfer.length+' נכונות ללא רמז\n'+
+      '- שאלות העברה: '+transfer.filter(x=>x.correct&&x.hints===0&&x.independentStart).length+'/'+transfer.length+' נכונות ללא רמז\n'+
       '- רמזים בממוצע: '+(recent.length?(recent.reduce((s,x)=>s+x.hints,0)/recent.length).toFixed(1):'אין נתונים')+'\n'+
       '- נושאים שעדיין לא ברורים: '+([...new Set(recent.filter(x=>x.selfRating==='unclear').map(x=>x.topic))].join(', ')||'אין')+'\n\n'+
       'בקשה לצ׳אט: תרגל איתי תחילה זיהוי רמזים בתוך נוסח השאלה, בלי לתת נוסחה או דרך מוכנה. תן רמז מדורג ורק לאחר ניסיון עצמי הצג פתרון. בסוף בקש ממני להצביע על מילת המפתח ולפתור וריאציה דומה ללא רמז.';
