@@ -110,7 +110,7 @@
     '<div class="thinking-choices" id="tcOptions" role="radiogroup" aria-label="אפשרויות פתרון"></div>',
     '<div class="actions"><button type="button" class="btn primary" id="tcCheck">בדוק תשובה</button></div></div>',
     '<div id="tcHintBox" class="thinking-hints"><div class="actions"><button type="button" class="btn secondary" id="tcHint">💡 קבל רמז קטן (0/3)</button></div><div id="tcHintText" aria-live="polite"></div></div>',
-    '<div id="tcReviewStage" class="hidden"><h3>3. הבנתי את הדרך?</h3><div class="thinking-feedback" id="tcResult"></div>',
+    '<div id="tcReviewStage" class="hidden"><h3>3. הבנתי את הדרך?</h3><div class="thinking-feedback" id="tcResult"></div><p class="thinking-original" id="tcOriginalPlan"></p>',
     '<div class="ex"><h4>הרעיון שמאחורי השאלה</h4><p id="tcMethod"></p><p id="tcWhy"></p></div>',
     '<div class="ex deep"><h4>פתרון בשלבים</h4><ol id="tcSteps" class="steps"></ol></div>',
     '<div class="ex fast"><h4>דרך מהירה</h4><p id="tcFast"></p></div>',
@@ -227,6 +227,7 @@
     c.seconds=Math.max(1,Math.round((Date.now()-c.started)/1000));
     document.querySelectorAll('input[name="tcChoice"]').forEach(el=>el.disabled=true);
     $c('tcResult').textContent=(c.correct?'✅ פתרון נכון. ':'🔎 התשובה הנכונה: '+c.q.ans+'. ')+(c.hints===0?'פתרת בלי רמז.':'נעזרת ב־'+c.hints+' רמזים.');
+    $c('tcOriginalPlan').textContent='📝 הכיוון שכתבת לפני הפתרון: '+c.plan;
     $c('tcMethod').textContent='🧠 העיקרון: '+c.q.method;
     $c('tcWhy').textContent=c.q.why||'';
     $c('tcFast').textContent=c.q.fast||'';
@@ -287,6 +288,7 @@
   $c('tcCheck').onclick=check;
   $c('tcNext').onclick=storeAndNext;
   $c('tcMode').onchange=()=>{$c('tcTopic').disabled=$c('tcMode').value==='mixed';};
+  $c('tcMode').value='weak';
   $c('tcMode').dispatchEvent(new Event('change'));
   historyStats();
 
